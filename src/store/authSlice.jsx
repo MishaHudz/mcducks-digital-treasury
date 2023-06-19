@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, userLogin } from 'services/walletApi';
+import { register, userLogin } from './authOperation';
 
 const initialState = {
   user: {
@@ -30,12 +30,10 @@ const authSlice = createSlice({
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload;
-        state.isAuth = false;
+        state.error = payload.message;
       })
       .addCase(userLogin.pending, state => {
         state.isLoading = true;
-        state.isAuth = false;
       })
       .addCase(userLogin.fulfilled, (state, { payload }) => {
         state.isLoading = false;
@@ -46,14 +44,10 @@ const authSlice = createSlice({
         state.user.balance = payload.userData.balance;
         state.user.id = payload.userData.id;
         state.sid = payload.sid;
-
-        // state.userName = payload.user.name;
-        state.isAuth = true;
       })
       .addCase(userLogin.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload;
-        // state.isAuth = false;
+        state.error = payload.message;
       });
   },
 });

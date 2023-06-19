@@ -1,24 +1,14 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register, userLogin } from 'services/walletApi';
+import { register, userLogin } from 'store/authOperation';
 
 function LogInRegPage() {
   const [email, setEmail] = useState('');
   const [userPass, setUserPass] = useState('');
+  const [operation, setOperation] = useState(false);
   const dispatch = useDispatch();
 
-  const handleRegister = e => {
-    e.preventDefault();
-    console.log('Register');
-    dispatch(register({ email, userPass }));
-    setEmail('');
-    setUserPass('');
-  };
-
-  const handleLogin = e => {
-    e.preventDefault();
-    console.log('login');
-    dispatch(userLogin({ email, userPass }));
+  const resetForm = () => {
     setEmail('');
     setUserPass('');
   };
@@ -29,6 +19,18 @@ function LogInRegPage() {
   const handlePass = e => {
     setUserPass(e.target.value);
   };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (operation === 'login') {
+      dispatch(userLogin({ email, userPass }));
+      resetForm();
+      return;
+    }
+    dispatch(register({ email, userPass }));
+    resetForm();
+  };
+
   return (
     <div
       style={{
@@ -40,9 +42,9 @@ function LogInRegPage() {
       }}
     >
       <p>You can log in with your Google Account</p>
-      <button>Google</button>
+      <button type="button">Google</button>
       <p>Or log in using an email and password, after registering:</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           name="email"
@@ -59,8 +61,12 @@ function LogInRegPage() {
           required
           value={userPass}
         />
-        <button onClick={handleLogin}>Log in</button>
-        <button onClick={handleRegister}>Registration</button>
+        <button type="submit" onClick={() => setOperation('login')}>
+          Log in
+        </button>
+        <button type="submit" onClick={() => setOperation('register')}>
+          Registration
+        </button>
       </form>
     </div>
   );
