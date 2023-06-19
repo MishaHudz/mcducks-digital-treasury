@@ -2,14 +2,15 @@ import { createSlice } from '@reduxjs/toolkit';
 import { register, userLogin } from 'services/walletApi';
 
 const initialState = {
-  users: {
+  user: {
     email: null,
     balance: 0,
+    id: null,
   },
   sid: null,
   accessToken: null,
   refreshToken: null,
-  eror: null,
+  error: null,
   isLoading: false,
 };
 
@@ -24,10 +25,8 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.token = payload.token;
-        state.userEmail = payload.user.email;
-        state.userName = payload.user.name;
-        state.isAuth = true;
+        state.user.email = payload.email;
+        state.sid = payload.id;
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -41,17 +40,25 @@ const authSlice = createSlice({
       .addCase(userLogin.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.token = payload.token;
-        state.userEmail = payload.user.email;
-        state.userName = payload.user.name;
+        state.accessToken = payload.accessToken;
+        state.refreshToken = payload.refreshToken;
+        state.user.email = payload.userData.email;
+        state.user.balance = payload.userData.balance;
+        state.user.id = payload.userData.id;
+        state.sid = payload.sid;
+
+        // state.userName = payload.user.name;
         state.isAuth = true;
       })
       .addCase(userLogin.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
-        state.isAuth = false;
+        // state.isAuth = false;
       });
   },
 });
 
 export const authReducer = authSlice.reducer;
+
+// popov@mail.com'
+//123123123

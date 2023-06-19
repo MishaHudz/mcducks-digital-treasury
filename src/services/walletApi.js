@@ -17,6 +17,7 @@ export const register = createAsyncThunk('user/register', async userdata => {
       email: userdata.email,
       password: userdata.userPass,
     });
+    console.log(data);
     // token.set(data.token);
     return data;
   } catch (error) {
@@ -31,7 +32,7 @@ export const userLogin = createAsyncThunk('user/login', async userdata => {
       password: userdata.userPass,
     });
     // token.set(data.token);
-
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
