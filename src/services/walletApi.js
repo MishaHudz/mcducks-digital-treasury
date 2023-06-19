@@ -9,3 +9,21 @@ function setHeadersToken(token) {
 function unSetHeadersToken() {
   axios.defaults.headers.common.Authorization = ``;
 }
+
+export async function userRegisterApi(userdata) {
+  const data = await axios.post('auth/register', {
+    email: userdata.email,
+    password: userdata.userPass,
+  });
+  return data;
+  // token.set(data.token);
+}
+
+export async function userLoginApi(userdata) {
+  const data = await axios.post('auth/login', {
+    email: userdata.email,
+    password: userdata.userPass,
+  });
+  return data;
+  // token.set(data.token);
+}
