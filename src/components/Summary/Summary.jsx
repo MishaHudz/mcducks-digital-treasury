@@ -1,4 +1,9 @@
-import { SummaryListItem, SummaryText, SummaryWrapper } from './Summary.styled';
+import {
+  SummaryAmount,
+  SummaryListItem,
+  SummaryText,
+  SummaryWrapper,
+} from './Summary.styled';
 import { SummaryTitle } from './Summary.styled';
 import { SummaryList } from './Summary.styled';
 export const Summary = () => {
@@ -24,7 +29,7 @@ export const Summary = () => {
           return (
             <SummaryListItem>
               <SummaryText>{month}</SummaryText>
-              <SummaryText>0.00</SummaryText>
+              <SummaryAmount>10000.00</SummaryAmount>
             </SummaryListItem>
           );
         })}

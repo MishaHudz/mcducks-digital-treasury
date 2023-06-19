@@ -2,14 +2,24 @@ import styled from "styled-components";
 
 export const SummaryText = styled.p`
 width: 92px;
+color: #C7CCDC;
+`
+export const SummaryAmount = styled.p`
+width: 92px;
+display: flex;
+justify-content: flex-end;
+color: #C7CCDC;
+
 `
 export const SummaryList = styled.ul`
 overflow-y: scroll;
+padding-top: 2px;
 ::-webkit-scrollbar {
     width: 6px;
 }
 ::-webkit-scrollbar-track {
   background-color: #474759;
+  min-height: 100%;
 }
 ::-webkit-scrollbar-thumb {
   background-color:#60C470;;
