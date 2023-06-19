@@ -1,6 +1,17 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register, userLogin } from 'store/authOperation';
+import {
+  StyledForm,
+  StyledGoogleBtn,
+  StyledGoogleTitle,
+  StyledInput,
+  StyledInputText,
+  StyledLoginBtn,
+  StyledParagAuth,
+  StyledRegisterBtn,
+  StyledRegistrationBox,
+} from './LogInRegPage.styled';
 
 function LogInRegPage() {
   const [email, setEmail] = useState('');
@@ -32,20 +43,17 @@ function LogInRegPage() {
   };
 
   return (
-    <div
-      style={{
-        width: '392px',
-        height: '554px',
-        background: 'grey',
-        borderRadius: '15px',
-        padding: '20px',
-      }}
-    >
-      <p>You can log in with your Google Account</p>
-      <button type="button">Google</button>
-      <p>Or log in using an email and password, after registering:</p>
-      <form onSubmit={handleSubmit}>
-        <input
+    <StyledRegistrationBox>
+      <StyledGoogleTitle>
+        You can log in with your Google Account
+      </StyledGoogleTitle>
+      <StyledGoogleBtn type="button">Google</StyledGoogleBtn>
+      <StyledParagAuth>
+        Or log in using an email and password, after registering:
+      </StyledParagAuth>
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledInputText>*Email:</StyledInputText>
+        <StyledInput
           type="email"
           name="email"
           onChange={handleEmail}
@@ -53,7 +61,9 @@ function LogInRegPage() {
           required
           value={email}
         />
-        <input
+        <StyledInputText>*Password:</StyledInputText>
+
+        <StyledInput
           type="password"
           name="password"
           onChange={handlePass}
@@ -61,14 +71,19 @@ function LogInRegPage() {
           required
           value={userPass}
         />
-        <button type="submit" onClick={() => setOperation('login')}>
-          Log in
-        </button>
-        <button type="submit" onClick={() => setOperation('register')}>
-          Registration
-        </button>
-      </form>
-    </div>
+        <div>
+          <StyledLoginBtn type="submit" onClick={() => setOperation('login')}>
+            Log in
+          </StyledLoginBtn>
+          <StyledRegisterBtn
+            type="submit"
+            onClick={() => setOperation('register')}
+          >
+            Registration
+          </StyledRegisterBtn>
+        </div>
+      </StyledForm>
+    </StyledRegistrationBox>
   );
 }
 

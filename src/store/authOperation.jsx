@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit/dist';
-import axios from 'axios';
 import { userLoginApi, userRegisterApi } from 'services/walletApi';
 
 export const register = createAsyncThunk(
