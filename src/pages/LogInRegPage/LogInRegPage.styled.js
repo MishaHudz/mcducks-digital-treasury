@@ -9,6 +9,7 @@ export const StyledRegistrationBox = styled.div`
   border-radius: 30px;
   padding: 52px 52px;
   margin-bottom: 8px;
+  margin-left: auto;
   offset: 0px, 2px rgba(132, 132, 132, 0.2);
 `;
 
