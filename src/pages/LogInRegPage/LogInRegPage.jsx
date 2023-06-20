@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, userLogin } from 'store/authOperation';
 import wallet from '../../images/walletStart.png';
@@ -17,6 +17,7 @@ import {
   StyledSectionRegister,
   StyledStarRequared,
 } from './LogInRegPage.styled';
+import { useNavigate } from 'react-router';
 
 function LogInRegPage() {
   const [email, setEmail] = useState('');
@@ -28,6 +29,12 @@ function LogInRegPage() {
     setEmail('');
     setUserPass('');
   };
+  const { accessToken } = useSelector(state => state.auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    accessToken && navigate('/');
+  }, [accessToken, navigate]);
 
   const handleEmail = e => {
     setEmail(e.target.value);
