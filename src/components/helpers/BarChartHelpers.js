@@ -15,3 +15,25 @@ export function sortData(data) {
 
   return sortedObj;
 }
+
+export function getGradient(chart, element, topColor, bottomColor) {
+  const { height } = element;
+  const {
+    ctx,
+    chartArea: { top, bottom },
+  } = chart;
+  console.log('top', top, 'bottom', bottom);
+  console.log(element);
+  let correctTop = height ? top + bottom - height : top;
+
+  const gradientSegment = ctx.createLinearGradient(
+    0,
+    bottom,
+    0,
+
+    correctTop
+  );
+  gradientSegment.addColorStop(0, bottomColor);
+  gradientSegment.addColorStop(1, topColor);
+  return gradientSegment;
+}
