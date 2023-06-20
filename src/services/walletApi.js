@@ -6,7 +6,7 @@ export function setHeadersToken(token) {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
 
-function unSetHeadersToken() {
+export function unSetHeadersToken() {
   axios.defaults.headers.common.Authorization = ``;
 }
 
@@ -26,4 +26,9 @@ export async function userLoginApi(userdata) {
   });
   return data;
   // token.set(data.token);
+}
+
+export async function userLogoutApi(userdata) {
+  const { data } = await axios.post('auth/logout');
+  return data;
 }

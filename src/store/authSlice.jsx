@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, userLogin } from './authOperation';
+import { register, userLogin, userLogout } from './authOperation';
 
 const initialState = {
   user: {
@@ -34,6 +34,16 @@ const authSlice = createSlice({
         state.user.balance = payload.userData.balance;
         state.user.id = payload.userData.id;
         state.sid = payload.sid;
+      })
+      .addCase(userLogout.fulfilled, (state, { payload }) => {
+        state.user.email = null;
+        state.user.balance = null;
+        state.user.id = null;
+        state.sid = null;
+        state.accessToken = null;
+        state.refreshToken = null;
+        state.error = null;
+        state.isLoading = false;
       })
       .addMatcher(
         action => {
