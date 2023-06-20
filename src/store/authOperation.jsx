@@ -11,7 +11,6 @@ export const register = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      window.alert(error.response.data.message);
       return rejectWithValue(error.response.data);
     }
   }
@@ -24,7 +23,6 @@ export const userLogin = createAsyncThunk(
       const { data } = await userLoginApi(userdata);
       return data;
     } catch (error) {
-      window.alert(error.response.data.message);
       return rejectWithValue(error.response.data);
     }
   }

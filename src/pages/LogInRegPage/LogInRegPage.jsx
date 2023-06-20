@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register, userLogin } from 'store/authOperation';
 import {
+  StyledErrorText,
   StyledForm,
   StyledGoogleBtn,
   StyledGoogleTitle,
@@ -18,7 +19,7 @@ function LogInRegPage() {
   const [userPass, setUserPass] = useState('');
   const [operation, setOperation] = useState(false);
   const dispatch = useDispatch();
-
+  const { error } = useSelector(state => state.auth);
   const resetForm = () => {
     setEmail('');
     setUserPass('');
@@ -51,8 +52,11 @@ function LogInRegPage() {
       <StyledParagAuth>
         Or log in using an email and password, after registering:
       </StyledParagAuth>
+
       <StyledForm onSubmit={handleSubmit}>
-        <StyledInputText>*Email:</StyledInputText>
+        <StyledInputText>
+          <span style={{ color: 'red', fontSize: '14px' }}>*</span>Email:
+        </StyledInputText>
         <StyledInput
           type="email"
           name="email"
@@ -61,7 +65,9 @@ function LogInRegPage() {
           required
           value={email}
         />
-        <StyledInputText>*Password:</StyledInputText>
+        <StyledInputText>
+          <span style={{ color: 'red', fontSize: '14px' }}>*</span>Password:
+        </StyledInputText>
 
         <StyledInput
           type="password"
@@ -81,6 +87,7 @@ function LogInRegPage() {
           >
             Registration
           </StyledRegisterBtn>
+          {error && <StyledErrorText>{error}</StyledErrorText>}
         </div>
       </StyledForm>
     </StyledRegistrationBox>
