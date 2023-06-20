@@ -6,23 +6,23 @@ import BalanceModal from '../BalanceModal/BalanceModal';
 import { Forma, Title, Data } from './BalanceCenter.styled';
 
 const formBalanc = value => {
-  const form = new Intl.NumberFormat('ru-RU', {
-    style: 'decimal',
-    minimumFractionDigits: 2,
-    useGrouping: 'min2',
-    unitDisplay: 'short',
-  })
-    .format(value)
-    .replace(',', '.');
-  return form;
+//   const form = new Intl.NumberFormat('ru-RU', {
+//     style: 'decimal',
+//     minimumFractionDigits: 2,
+//     useGrouping: 'min2',
+//     unitDisplay: 'short',
+//   })
+//     .format(value)
+//     .replace(',', '.');
+//   return form;
 };
 
 const BalanceCenter = () => {
-  const initialBalance = useSelector(selectBalance);
-  const newBalance = useSelector(selectNewBalance);
-  const balance = newBalance === 0 ? initialBalance : newBalance;
+  const initialState = useSelector(Users.balance);
+//   const newBalance = useSelector(selectNewBalance);
+//   const balance = newBalance === 0 ? initialState : newBalance;
   const [input, setInput] = useState(
-    `${formBalanc(initialBalance.toFixed(2))} UAH`
+    `${formBalanc(initialState.toFixed(2))} UAH`
   );
 
   const handleChange = e => {
@@ -38,15 +38,15 @@ const BalanceCenter = () => {
         type="number"
         value={input}
         onChange={handleChange}
-        disabled={initialBalance === 0 ? false : true}
+        disabled={initialState === 0 ? false : true}
         placeholder={
-          initialBalance === 0
+          initialState === 0
             ? `00.00 UAH`
             : `${formBalanc(balance.toFixed(2))} UAH`
         }
       />
-      {!initialBalance && <BalanceBtn balanceToUpdate={input} />}
-      {!initialBalance && <BalanceModal />}
+      {!initialState && <BalanceBtn balanceToUpdate={input} />}
+      {!initialState && <BalanceModal />}
     </Forma>
   );
 };
