@@ -12,8 +12,8 @@ import {
   NLink,
   UserInfo,
 } from './Header.styled';
-import coin from './1.png';
-import logout from './logout2x.png';
+import coin from '../../images/coinHeader.png';
+import logout from '../../images/logoutHeader.png';
 import MediaQuery from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogout } from 'store/authOperation';
