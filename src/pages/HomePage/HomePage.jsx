@@ -1,4 +1,5 @@
 import ReportsLink from 'components/ReportsLink/ReportsLink';
+import { Addtransaction } from 'components/AddTransaction/AddTransaction';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -16,6 +17,7 @@ function HomePage() {
     <>
       <ReportsLink />
       <div>Home Page</div>
+      <Addtransaction/>
     </>
   );
 }
