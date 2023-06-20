@@ -5,13 +5,13 @@ import { BarChartContainer } from './BarChart.styles';
 import { sortData } from 'components/helpers/BarChartHelpers';
 
 const data = {
-  total: 1200,
-  Вазон: 150,
-  Картина: 300,
-  Кран: 1500,
-  Чайник: 2000,
-  Штори: 5000,
-  Диван: 15000,
+  total: 125500,
+  Вазон: 1500,
+  Картина: 2000,
+  Чайник: 5000,
+  Штори: 7000,
+  Кран: 3500,
+  Диван: 10000,
 };
 
 function BarChart() {
@@ -47,17 +47,45 @@ function BarChart() {
     },
   };
 
+  function getGreeenGradient(chart) {
+    const {
+      ctx,
+      chartArea: { top, bottom },
+    } = chart;
+    const gradientSegment = ctx.createLinearGradient(0, bottom, 0, top);
+    gradientSegment.addColorStop(0, '#383C46');
+    gradientSegment.addColorStop(1, '#60C470');
+    return gradientSegment;
+  }
+
+  function getDarkGradient(chart) {
+    const {
+      ctx,
+      chartArea: { top, bottom },
+    } = chart;
+    const gradientSegment = ctx.createLinearGradient(0, bottom, 0, top);
+    gradientSegment.addColorStop(0, '#373745');
+    gradientSegment.addColorStop(1, ' #5B5B6D');
+    return gradientSegment;
+  }
+
   const barChartData = {
     labels: Object.keys(sortData(data)).slice(1),
     datasets: [
       {
-        label: '',
         data: Object.values(sortData(data)).slice(1),
         backgroundColor: context => {
           const chart = context.chart;
-          const { ctx, chartArea } = chart;
+          const { chartArea } = chart;
+
           if (!chartArea) {
             return null;
+          }
+          if (context.dataIndex === 0 || context.dataIndex % 3 === 0) {
+            return getGreeenGradient(chart);
+          }
+          if (context.dataIndex !== -1) {
+            return getDarkGradient(chart);
           }
         },
         borderRadius: 8,
