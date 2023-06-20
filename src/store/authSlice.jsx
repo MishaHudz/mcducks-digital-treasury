@@ -19,21 +19,11 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(register.pending, state => {
-        state.isLoading = true;
-      })
       .addCase(register.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
         state.user.email = payload.email;
         state.sid = payload.id;
-      })
-      .addCase(register.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload.message;
-      })
-      .addCase(userLogin.pending, state => {
-        state.isLoading = true;
       })
       .addCase(userLogin.fulfilled, (state, { payload }) => {
         state.isLoading = false;
@@ -45,10 +35,23 @@ const authSlice = createSlice({
         state.user.id = payload.userData.id;
         state.sid = payload.sid;
       })
-      .addCase(userLogin.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload.message;
-      });
+      .addMatcher(
+        action => {
+          return action.type.endsWith('/pending');
+        },
+        state => {
+          state.isLoading = true;
+        }
+      )
+      .addMatcher(
+        action => {
+          return action.type.endsWith('/rejected');
+        },
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.error = payload.message;
+        }
+      );
   },
 });
 

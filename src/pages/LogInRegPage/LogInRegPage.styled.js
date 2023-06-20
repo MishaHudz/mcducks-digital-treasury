@@ -4,7 +4,6 @@ export const StyledRegistrationBox = styled.div`
   flex-direction: column;
   text-align: center;
   width: 392px;
-  /* height: 554px; */
   background-color: #383847;
   border-radius: 30px;
   padding: 52px 52px;
@@ -106,4 +105,8 @@ export const StyledRegisterBtn = styled.button`
     background-color: rgba(245, 246, 255, 0.9);
     cursor: pointer;
   }
+`;
+
+export const StyledErrorText = styled.p`
+  color: red;
 `;
