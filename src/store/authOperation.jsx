@@ -1,7 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit/dist';
 import {
   setHeadersToken,
+  unSetHeadersToken,
   userLoginApi,
+  userLogoutApi,
   userRegisterApi,
 } from 'services/walletApi';
 
@@ -26,6 +28,19 @@ export const userLogin = createAsyncThunk(
     try {
       const { data } = await userLoginApi(userdata);
       setHeadersToken(data.accessToken);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const userLogout = createAsyncThunk(
+  'user/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await userLogoutApi();
+      unSetHeadersToken();
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
