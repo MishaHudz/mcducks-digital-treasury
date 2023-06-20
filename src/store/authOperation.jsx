@@ -1,5 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit/dist';
-import { userLoginApi, userRegisterApi } from 'services/walletApi';
+import {
+  setHeadersToken,
+  userLoginApi,
+  userRegisterApi,
+} from 'services/walletApi';
 
 export const register = createAsyncThunk(
   'user/register',
@@ -11,7 +15,6 @@ export const register = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      window.alert(error.response.data.message);
       return rejectWithValue(error.response.data);
     }
   }
@@ -22,9 +25,9 @@ export const userLogin = createAsyncThunk(
   async (userdata, { rejectWithValue }) => {
     try {
       const { data } = await userLoginApi(userdata);
+      setHeadersToken(data.accessToken);
       return data;
     } catch (error) {
-      window.alert(error.response.data.message);
       return rejectWithValue(error.response.data);
     }
   }

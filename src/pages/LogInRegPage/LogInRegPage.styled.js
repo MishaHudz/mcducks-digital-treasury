@@ -1,16 +1,18 @@
 import styled from 'styled-components';
+import ellipse from '../../images/Ellipse-8.png';
+import rectangle from '../../images/Rectangle.png';
 export const StyledRegistrationBox = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 392px;
-  /* height: 554px; */
+  max-width: 392px;
   background-color: #383847;
   border-radius: 30px;
   padding: 52px 52px;
   margin-bottom: 8px;
-  margin-left: auto;
-  offset: 0px, 2px rgba(132, 132, 132, 0.2);
+  box-shadow: 0px 2px 14px 0px rgba(132, 132, 132, 0.2) inset;
+
+  z-index: 1;
 `;
 
 export const StyledForm = styled.form`
@@ -45,6 +47,7 @@ export const StyledGoogleBtn = styled.button`
 `;
 
 export const StyledParagAuth = styled.p`
+  margin: 0;
   font-size: 14px;
   line-height: 1.14;
   text-align: left;
@@ -106,4 +109,38 @@ export const StyledRegisterBtn = styled.button`
     background-color: rgba(245, 246, 255, 0.9);
     cursor: pointer;
   }
+`;
+
+export const StyledErrorText = styled.p`
+  color: red;
+`;
+
+export const StyledStarRequared = styled.span`
+  color: red;
+  font-size: 14px;
+`;
+
+export const StyledSectionRegister = styled.section`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background-color: #474759;
+  align-items: center;
+  justify-content: space-around;
+  gap: 42px;
+  padding-left: 46px;
+  background-image: url(${rectangle});
+  background-size: 115%;
+`;
+
+export const StyledImgBox = styled.div`
+  height: 575px;
+  width: 675px;
+  margin-top: 100px;
+  background-image: url(${ellipse});
+  background-size: 600px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-clip: content-box;
+  z-index: 1;
 `;
