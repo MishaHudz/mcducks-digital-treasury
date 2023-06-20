@@ -16,8 +16,14 @@ const data = {
 
 function BarChart() {
   const options = {
+    layout: {
+      padding: {
+        top: 25,
+      },
+    },
     scales: {
       x: {
+        barThickness: 15,
         grid: {
           display: false,
         },
@@ -47,8 +53,15 @@ function BarChart() {
       {
         label: '',
         data: Object.values(sortData(data)).slice(1),
-        backgroundColor: ['green', 'grey', 'grey'],
+        backgroundColor: context => {
+          const chart = context.chart;
+          const { ctx, chartArea } = chart;
+          if (!chartArea) {
+            return null;
+          }
+        },
         borderRadius: 8,
+        maxBarThickness: 38,
       },
     ],
   };
