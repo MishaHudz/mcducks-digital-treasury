@@ -2,7 +2,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://kapusta-backend.goit.global';
 
-function setHeadersToken(token) {
+export function setHeadersToken(token) {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
 
