@@ -1,13 +1,17 @@
 {
   "files": {
     "main.css": "/mcducks-digital-treasury/static/css/main.e2c4632c.css",
-    "main.js": "/mcducks-digital-treasury/static/js/main.f27be9ed.js",
+    "main.js": "/mcducks-digital-treasury/static/js/main.d6bfdfe9.js",
+    "static/media/Rectangle.png": "/mcducks-digital-treasury/static/media/Rectangle.bc274d04e3cece71fb64.png",
+    "static/media/Ellipse-8.png": "/mcducks-digital-treasury/static/media/Ellipse-8.fa12646c464dff543456.png",
+    "static/media/walletStart.png": "/mcducks-digital-treasury/static/media/walletStart.ce2f753ea0a8b58aa53c.png",
+    "static/media/1.png": "/mcducks-digital-treasury/static/media/1.508b4b37b5ba09f27877.png",
     "index.html": "/mcducks-digital-treasury/index.html",
     "main.e2c4632c.css.map": "/mcducks-digital-treasury/static/css/main.e2c4632c.css.map",
-    "main.f27be9ed.js.map": "/mcducks-digital-treasury/static/js/main.f27be9ed.js.map"
+    "main.d6bfdfe9.js.map": "/mcducks-digital-treasury/static/js/main.d6bfdfe9.js.map"
   },
   "entrypoints": [
     "static/css/main.e2c4632c.css",
-    "static/js/main.f27be9ed.js"
+    "static/js/main.d6bfdfe9.js"
   ]
 }
