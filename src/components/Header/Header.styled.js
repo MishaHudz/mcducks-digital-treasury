@@ -9,7 +9,7 @@ export const BodyHeader = styled.header`
 `;
 
 export const Nav = styled.nav`
-  padding: 12px 20px;
+  /* padding: 12px 20px; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -95,11 +95,10 @@ export const Line = styled.span`
   height: 36px;
   width: 0px;
   border: 1px solid #e0e5eb;
+  margin-right: -20px;
 `;
 
 export const ExitBtn = styled.button`
-  /* width: 22px; */
-  /* height: 14px; */
   cursor: pointer;
   background-color: transparent;
   border: transparent;
@@ -108,6 +107,7 @@ export const ExitBtn = styled.button`
   line-height: 14px;
   text-decoration-line: underline;
   color: #c7ccdc;
+  padding: 12px 20px;
 `;
 
 export const LogoutImg = styled.img`
@@ -119,5 +119,6 @@ export const LogoutBtn = styled.button`
   cursor: pointer;
   background-color: transparent;
   border: transparent;
-  padding: 0;
+  /* padding: 0; */
+  padding: 12px 20px;
 `;
