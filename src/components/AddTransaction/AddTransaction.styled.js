@@ -1,12 +1,10 @@
 import styled from 'styled-components';
+import calc from '../../images/calculator.png';
 
 export const TransactionForm = styled.div`
  display: flex;
+ justify-content: center;
  `
-export const DataForm = styled.div`
-display: flex;
-align-items:center;
-`
 export const Form = styled.form`
 display: flex;
 margin: 0 auto;
@@ -38,7 +36,7 @@ width: 290px;
   }
 `
 export const InputCalc = styled.input`
-background: url('../../images/calculator.png') no-repeat;
+background: url(${calc}) no-repeat;
   background-position: right 15% bottom 50%;
   background-size: 20px;
   padding: 12px 37px;
@@ -114,4 +112,9 @@ border-radius: 16px;
     background-color: rgb(70, 70, 88);
   }
 }
+`
+export const ContainerBtn = styled.div`
+display:flex;
+gap:16px;
+margin-left:32px;
 `
