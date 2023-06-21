@@ -18,7 +18,7 @@ const data = {
 
 function BarChart() {
   const options = {
-    animation: false,
+    // animation: false,
     layout: {
       padding: {
         top: 25,
