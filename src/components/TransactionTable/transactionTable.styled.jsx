@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const ContainerStyled= styled.div`
+export const ContainerStyled = styled.div`
   max-width: 282px;
   margin: 0 auto;
 
   @media screen and (min-width: 768px) {
     max-width: 624px;
     margin: 0 auto;
-
+  }
   @media screen and (min-width: 1280px) {
     max-width: 746 px;
     margin: 0 auto;
@@ -111,7 +111,7 @@ export const TableRowStyled = styled.tr`
 export const TableColumnStyled = styled.td`
   padding: 0 24px;
   margin: 0;
-//   border-bottom: 2px solid #474759;
+  //   border-bottom: 2px solid #474759;
 
   &:first-child {
     // border-left: 2px solid #474759;
@@ -150,7 +150,7 @@ export const BtnDelStyled = styled.button`
   border: none;
   background: rgba(86, 86, 107, 0.1);
   border-radius: 4px;
-  box-shadow: 0 2px 3px rgba(0,0,0,.15);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 
   &:hover {
@@ -166,11 +166,11 @@ export const BtnDelStyled = styled.button`
   }
 `;
 
-//  ******************  FOR MOBILE ****************** 
+//  ******************  FOR MOBILE ******************
 
 export const BoxStyled = styled.div`
-display: flex;
-gap: 10px;
+  display: flex;
+  gap: 10px;
 `;
 
 export const WrapStyled = styled.div`
@@ -199,20 +199,20 @@ export const DescriptStyled = styled.h3`
   color: #c7ccdc;
 `;
 export const DateStyled = styled.p`
-font-size: 8px;
-color: #c7ccdc;
-margin-top: 7px;
+  font-size: 8px;
+  color: #c7ccdc;
+  margin-top: 7px;
 `;
 
 export const CategoryStyled = styled.p`
-font-size: 8px;
-color: #c7ccdc;
-margin-top: 7px;
+  font-size: 8px;
+  color: #c7ccdc;
+  margin-top: 7px;
 `;
 
 export const RightStyled = styled.div`
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 `;
 
 export const AmountStyled = styled.h2`
@@ -224,4 +224,3 @@ export const AmountStyled = styled.h2`
     color: #60c470;
   }
 `;
-

@@ -16,7 +16,7 @@ import {
   CategoryStyled,
   BoxStyled,
   TableStyled,
-} from './transactionTable.styled.jsx';
+} from './TransactionTable.styled.jsx';
 import { useMediaQuery } from 'react-responsive';
 import icon from '../../images/icon.svg';
 
