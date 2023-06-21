@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState} from 'react';
 import Select from 'react-select';
 import { expenses } from './categories';
 import {
