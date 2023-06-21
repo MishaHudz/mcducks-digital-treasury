@@ -34,7 +34,9 @@ export const Nav = styled.nav`
 `;
 
 export const Logo = styled.p`
-  font-weight: 700;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
   font-size: 23.3169px;
   line-height: 32px;
   margin: 0;

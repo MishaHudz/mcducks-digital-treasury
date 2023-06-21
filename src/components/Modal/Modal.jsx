@@ -10,6 +10,14 @@ function CustomModal({ isOpen, onRequestClose, onConfirm, onCancel }) {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="Exit Confirmation"
+      style={{
+        overlay: {
+          background: 'rgba(255, 255, 255, 0.09)',
+          borderRadius: '16px',
+          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+          backdropFilter: 'blur(2.2px)',
+        },
+      }}
     >
       <Title>Do you really want to leave?</Title>
       <BoxButton>

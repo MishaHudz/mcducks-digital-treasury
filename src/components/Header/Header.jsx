@@ -30,7 +30,6 @@ function Header() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function logoutFunc() {
-    // dispatch(userLogout());
     setModalIsOpen(true);
   }
 
