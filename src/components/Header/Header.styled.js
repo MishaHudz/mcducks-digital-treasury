@@ -9,7 +9,6 @@ export const BodyHeader = styled.header`
 `;
 
 export const Nav = styled.nav`
-
   padding: 12px 20px;
   /* padding-top: 10px;
   padding-bottom: 10px; */
@@ -128,5 +127,4 @@ export const LogoutBtn = styled.button`
 
   padding: 0;
   /* padding: 12px 20px; */
-
 `;
