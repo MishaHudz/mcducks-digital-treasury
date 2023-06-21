@@ -15,7 +15,7 @@ export const ExitModal = styled(Modal)`
   background: #383847;
   box-shadow: inset 0px 2px 14px rgba(132, 132, 132, 0.2);
   border-radius: 16px;
-
+  filter: drop-shadow(0px 4px 100px rgba(0, 0, 0, 0.5));
   animation: slide-in-elliptic-top-fwd 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)
     both;
   @keyframes slide-in-elliptic-top-fwd {
