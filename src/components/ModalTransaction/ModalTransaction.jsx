@@ -34,7 +34,7 @@ const ModalTransaction = ({ onConfirm, onClose }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  });
 
   return (
     <BackDrop onClick={handleBackdropClick}>
