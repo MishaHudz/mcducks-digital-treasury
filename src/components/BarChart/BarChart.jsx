@@ -1,6 +1,7 @@
 import { Bar } from 'react-chartjs-2';
 // eslint-disable-next-line no-unused-vars
 import { Chart } from 'chart.js/auto';
+import MediaQuery from 'react-responsive';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { BarChartContainer } from './BarChart.styles';
 import { getGradient, sortData } from 'components/helpers/BarChartHelpers';
@@ -18,7 +19,7 @@ const data = {
 
 function BarChart() {
   const options = {
-    // animation: false,
+    animation: false,
     layout: {
       padding: {
         top: 25,
@@ -33,7 +34,7 @@ function BarChart() {
             size: 12,
           },
         },
-        barThickness: 15,
+        // barThickness: 15,
         grid: {
           display: false,
         },
@@ -82,15 +83,24 @@ function BarChart() {
           }
         },
         borderRadius: 8,
+
         maxBarThickness: 38,
+        categoryPercentage: 1.0,
+        barPercentage: 1.0,
       },
     ],
   };
   //////////////////////////////
   return (
-    <BarChartContainer>
-      <Bar data={barChartData} options={options} plugins={[ChartDataLabels]} />
-    </BarChartContainer>
+    data.total && (
+      <BarChartContainer>
+        <Bar
+          data={barChartData}
+          options={options}
+          plugins={[ChartDataLabels]}
+        />
+      </BarChartContainer>
+    )
   );
 }
 

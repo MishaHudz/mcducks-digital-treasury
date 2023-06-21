@@ -22,8 +22,8 @@ export function getGradient(chart, element, topColor, bottomColor) {
     ctx,
     chartArea: { top, bottom },
   } = chart;
-  console.log('top', top, 'bottom', bottom);
-  console.log(element);
+  //   console.log('top', top, 'bottom', bottom);
+  //   console.log(element);
   let correctTop = height ? top + bottom - height : top;
 
   const gradientSegment = ctx.createLinearGradient(0, bottom, 0, correctTop);
