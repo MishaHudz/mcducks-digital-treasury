@@ -9,7 +9,11 @@ export const BodyHeader = styled.header`
 `;
 
 export const Nav = styled.nav`
-  /* padding: 12px 20px; */
+
+  padding: 12px 20px;
+  /* padding-top: 10px;
+  padding-bottom: 10px; */
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -119,6 +123,8 @@ export const LogoutBtn = styled.button`
   cursor: pointer;
   background-color: transparent;
   border: transparent;
-  /* padding: 0; */
-  padding: 12px 20px;
+
+  padding: 0;
+  /* padding: 12px 20px; */
+
 `;
