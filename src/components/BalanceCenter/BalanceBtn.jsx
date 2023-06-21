@@ -6,14 +6,14 @@ const BalanceBtn = ({ balanceToUpdate }) => {
     const totalBalance = () => {
       const newBalance = Number(balanceToUpdate);
       console.log(newBalance);
-      if (newBalance > 0) {
-        dispatch(setNewBalance({ newBalance: newBalance }));
-        setTimeout(() => {
-          dispatch(getAuthUser());
-        }, 200);
-      } else {
-        alert('The balance must be positive');
-      }
+      // if (newBalance > 0) {
+      //   // dispatch(setNewBalance({ newBalance: newBalance }));
+      //   // setTimeout(() => {
+      //   //   dispatch(getAuthUser());
+      //   // }, 200);
+      // } else {
+      //   alert('The balance must be positive');
+      // }
     };
 
     return (
