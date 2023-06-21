@@ -41,7 +41,6 @@ const transactionsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getTransactionExpense.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.isLoading = false;
         state.error = null;
         state.expenses = payload.expenses;
