@@ -19,7 +19,7 @@ export const Summary = () => {
   useEffect(() => {
     dispatch(getTransactionExpense());
     // dispatch();
-  }, []);
+  }, [dispatch]);
 
   return (
     <SummaryWrapper>
