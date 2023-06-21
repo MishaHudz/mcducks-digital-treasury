@@ -7,7 +7,6 @@ import TransactionTable from 'components/TransactionTable/TransactionTab';
 
 function HomePage() {
   const { accessToken } = useSelector(state => state.auth);
-
   const navigate = useNavigate();
 
   useEffect(() => {
