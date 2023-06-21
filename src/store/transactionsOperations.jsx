@@ -12,7 +12,7 @@ export const getTransactionIncome = createAsyncThunk(
   'transaction/income/get',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await getTransactionIncomeApi();
+      const data = await getTransactionIncomeApi();
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -39,7 +39,7 @@ export const getTransactionExpense = createAsyncThunk(
   'transaction/expenses/get',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await getTransactionExpenseApi();
+      const data = await getTransactionExpenseApi();
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

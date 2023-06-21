@@ -47,7 +47,8 @@ export async function addTransactionExpenseApi(transactionForm) {
   return data; 
   }
 export async function getTransactionExpenseApi() {
-  const {data} = await axios.get('/transaction/expense');
+  const { data } = await axios.get('/transaction/expense');
+  console.log(data);
       return data;
   }
 export async function deleteTransactionApi(transactionId) {
