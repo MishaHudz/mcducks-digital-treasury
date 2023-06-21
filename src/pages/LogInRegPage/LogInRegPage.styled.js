@@ -2,17 +2,28 @@ import styled from 'styled-components';
 import ellipse from '../../images/Ellipse-8.png';
 import rectangle from '../../images/Rectangle.png';
 export const StyledRegistrationBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  max-width: 392px;
-  background-color: #383847;
-  border-radius: 30px;
-  padding: 52px 52px;
-  margin-bottom: 8px;
-  box-shadow: 0px 2px 14px 0px rgba(132, 132, 132, 0.2) inset;
+  @media (min-width: 320px) {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 280px;
+    background-color: #383847;
+    border-radius: 16px;
+    padding: 32px 20px;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    box-shadow: 0px 2px 14px 0px rgba(132, 132, 132, 0.2) inset;
 
-  z-index: 1;
+    z-index: 1;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 392px;
+    padding: 52px;
+  }
+
+  @media (min-width: 1280px) {
+  }
 `;
 
 export const StyledForm = styled.form`
@@ -21,14 +32,26 @@ export const StyledForm = styled.form`
 `;
 
 export const StyledGoogleTitle = styled.h3`
-  width: 218px;
-  font-weight: 400;
-  margin: 0 auto;
-  color: #f6f7fb;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: 0.04em;
-  margin-bottom: 20px;
+  @media (min-width: 320px) {
+    min-width: 203px;
+    font-weight: 400;
+    margin: 0 auto;
+    padding: 0 25px;
+
+    color: #f6f7fb;
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.04em;
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 768px) {
+    min-width: 218px;
+    padding: 0 40px;
+  }
+
+  @media (min-width: 1280px) {
+  }
 `;
 export const StyledGoogleBtn = styled.button`
   width: 120px;
@@ -72,42 +95,55 @@ export const StyledInputText = styled.span`
 `;
 
 export const StyledLoginBtn = styled.button`
-  width: 136px;
-  height: 44px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: 16px;
-  border-color: transparent;
-  color: #ffffff;
-  background-color: #42a652;
-  offset: 1px, 3px rgba(96, 196, 112, 0.35);
-  margin-right: 16px;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  box-shadow: 1px 3px 5px 0px #60c47059;
-  &:hover {
-    background-color: #42a111;
-    cursor: pointer;
+  @media (min-width: 320px) {
+    width: 116px;
+    height: 44px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 16px;
+    border-color: transparent;
+    color: #ffffff;
+    background-color: #42a652;
+    offset: 1px, 3px rgba(96, 196, 112, 0.35);
+    margin-right: 8px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    box-shadow: 1px 3px 5px 0px #60c47059;
+    &:hover {
+      background-color: #42a111;
+      cursor: pointer;
+    }
+  }
+
+  @media (min-width: 768px) {
+    width: 136px;
+    margin-right: 16px;
   }
 `;
 
 export const StyledRegisterBtn = styled.button`
-  width: 136px;
-  height: 44px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: 16px;
-  border-color: transparent;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  box-shadow: 1px 3px 5px 0px rgba(82, 85, 95, 0.15);
-  background: rgba(245, 246, 251, 1);
+  @media (min-width: 320px) {
+    min-width: 116px;
+    height: 44px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 16px;
+    border-color: transparent;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    box-shadow: 1px 3px 5px 0px rgba(82, 85, 95, 0.15);
+    background: rgba(245, 246, 251, 1);
 
-  &:hover {
-    background-color: rgba(245, 246, 255, 0.9);
-    cursor: pointer;
+    &:hover {
+      background-color: rgba(245, 246, 255, 0.9);
+      cursor: pointer;
+    }
+  }
+
+  @media (min-width: 768px) {
+    min-width: 136px;
   }
 `;
 
@@ -126,10 +162,8 @@ export const StyledSectionRegister = styled.section`
   display: flex;
   background-color: #474759;
   align-items: center;
-  justify-content: space-around;
-  gap: 42px;
-  padding-left: 46px;
   background-image: url(${rectangle});
+  background-repeat: no-repeat;
   background-size: 115%;
 `;
 
