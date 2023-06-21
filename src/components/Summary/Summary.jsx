@@ -32,7 +32,7 @@ export const Summary = () => {
               <SummaryAmount>{month[1]}</SummaryAmount>
             </SummaryListItem>
           ) : (
-            <SummaryListItem></SummaryListItem>
+            <SummaryListItem key={nanoid()}></SummaryListItem>
           );
         })}
       </SummaryList>
