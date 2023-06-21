@@ -75,7 +75,7 @@ function BarChart() {
       padding: {
         top: 25,
         right: 10,
-        left: 0,
+        left: -8,
       },
     },
     scales: {
@@ -109,7 +109,7 @@ function BarChart() {
         formatter: (value, context) =>
           `${context.chart.data.labels[context.dataIndex]} ${value} UAH`,
         font: {
-          //   weight: 'bold',
+          family: 'Roboto',
           size: 10,
         },
       },
