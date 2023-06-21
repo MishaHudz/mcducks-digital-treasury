@@ -4,7 +4,8 @@ import { Addtransaction } from 'components/AddTransaction/AddTransaction';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import TransactionTable from 'components/TransactionTable/TransactionTab';
-import 
+import BalanceCenter from 'components/BalanceCenter/BalanceCenter';
+import BalanceBtn from 'components/BalanceCenter/BalanceBtn';
 
 function HomePage() {
   const { accessToken } = useSelector(state => state.auth);

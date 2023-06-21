@@ -19,7 +19,7 @@ console.log(initialState);
         title="Field must contain only numbers"
         type="number"
         value={initialState === 0 ? input : `${initialState.toFixed(2)} UAH`}  
-        onChange={setInput(e.target.value)}
+        onChange={setInput()}
         disabled={initialState === 0 ? false : true}
         placeholder={
           initialState === 0
