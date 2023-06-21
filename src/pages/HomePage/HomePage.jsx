@@ -5,6 +5,7 @@ import BalanceCenter  from '../../components/BalanceCenter/BalanceCenter';
 import BalanceBtn from 'components/BalanceCenter/BalanceBtn';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import TransactionTable from 'components/TransactionTable/TransactionTable';
 
 function HomePage() {
   const { accessToken } = useSelector(state => state.auth);
@@ -22,6 +23,7 @@ function HomePage() {
       <BalanceCenter/>
       <BalanceBtn/>
       <Addtransaction/>
+      <TransactionTable/>
     </>
   );
 }
