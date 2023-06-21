@@ -17,7 +17,7 @@ function HomePage() {
 
   return (
     <>
-      <ReportsLink />
+      <ReportsLink/>
       <div>Home Page</div>
       <BalanceCenter/>
       <BalanceBtn/>
