@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, userLogin } from 'store/authOperation';
 import wallet from '../../images/walletStart.png';
+// import tabletMoney from '../../images/TabletMoney.png';
+
 import {
   StyledErrorText,
   StyledForm,
   StyledGoogleBtn,
   StyledGoogleTitle,
   StyledImgBox,
+  // StyledImgtablet,
   StyledInput,
   StyledInputText,
   StyledLoginBtn,
@@ -18,6 +21,7 @@ import {
   StyledStarRequared,
 } from './LogInRegPage.styled';
 import { useNavigate } from 'react-router';
+import { useMediaQuery } from 'react-responsive';
 
 function LogInRegPage() {
   const [email, setEmail] = useState('');
@@ -53,12 +57,26 @@ function LogInRegPage() {
     dispatch(register({ email, userPass }));
     resetForm();
   };
+  const Desktop = ({ children }) => {
+    const isDesktop = useMediaQuery({ minWidth: 1280 });
+    return isDesktop ? children : null;
+  };
+  // const Tablet = ({ children }) => {
+  //   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
+  //   return isTablet ? children : null;
+  // };
+  // const Mobile = ({ children }) => {
+  //   const isMobile = useMediaQuery({ maxWidth: 767 });
+  //   return isMobile ? children : null;
+  // };
 
   return (
     <StyledSectionRegister style={{}}>
-      <StyledImgBox>
-        <img src={wallet} alt="wallet" />
-      </StyledImgBox>
+      <Desktop>
+        <StyledImgBox>
+          <img src={wallet} alt="wallet" />
+        </StyledImgBox>
+      </Desktop>
       <StyledRegistrationBox>
         <StyledGoogleTitle>
           You can log in with your Google Account
@@ -92,6 +110,7 @@ function LogInRegPage() {
             required
             value={userPass}
           />
+
           <div>
             <StyledLoginBtn type="submit" onClick={() => setOperation('login')}>
               Log in
@@ -106,6 +125,9 @@ function LogInRegPage() {
           </div>
         </StyledForm>
       </StyledRegistrationBox>
+      {/* <Desktop>Desktop or laptop</Desktop>
+      <Tablet>Tablet</Tablet>
+      <Mobile>Mobile</Mobile> */}
     </StyledSectionRegister>
   );
 }
