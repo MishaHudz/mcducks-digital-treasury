@@ -17,11 +17,20 @@ import {
   BoxStyled,
   TableStyled,
 } from './TransactionTab.styled.js';
-
 import { useMediaQuery } from 'react-responsive';
 import icon from '../../images/icon.svg';
+import { useState } from 'react';
+import ModalTransaction from 'components/ModalTransaction/ModalTransaction';
 
 const TransactionTable = () => {
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => {
+    setShowModal(false);
+  };
+  const handleOpen = data => {
+    setShowModal(true);
+  };
+
   const tableMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   const tableData = [
@@ -59,7 +68,10 @@ const TransactionTable = () => {
                     <TableColumnStyled>{item.category}</TableColumnStyled>
                     <TableColumnStyled>{item.sum}</TableColumnStyled>
                     <TableColumnStyled>
-                      <BtnDelStyled>
+                      <BtnDelStyled
+                        type="button"
+                        onClick={() => handleOpen(item.id)}
+                      >
                         <svg>
                           <use href={icon + '#icon-delete'}></use>
                         </svg>
@@ -70,6 +82,7 @@ const TransactionTable = () => {
               </tbody>
             </TableStyled>
           </ScrollWrapStyled>
+          {showModal && <ModalTransaction onClose={handleClose} />}
         </>
       ) : (
         <WrapStyled>
