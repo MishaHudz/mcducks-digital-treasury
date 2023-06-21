@@ -41,6 +41,7 @@ const transactionsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getTransactionExpense.fulfilled, (state, { payload }) => {
+        console.log(payload);
         state.isLoading = false;
         state.error = null;
         state.expenses = payload.expenses;
@@ -90,7 +91,7 @@ const transactionsSlice = createSlice({
       .addCase(deleteTransaction.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
-      })
+      });
   },
 });
 
