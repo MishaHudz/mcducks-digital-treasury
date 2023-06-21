@@ -57,8 +57,8 @@ function Header() {
         {accessToken && (
           <UserInfo>
             <FirstLetter>{firstLetter}</FirstLetter>
-            <Login>{login}</Login>
             <MediaQuery minWidth={768}>
+              <Login>{login}</Login>
               <Line></Line>
               <ExitBtn onClick={logoutFunc} type="button">
                 Exit
