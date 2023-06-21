@@ -1,6 +1,5 @@
 import {
   ContainerStyled,
-  TableStyled,
   TableHeadRowStyled,
   TableHeadColumnStyled,
   TableColumnStyled,
@@ -16,7 +15,8 @@ import {
   BtnDelStyled,
   CategoryStyled,
   BoxStyled,
-} from './TransactionTable.styled';
+  TableStyled,
+} from './transactionTable.styled.jsx';
 import { useMediaQuery } from 'react-responsive';
 import icon from '../../images/icon.svg';
 
