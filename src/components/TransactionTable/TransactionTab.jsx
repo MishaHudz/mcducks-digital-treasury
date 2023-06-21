@@ -98,7 +98,9 @@ const TransactionTable = () => {
                 </div>
                 <RightStyled>
                   <AmountStyled>{item.sum}</AmountStyled>
-                  <BtnDelStyled>
+                  <BtnDelStyled
+                  type="button"
+                  onClick={() => handleOpen(item.id)}>
                     <svg>
                       <use href={icon + '#icon-delete'}></use>
                     </svg>
@@ -109,6 +111,7 @@ const TransactionTable = () => {
           </ListStyled>
         </WrapStyled>
       )}
+      {showModal && <ModalTransaction onClose={handleClose} />}
     </ContainerStyled>
   );
 };
