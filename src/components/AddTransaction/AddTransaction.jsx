@@ -5,6 +5,18 @@ import { forwardRef } from 'react';
 import { useState } from 'react';
 import Select from 'react-select';
 import { BsFillCalendarCheckFill } from 'react-icons/bs';
+import { expenses } from './categories';
+import { 
+TransactionForm,
+DataForm,
+Form,
+InputProduct,
+InputCalc,
+BtnInput,
+BtnClear
+ } from './AddTransaction.styled';
+// import { categoryTranslationEnToRu } from './TranslateFunc';
+// import { selectCurrentTransactionType } from 'store/transactionsSelectors';
 
 export const Addtransaction = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -14,23 +26,18 @@ export const Addtransaction = () => {
       {value}
     </button>
   ));
+  const [selectedOption, setSelectedOption] = useState(null);
 
-  const options = [
-    { value: 'transport', label: 'Transport' },
-    { value: 'products', label: 'Products' },
-    { value: 'health', label: 'Health' },
-    { value: 'alcohol', label: 'Alcohol' },
-    { value: 'entertainment', label: 'Entertainment' },
-    { value: 'housing', label: 'Housing' },
-    { value: 'technique', label: 'Technique' },
-    { value: 'communal,communication', label: 'Communal,Communication' },
-    { value: 'sports,hobbies', label: 'Sports,Hobbies' },
-    { value: 'education', label: 'Education' },
-    { value: 'other', label: 'Other' },
-  ];
+  
+  // const handleFormSubmit = e => {
+  //   e.preventDefault();
+  //   const amount = e.target.elements.amount.value;
+  //   const description = e.target.elements.description.value;
+  //   const category = categoryTranslationEnToRu(e.target.elements.category.value.toString());
+  // }
   return (
-    <div className="transaction-form">
-        <div className="data_form">
+    <TransactionForm>
+        <DataForm>
           <DatePicker
             selected={startDate}
             onChange={date => setStartDate(date)}
@@ -38,35 +45,39 @@ export const Addtransaction = () => {
             maxDate={new Date()}
             customInput={<ExampleCustomInput />}
           />
-        </div>
-        <form className="form">
-        <input
+        </DataForm>
+        <Form>
+        <InputProduct
           type="text"
           name="description"
           placeholder="Product description"
           required
-          className="input_product"
         />
         <Select
           className="select-container"
           classNamePrefix="select"
           menuShouldBlockScroll={true}
           menuShouldScrollIntoView={false}
-          options={options}
+          options={expenses}
           name="category"
           placeholder="Product category"
           required
+          value={selectedOption}
+          onChange={(option) => setSelectedOption(option)}
         />
-        <input className="input_calc" placeholder="0.00" required />
+        <InputCalc 
+        name="amount"
+        placeholder="0.00" 
+        required />
         <div>
-          <button type="submit" className="btnInput">
+          <BtnInput type="submit">
             Input
-          </button>
-          <button type="reset" className="btnClear">
+          </BtnInput>
+          <BtnClear type="reset">
             Clear
-          </button>
+          </BtnClear>
         </div>
-      </form>
-    </div>
+      </Form>
+    </TransactionForm>
   );
 };

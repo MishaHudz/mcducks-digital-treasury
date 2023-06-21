@@ -12,11 +12,14 @@ import {
   NLink,
   UserInfo,
 } from './Header.styled';
-import coin from './1.png';
-import logout from './logout2x.png';
+import coin from '../../images/coinHeader.png';
+import logout from '../../images/logoutHeader.png';
 import MediaQuery from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogout } from 'store/authOperation';
+
+import CustomModal from 'components/Modal/Modal';
+import { useState } from 'react';
 
 function Header() {
   const accessToken = useSelector(state => state.auth.accessToken);
@@ -24,9 +27,20 @@ function Header() {
   const login = email ? email.substring(0, email.indexOf('@')) : '';
   const firstLetter = login ? login.charAt(0).toUpperCase() : '';
   const dispatch = useDispatch();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function logoutFunc() {
+    // dispatch(userLogout());
+    setModalIsOpen(true);
+  }
+
+  function handleModalConfirm() {
     dispatch(userLogout());
+    setModalIsOpen(false);
+  }
+
+  function handleModalCancel() {
+    setModalIsOpen(false);
   }
 
   return (
@@ -59,6 +73,13 @@ function Header() {
           </UserInfo>
         )}
       </Nav>
+
+      <CustomModal
+        isOpen={modalIsOpen}
+        onRequestClose={handleModalCancel}
+        onConfirm={handleModalConfirm}
+        onCancel={handleModalCancel}
+      />
     </BodyHeader>
   );
 }
