@@ -3,7 +3,7 @@ import { Addtransaction } from 'components/AddTransaction/AddTransaction';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import TransactionTable from 'components/TransactionTable/TransactionTable';
+import TransactionTable from 'components/TransactionTable/transactionTable';
 
 function HomePage() {
   const { accessToken } = useSelector(state => state.auth);
@@ -18,8 +18,8 @@ function HomePage() {
     <>
       <ReportsLink />
       <div>Home Page</div>
-      <Addtransaction/>
-      <TransactionTable/>
+      <Addtransaction />
+      <TransactionTable />
     </>
   );
 }
