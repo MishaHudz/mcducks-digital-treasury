@@ -166,14 +166,7 @@ export const BtnDelStyled = styled.button`
   }
 `;
 
-// ================== MOBILE ================
-
-export const Box = styled.div`
-  @media screen and (min-width: 767px) {
-    margin: 0 auto;
-  }
-  
-`;
+//  ******************  FOR MOBILE ****************** 
 
 export const BoxStyled = styled.div`
 display: flex;
