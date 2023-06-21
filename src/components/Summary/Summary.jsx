@@ -1,3 +1,4 @@
+import { nanoid } from '@reduxjs/toolkit';
 import {
   SummaryAmount,
   SummaryListItem,
@@ -26,12 +27,12 @@ export const Summary = () => {
       <SummaryList>
         {Object.entries(monthStats).map(month => {
           return month[1] !== 'N/A' ? (
-            <SummaryListItem>
+            <SummaryListItem key={nanoid()}>
               <SummaryText>{month[0]}</SummaryText>
               <SummaryAmount>{month[1]}</SummaryAmount>
             </SummaryListItem>
           ) : (
-            <SummaryListItem></SummaryListItem>
+            <SummaryListItem key={nanoid()}></SummaryListItem>
           );
         })}
       </SummaryList>

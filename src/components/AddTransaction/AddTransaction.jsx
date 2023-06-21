@@ -17,13 +17,15 @@ import {
   ContainerBtn,
 } from './AddTransaction.styled';
 import './AddTransaction.css';
-
-// import { categoryTranslationEnToRu } from './TranslateFunc';
-// import { selectCurrentTransactionType } from 'store/transactionsSelectors';
+import { useDispatch } from 'react-redux';
+import { addTransactionExpense } from 'store/transactionsOperations';
+import { categoryTranslationEnToRu } from './TranslateFunc';
 
 export const Addtransaction = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
   const [startDate, setStartDate] = useState(new Date());
+  const [selectedOption, setSelectedOption] = useState('');
+  const [descr, setDescription] = useState('');
+  const [summ, setSumm] = useState('');
 
   const ExampleCustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
     <Input
@@ -37,12 +39,34 @@ export const Addtransaction = () => {
     ></Input>
   ));
 
-  // const handleFormSubmit = e => {
-  //   e.preventDefault();
-  //   const amount = e.target.elements.amount.value;
-  //   const description = e.target.elements.description.value;
-  //   const category = categoryTranslationEnToRu(e.target.elements.category.value.toString());
-  // }
+  const time =
+    startDate.getFullYear() +
+    '-' +
+    ('0' + (startDate.getMonth() + 1)).slice(-2) +
+    '-' +
+    ('0' + startDate.getDate()).slice(-2);
+
+  const dispatch = useDispatch();
+  const formreset = () => {
+    setStartDate(new Date());
+    setSumm('');
+    setDescription('');
+    setSelectedOption('');
+  };
+
+  const transactionForm = {
+    description: descr,
+    amount: Number(summ),
+    date: time,
+    category: categoryTranslationEnToRu(selectedOption.label),
+  };
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(addTransactionExpense(transactionForm));
+    // dispatch(getExpence());
+    // formreset()
+  };
+
   return (
     <TransactionForm>
       <ContainerDate>
@@ -56,11 +80,13 @@ export const Addtransaction = () => {
         />
       </ContainerDate>
       <div>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <InputProduct
             type="text"
+            onChange={e => setDescription(e.target.value)}
             name="description"
             placeholder="Product description"
+            value={descr}
             required
           />
           <Select
@@ -75,10 +101,18 @@ export const Addtransaction = () => {
             value={selectedOption}
             onChange={option => setSelectedOption(option)}
           />
-          <InputCalc name="amount" placeholder="0.00" required />
+          <InputCalc
+            name="amount"
+            placeholder="0.00"
+            onChange={e => setSumm(e.target.value)}
+            value={summ}
+            required
+          />
           <ContainerBtn>
             <BtnInput type="submit">Input</BtnInput>
-            <BtnClear type="reset">Clear</BtnClear>
+            <BtnClear type="reset" onClick={formreset}>
+              Clear
+            </BtnClear>
           </ContainerBtn>
         </Form>
       </div>
