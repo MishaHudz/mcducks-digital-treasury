@@ -20,10 +20,10 @@ function HomePage() {
     <>
       <ReportsLink/>
       <div>Home Page</div>
-      {/* <Addtransaction /> */}
+      <Addtransaction />
       <TransactionTable />
-      <BalanceBtn/>
       <BalanceCenter/>
+      <BalanceBtn/>
     </>
   );
 }

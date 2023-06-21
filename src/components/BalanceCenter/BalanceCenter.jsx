@@ -24,8 +24,7 @@ console.log(initialState);
         placeholder={
           initialState === 0
             ? `00.00 UAH`
-            : `${formBalanc(balance.toFixed(2))} UAH`
-        }
+            : `${(initialState.toFixed(2))} UAH`}
       />
       {initialState === 0 && <BalanceBtn balanceToUpdate={input} />}
       {!initialState && <BalanceModal />}
