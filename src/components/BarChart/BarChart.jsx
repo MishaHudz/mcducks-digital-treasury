@@ -1,7 +1,7 @@
 import { Bar } from 'react-chartjs-2';
 // eslint-disable-next-line no-unused-vars
 import { Chart } from 'chart.js/auto';
-import MediaQuery from 'react-responsive';
+// import MediaQuery from 'react-responsive';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { BarChartContainer } from './BarChart.styles';
 import { getGradient, sortData } from 'components/helpers/BarChartHelpers';
