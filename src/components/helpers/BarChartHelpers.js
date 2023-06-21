@@ -33,18 +33,18 @@ export function getGradient(chart, element, topColor, bottomColor) {
 }
 
 export function getMobileGradient(chart, element, topColor, bottomColor) {
-  const { height } = element;
+  const { width } = element;
   const {
     ctx,
     chartArea: { left, right },
   } = chart;
-  console.log(chart.chartArea);
-  //   console.log('top', top, 'bottom', bottom);
-  //   console.log(element);
-  console.log(height);
-  //   let correctTop = height ? top + bottom - height : top;
 
-  const gradientSegment = ctx.createLinearGradient(left, 0, right, 0);
+  //   console.log('left', left, 'right', right);
+  //   console.log(element);
+
+  let correctRight = width ? left + width : right;
+
+  const gradientSegment = ctx.createLinearGradient(left, 0, correctRight, 0);
   gradientSegment.addColorStop(0, bottomColor);
   gradientSegment.addColorStop(1, topColor);
   return gradientSegment;

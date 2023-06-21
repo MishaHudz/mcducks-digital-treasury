@@ -69,12 +69,13 @@ function BarChart() {
 
   const mobileOptions = {
     maintainAspectRatio: false,
-    animation: false,
+    // animation: false,
     indexAxis: 'y',
     layout: {
       padding: {
         top: 25,
         right: 10,
+        left: 0,
       },
     },
     scales: {
@@ -92,7 +93,7 @@ function BarChart() {
           display: false,
         },
         ticks: {
-          display: true,
+          display: false,
         },
       },
     },
@@ -105,7 +106,12 @@ function BarChart() {
         align: 'top',
         offset: 5,
         color: '#C7CCDC',
-        formatter: value => `${value} UAH`,
+        formatter: (value, context) =>
+          `${context.chart.data.labels[context.dataIndex]} ${value} UAH`,
+        font: {
+          //   weight: 'bold',
+          size: 10,
+        },
       },
     },
   };
