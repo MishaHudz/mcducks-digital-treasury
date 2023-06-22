@@ -31,3 +31,21 @@ export function getGradient(chart, element, topColor, bottomColor) {
   gradientSegment.addColorStop(1, topColor);
   return gradientSegment;
 }
+
+export function getMobileGradient(chart, element, topColor, bottomColor) {
+  const { width } = element;
+  const {
+    ctx,
+    chartArea: { left, right },
+  } = chart;
+
+  //   console.log('left', left, 'right', right);
+  //   console.log(element);
+
+  let correctRight = width ? left + width : right;
+
+  const gradientSegment = ctx.createLinearGradient(left, 0, correctRight, 0);
+  gradientSegment.addColorStop(0, bottomColor);
+  gradientSegment.addColorStop(1, topColor);
+  return gradientSegment;
+}
