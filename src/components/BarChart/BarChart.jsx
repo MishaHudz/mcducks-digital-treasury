@@ -106,8 +106,12 @@ function BarChart() {
         align: 'top',
         offset: 5,
         color: '#C7CCDC',
-        formatter: (value, context) =>
-          `${context.chart.data.labels[context.dataIndex]} ${value} UAH`,
+        formatter: (value, context) => {
+          const label1 = `${context.chart.data.labels[context.dataIndex]}`;
+          const label2 = `${value} UAH`;
+          //   console.log(context);
+          return `${label1} ${label2}`;
+        },
         font: {
           family: 'Roboto',
           size: 10,
