@@ -23,8 +23,7 @@ function ReportPage() {
   const currentDate = new Date();
   const [date, setDate] = useState(currentDate);
 
-  const isNextButtonDisabled = date.getMonth() === currentDate.getMonth() && date.getFullYear() === currentDate.getFullYear();
-
+ 
   useEffect(() => {
     !accessToken && navigate('/authorization');
   }, [accessToken, navigate]);

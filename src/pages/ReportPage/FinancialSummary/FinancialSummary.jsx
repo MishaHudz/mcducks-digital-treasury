@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTransactionExpense, getTransactionIncome } from '../../../store/transactionsOperations';
+import { getTransactionExpense} from '../../../store/transactionsOperations';
 import './FinancialSummary.css';
 
 const FinancialSummary = ({ selectedMonth }) => {
