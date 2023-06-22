@@ -30,6 +30,7 @@ export const Title = styled.h2`
 
 export const Data = styled.input`
   color: #f6f7fb;
+  color: #111111;
   font-weight: bold;
   font-size: 12px;
   line-height: 1.17;
@@ -38,6 +39,7 @@ export const Data = styled.input`
   &:focus {
     outline: none;
     color: #f6f7fb;
+    color: #111111;
   }
   border: 2px solid #80848f;
   background-color: inherit;

@@ -7,7 +7,7 @@ import { Forma, Title, Data } from './BalanceCenter.styled';
 
 const BalanceCenter = () => {
 
-  const initialState = useSelector(store => store.auth.balance);
+  const initialState = useSelector(store => store.auth.user.balance);
   const [input, setInput] = useState(0);
 
 console.log(initialState);
@@ -18,16 +18,16 @@ console.log(initialState);
         name="balanceCenter"
         title="Field must contain only numbers"
         type="number"
-        value={initialState === 0 ? input : `${initialState.toFixed(2)} UAH`}  
-        onChange={setInput()}
-        disabled={initialState === 0 ? false : true}
+        value={input} 
+        onChange={e => setInput(e.target.value)}
+        // disabled={initialState === 0 ? false : true}
         placeholder={
           initialState === 0
             ? `00.00 UAH`
             : `${(initialState.toFixed(2))} UAH`}
       />
       {initialState === 0 && <BalanceBtn balanceToUpdate={input} />}
-      {!initialState && <BalanceModal />}
+      {/* {!initialState && <BalanceModal />} */}
     </Forma>
   );
 };
