@@ -4,6 +4,11 @@ export function sortData(data) {
   const oldValues = [...values];
 
   const keys = Object.keys(data);
+
+  if (keys.length === 2) {
+    return data;
+  }
+
   const sortedObj = { total: 0 };
 
   values.sort((a, b) => b - a);

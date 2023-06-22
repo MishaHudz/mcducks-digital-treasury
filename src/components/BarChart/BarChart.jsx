@@ -12,19 +12,10 @@ import {
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
-const data = {
-  total: 125500,
-  Вазон: 1500,
-  //   Картина: 2000,
-  //   Чайник: 5000,
-  //   Штори: 7000,
-  //   Крісло: 6000,
-  //   Кран: 3500,
-  //   Диван: 10000,
-};
+import { categoryTranslationRuToEn } from 'components/AddTransaction/TranslateFunc';
 
 function BarChart() {
+  const [data, setData] = useState({});
   const [searchParams] = useSearchParams();
   const [operation, setOperation] = useState('expenses');
   const [category, setCategory] = useState(searchParams.get('category'));
@@ -40,17 +31,44 @@ function BarChart() {
   useEffect(() => {
     setOperation(searchParams.get('operation'));
     setCategory(searchParams.get('category'));
-  });
+  }, [searchParams]);
 
   useEffect(() => {
-    if (operation === 'expence' && category) {
-      console.log(operation);
-      console.log(category);
-    }
-  });
+    if (operation === 'expenses' && category) {
+      if (!transactionExpense) {
+        setData({});
+        return;
+      }
 
-  //   console.log(transactionExpense);
-  //   console.log(transactionIncome);
+      const categoriesArr = Object.entries(transactionExpense.expensesData);
+
+      categoriesArr.map(cat => {
+        if (categoryTranslationRuToEn(cat[0]) === category) {
+          setData(cat[1]);
+        }
+
+        return cat;
+      });
+    }
+  }, [operation, category, transactionExpense]);
+
+  useEffect(() => {
+    if (operation === 'income' && category) {
+      if (!transactionIncome) {
+        setData({});
+        return;
+      }
+
+      const categoriesArr = Object.entries(transactionIncome.expensesData);
+      categoriesArr.map(cat => {
+        if (categoryTranslationRuToEn(cat[0]) === category) {
+          setData(cat[1]);
+        }
+
+        return cat;
+      });
+    }
+  }, [operation, category, transactionIncome]);
 
   const options = {
     animation: false,
