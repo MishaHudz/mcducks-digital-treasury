@@ -48,9 +48,9 @@ export const categoryTranslationRuToEn = name => {
     case 'Техника':
       return 'Technics';
     case 'Коммуналка и связь':
-      return 'Communal and communication';
+      return 'Communal,Communication';
     case 'Спорт и хобби':
-      return 'Sport and hobby';
+      return 'Sports,Hobbies';
     case 'Образование':
       return 'Education';
     case 'Прочее':

@@ -4,7 +4,12 @@ export function sortData(data) {
   const oldValues = [...values];
 
   const keys = Object.keys(data);
-  const sortedObj = {};
+
+  if (keys.length === 2) {
+    return data;
+  }
+
+  const sortedObj = { total: 0 };
 
   values.sort((a, b) => b - a);
   for (let i = 0; i < values.length; i++) {
@@ -17,6 +22,7 @@ export function sortData(data) {
 }
 
 export function getGradient(chart, element, topColor, bottomColor) {
+  if (!element) return;
   const { height } = element;
   const {
     ctx,
@@ -27,6 +33,25 @@ export function getGradient(chart, element, topColor, bottomColor) {
   let correctTop = height ? top + bottom - height : top;
 
   const gradientSegment = ctx.createLinearGradient(0, bottom, 0, correctTop);
+  gradientSegment.addColorStop(0, bottomColor);
+  gradientSegment.addColorStop(1, topColor);
+  return gradientSegment;
+}
+
+export function getMobileGradient(chart, element, topColor, bottomColor) {
+  if (!element) return;
+  const { width } = element;
+  const {
+    ctx,
+    chartArea: { left, right },
+  } = chart;
+
+  //   console.log('left', left, 'right', right);
+  //   console.log(element);
+
+  let correctRight = width ? left + width : right;
+
+  const gradientSegment = ctx.createLinearGradient(left, 0, correctRight, 0);
   gradientSegment.addColorStop(0, bottomColor);
   gradientSegment.addColorStop(1, topColor);
   return gradientSegment;
