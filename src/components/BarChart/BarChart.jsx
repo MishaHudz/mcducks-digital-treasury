@@ -9,19 +9,67 @@ import {
   getMobileGradient,
   sortData,
 } from 'components/helpers/BarChartHelpers';
-
-const data = {
-  total: 125500,
-  Вазон: 1500,
-  Картина: 2000,
-  Чайник: 5000,
-  Штори: 7000,
-  Крісло: 6000,
-  Кран: 3500,
-  Диван: 10000,
-};
+import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { categoryTranslationRuToEn } from 'components/AddTransaction/TranslateFunc';
 
 function BarChart() {
+  const [data, setData] = useState({});
+  const [searchParams] = useSearchParams();
+  const [operation, setOperation] = useState('expenses');
+  const [category, setCategory] = useState(searchParams.get('category'));
+
+  const transactionExpense = useSelector(
+    state => state.transaction.transactionExpense
+  );
+
+  const transactionIncome = useSelector(
+    state => state.transaction.transactionIncome
+  );
+
+  useEffect(() => {
+    setOperation(searchParams.get('operation'));
+    setCategory(searchParams.get('category'));
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (operation === 'expenses' && category) {
+      if (!transactionExpense) {
+        setData({});
+        return;
+      }
+
+      const categoriesArr = Object.entries(transactionExpense.expensesData);
+
+      categoriesArr.map(cat => {
+        if (categoryTranslationRuToEn(cat[0]) === category) {
+          setData(cat[1]);
+        }
+
+        return cat;
+      });
+    }
+  }, [operation, category, transactionExpense]);
+
+  useEffect(() => {
+    if (operation === 'income' && category) {
+      if (!transactionIncome) {
+        setData({});
+        return;
+      }
+
+      const categoriesArr = Object.entries(transactionIncome.expensesData);
+      categoriesArr.map(cat => {
+        if (categoryTranslationRuToEn(cat[0]) === category) {
+          setData(cat[1]);
+        }
+
+        return cat;
+      });
+    }
+  }, [operation, category, transactionIncome]);
+
   const options = {
     animation: false,
     layout: {
@@ -185,7 +233,7 @@ function BarChart() {
   };
   //////////////////////////////
   return (
-    data.total && (
+    data && (
       <>
         <MediaQuery maxWidth={767}>
           <BarChartContainer>

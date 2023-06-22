@@ -4,7 +4,12 @@ export function sortData(data) {
   const oldValues = [...values];
 
   const keys = Object.keys(data);
-  const sortedObj = {};
+
+  if (keys.length === 2) {
+    return data;
+  }
+
+  const sortedObj = { total: 0 };
 
   values.sort((a, b) => b - a);
   for (let i = 0; i < values.length; i++) {
@@ -17,6 +22,7 @@ export function sortData(data) {
 }
 
 export function getGradient(chart, element, topColor, bottomColor) {
+  if (!element) return;
   const { height } = element;
   const {
     ctx,
@@ -33,6 +39,7 @@ export function getGradient(chart, element, topColor, bottomColor) {
 }
 
 export function getMobileGradient(chart, element, topColor, bottomColor) {
+  if (!element) return;
   const { width } = element;
   const {
     ctx,
