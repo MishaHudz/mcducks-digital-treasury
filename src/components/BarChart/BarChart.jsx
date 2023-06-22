@@ -1,10 +1,14 @@
 import { Bar } from 'react-chartjs-2';
 // eslint-disable-next-line no-unused-vars
 import { Chart } from 'chart.js/auto';
-// import MediaQuery from 'react-responsive';
+import MediaQuery from 'react-responsive';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { BarChartContainer } from './BarChart.styles';
-import { getGradient, sortData } from 'components/helpers/BarChartHelpers';
+import {
+  getGradient,
+  getMobileGradient,
+  sortData,
+} from 'components/helpers/BarChartHelpers';
 
 const data = {
   total: 125500,
@@ -63,6 +67,95 @@ function BarChart() {
     },
   };
 
+  const mobileOptions = {
+    maintainAspectRatio: false,
+    // animation: false,
+    indexAxis: 'y',
+    layout: {
+      padding: {
+        top: 25,
+        right: 10,
+        left: -8,
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          display: false,
+        },
+
+        grid: {
+          display: false,
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          display: false,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      datalabels: {
+        anchor: 'end',
+        align: 'top',
+        offset: 5,
+        color: '#C7CCDC',
+        formatter: (value, context) => {
+          const label1 = `${context.chart.data.labels[context.dataIndex]}`;
+          const label2 = `${value} UAH`;
+          //   console.log(context);
+          return `${label1} ${label2}`;
+        },
+        font: {
+          family: 'Roboto',
+          size: 10,
+        },
+      },
+    },
+  };
+
+  const mobileBarChartData = {
+    labels: Object.keys(sortData(data)).slice(1),
+    datasets: [
+      {
+        data: Object.values(sortData(data)).slice(1),
+        backgroundColor: context => {
+          const chart = context.chart;
+          const { chartArea } = chart;
+
+          if (!chartArea) {
+            return null;
+          }
+          if (context.dataIndex === 0 || context.dataIndex % 3 === 0) {
+            return getMobileGradient(
+              chart,
+              context.element,
+              '#60C470',
+              '#383C46'
+            );
+          }
+          if (context.dataIndex !== -1) {
+            return getMobileGradient(
+              chart,
+              context.element,
+              '#5B5B6D',
+              '#373745'
+            );
+          }
+        },
+        borderRadius: 10,
+
+        maxBarThickness: 15,
+      },
+    ],
+  };
+
   const barChartData = {
     labels: Object.keys(sortData(data)).slice(1),
     datasets: [
@@ -93,13 +186,26 @@ function BarChart() {
   //////////////////////////////
   return (
     data.total && (
-      <BarChartContainer>
-        <Bar
-          data={barChartData}
-          options={options}
-          plugins={[ChartDataLabels]}
-        />
-      </BarChartContainer>
+      <>
+        <MediaQuery maxWidth={767}>
+          <BarChartContainer>
+            <Bar
+              data={mobileBarChartData}
+              options={mobileOptions}
+              plugins={[ChartDataLabels]}
+            />
+          </BarChartContainer>
+        </MediaQuery>
+        <MediaQuery minWidth={768}>
+          <BarChartContainer>
+            <Bar
+              data={barChartData}
+              options={options}
+              plugins={[ChartDataLabels]}
+            />
+          </BarChartContainer>
+        </MediaQuery>
+      </>
     )
   );
 }
