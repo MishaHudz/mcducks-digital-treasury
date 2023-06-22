@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Select from 'react-select';
-import { expenses } from './categories';
+import { expenses, incomes } from './categories';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { forwardRef } from 'react';
@@ -17,26 +17,28 @@ import {
   ContainerBtn,
 } from './AddTransaction.styled';
 import './AddTransaction.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   addTransactionExpense,
+  getTransactionPeriod,
   // getTransactionPeriod,
 } from 'store/transactionsOperations';
-import {
-  categoryTranslationEnToRu,
-  categoryTranslationRuToEn,
-} from './TranslateFunc';
+import { categoryTranslationEnToRu } from './TranslateFunc';
 import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 export const Addtransaction = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [selectedOption, setSelectedOption] = useState('');
   const [descr, setDescription] = useState('');
   const [summ, setSumm] = useState('');
+  const [searchParams] = useSearchParams();
+  const [operation, setOperation] = useState('expences');
+  // console.log(searchParams.get('operation'));
+  useEffect(() => {
+    setOperation(searchParams.get('operation'));
+  }, [searchParams]);
 
-  const expens = useSelector(
-    state => state.transaction.transactionExpense.expensesData
-  );
   // console.log(categoryTranslationEnToRu('Alcohol'));
   // const expensArr = Object.entries(expens);
   // const englArr = expensArr.map(el => {
@@ -76,7 +78,9 @@ export const Addtransaction = () => {
     date: time,
     category: categoryTranslationEnToRu(selectedOption.label),
   };
-
+  useEffect(() => {
+    dispatch(getTransactionPeriod('2023-06'));
+  }, [dispatch]);
   // useEffect(() => {
   //   dispatch(
   //     getTransactionPeriod(
@@ -94,56 +98,56 @@ export const Addtransaction = () => {
   };
 
   return (
-    <></>
-    // <ul>{expens.map(el => console.log(el.))}</ul>
-    // <TransactionForm>
-    //   <ContainerDate>
-    //     <DatePicker
-    //       selected={startDate}
-    //       onChange={date => setStartDate(date)}
-    //       dateFormat="dd.MM.yyyy"
-    //       customInput={<ExampleCustomInput />}
-    //       locale={enGB}
-    //       maxDate={new Date()}
-    //     />
-    //   </ContainerDate>
-    //   <div>
-    //     <Form onSubmit={handleSubmit}>
-    //       <InputProduct
-    //         type="text"
-    //         onChange={e => setDescription(e.target.value)}
-    //         name="description"
-    //         placeholder="Product description"
-    //         value={descr}
-    //         required
-    //       />
-    //       <Select
-    //         className="select-container"
-    //         classNamePrefix="select"
-    //         menuShouldBlockScroll={true}
-    //         menuShouldScrollIntoView={false}
-    //         options={expenses}
-    //         name="category"
-    //         placeholder="Product category"
-    //         required
-    //         value={selectedOption}
-    //         onChange={option => setSelectedOption(option)}
-    //       />
-    //       <InputCalc
-    //         name="amount"
-    //         placeholder="0.00"
-    //         onChange={e => setSumm(e.target.value)}
-    //         value={summ}
-    //         required
-    //       />
-    //       <ContainerBtn>
-    //         <BtnInput type="submit">Input</BtnInput>
-    //         <BtnClear type="reset" onClick={formreset}>
-    //           Clear
-    //         </BtnClear>
-    //       </ContainerBtn>
-    //     </Form>
-    //   </div>
-    // </TransactionForm>
+    <>
+      <TransactionForm>
+        <ContainerDate>
+          <DatePicker
+            selected={startDate}
+            onChange={date => setStartDate(date)}
+            dateFormat="dd.MM.yyyy"
+            customInput={<ExampleCustomInput />}
+            locale={enGB}
+            maxDate={new Date()}
+          />
+        </ContainerDate>
+        <div>
+          <Form onSubmit={handleSubmit}>
+            <InputProduct
+              type="text"
+              onChange={e => setDescription(e.target.value)}
+              name="description"
+              placeholder="Product description"
+              value={descr}
+              required
+            />
+            <Select
+              className="select-container"
+              classNamePrefix="select"
+              menuShouldBlockScroll={true}
+              menuShouldScrollIntoView={false}
+              options={operation === 'expences' ? expenses : incomes}
+              name="category"
+              placeholder="Product category"
+              required
+              value={selectedOption}
+              onChange={option => setSelectedOption(option)}
+            />
+            <InputCalc
+              name="amount"
+              placeholder="0.00"
+              onChange={e => setSumm(e.target.value)}
+              value={summ}
+              required
+            />
+            <ContainerBtn>
+              <BtnInput type="submit">Input</BtnInput>
+              <BtnClear type="reset" onClick={formreset}>
+                Clear
+              </BtnClear>
+            </ContainerBtn>
+          </Form>
+        </div>
+      </TransactionForm>
+    </>
   );
 };
