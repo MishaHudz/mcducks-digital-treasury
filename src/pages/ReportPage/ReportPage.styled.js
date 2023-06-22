@@ -67,14 +67,19 @@ export const ReportMiddleBox = styled.div`
   border-radius: 30px;
   display: flex;
   flex-direction: column;
-  gap: 60px;
-  height: 346px;
+  gap: 24px;
+  min-height: 346px;
   background: linear-gradient(
     115.74deg,
     #383847 23.54%,
     rgba(56, 56, 71, 0.29) 107.94%
   );
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+  align-items: center;
+  flex-wrap: wrap;
 `;
 
 export const ReportBox = styled.div`

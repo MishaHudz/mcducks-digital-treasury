@@ -5,6 +5,7 @@ import { categoryTranslationRuToEn } from '../AddTransaction/TranslateFunc';
 
 import {
   BoxStyled,
+  CommentTitle,
   ItemStyled,
   ListStyled,
   TextStyled,
@@ -86,7 +87,7 @@ function TransactionPeriodData() {
                 });
               }}
             >
-              <p>{el[1].total}</p>
+              <CommentTitle>{el[1].total}</CommentTitle>
               <BoxStyled>
                 <img src={obj[el[0].split(',').join('_')]} alt="" />
               </BoxStyled>
