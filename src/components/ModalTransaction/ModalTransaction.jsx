@@ -9,6 +9,7 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { useEffect } from 'react';
 
 const ModalTransaction = ({ onConfirm, onClose }) => {
+
   const handleConfirm = () => {
     onConfirm();
   };
@@ -51,7 +52,7 @@ const ModalTransaction = ({ onConfirm, onClose }) => {
         >
           Yes
         </Button>
-        <Button onClick={handleClose}>No</Button>
+        <Button className="modal-cancel" onClick={handleClose}>No</Button>
       </Modal>
     </BackDrop>
   );
