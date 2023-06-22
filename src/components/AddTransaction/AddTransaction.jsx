@@ -20,7 +20,7 @@ import './AddTransaction.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addTransactionExpense,
-  getTransactionPeriod,
+  // getTransactionPeriod,
 } from 'store/transactionsOperations';
 import {
   categoryTranslationEnToRu,
