@@ -8,6 +8,7 @@ export const ListStyled = styled.ul`
   column-gap: 43px;
   align-items: center;
   justify-content: center;
+  gap: 40px;
   /* @media screen and (min-width: 768px) {
     max-width: 624px;
     margin: 0 auto;
@@ -22,6 +23,7 @@ export const ItemStyled = styled.li`
   display: flex;
   flex-direction: column;
   text-align: center;
+  gap: 6px;
   max-width: 112px;
   font-size: 12px;
   /* height: 104px; */
@@ -59,6 +61,7 @@ export const BoxStyled = styled.div`
     height: 64px;
     width: 64px;
     transform: scale(1.1);
+    transition: all 100ms ease-in-out;
   }
 
   /* @media screen and (min-width: 768px) {
@@ -73,6 +76,9 @@ export const BoxStyled = styled.div`
 
 export const TextStyled = styled.p`
   width: 64px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
   /* @media screen and (min-width: 768px) {
     max-width: 624px;
     margin: 0 auto;
@@ -84,3 +90,7 @@ export const TextStyled = styled.p`
 `;
 
 //=== === SD === ===
+
+export const CommentTitle = styled.p`
+  margin: 0;
+`;
