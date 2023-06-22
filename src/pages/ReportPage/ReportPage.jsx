@@ -43,8 +43,6 @@ function ReportPage() {
           </TestBox>
           <ReportBox>
             <FinancialSummary selectedMonth={date} />
-            <ReportMiddleBox></ReportMiddleBox>
-            <ReportTopBox></ReportTopBox>
             <ReportMiddleBox>
               <TransactionPeriodData />
             </ReportMiddleBox>
