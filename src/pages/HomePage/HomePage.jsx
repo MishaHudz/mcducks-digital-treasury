@@ -16,6 +16,8 @@ import {
   OperationsBoxTransaction,
 } from './HomePage.styled';
 import ExpenseIncomeBtn from 'components/ExpenseIncomeBtn/ExpenseIncomeBtn';
+import BalanceBtn from 'components/BalanceBtn/BalanceBtn';
+import BalanceCenter from 'components/BalanceCenter/BalanceCenter';
 
 function HomePage() {
   const { accessToken } = useSelector(state => state.auth);
@@ -39,6 +41,9 @@ function HomePage() {
       <Summary />
       <Addtransaction />
       <TransactionTable />
+      <BalanceCenter/>
+      <BalanceBtn/>
+    
     </>
   );
 }
