@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import { useSearchParams } from 'react-router-dom';
+import { ButtonChange, ExInBox, ExInTitle } from './ChangeIncomExpense.styled';
 
 const ChangeIncomExpense = () => {
   const [text, setText] = useState('EXPENSES');
@@ -22,15 +23,15 @@ const ChangeIncomExpense = () => {
   }, [text]);
 
   return (
-    <div>
-      <button onClick={handleChange}>
-        <MdKeyboardArrowLeft size="26" color="green" />
-      </button>
-      <p>{text}</p>
-      <button onClick={handleChange}>
+    <ExInBox>
+      <ButtonChange onClick={handleChange}>
         <MdKeyboardArrowRight size="26" color="green" />
-      </button>
-    </div>
+      </ButtonChange>
+      <ExInTitle>{text}</ExInTitle>
+      <ButtonChange onClick={handleChange}>
+        <MdKeyboardArrowLeft size="26" color="green" />
+      </ButtonChange>
+    </ExInBox>
   );
 };
 

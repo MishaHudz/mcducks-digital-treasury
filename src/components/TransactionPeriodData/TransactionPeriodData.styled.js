@@ -47,12 +47,18 @@ export const BoxStyled = styled.div`
   justify-content: center;
   margin: 6px 0;
   width: 64px;
-  :hover {
+
+  margin: 0;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  &:hover {
     background: rgba(86, 86, 107, 0.2);
-    border: 1px solid #42a652;
+    outline: 1px solid #42a652;
     box-shadow: 0 0 6px #41a350;
     height: 64px;
     width: 64px;
+    transform: scale(1.1);
   }
 
   /* @media screen and (min-width: 768px) {
@@ -76,3 +82,5 @@ export const TextStyled = styled.p`
     margin: 0 auto; */
   /* } */
 `;
+
+//=== === SD === ===
