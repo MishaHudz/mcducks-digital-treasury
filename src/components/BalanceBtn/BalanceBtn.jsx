@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { Button } from './BalanceCenter.styled';
+import { Button } from './BalanceBnt.styled';
 
 const BalanceBtn = ({ balanceToUpdate }) => {
     const dispatch = useDispatch();

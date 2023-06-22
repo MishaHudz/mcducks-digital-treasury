@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import BalanceBtn from './BalanceBtn';
+import BalanceBtn from '../BalanceBtn/BalanceBtn';
 import BalanceModal from '../BalanceModal/BalanceModal';
 import { Forma, Title, Data } from './BalanceCenter.styled';
 
