@@ -10,7 +10,6 @@ export const Section = styled.section`
   background-position-x: -40%;
   background-position-y: -20%;
   height: 100%;
-  /* overflow-y: hidden; */
   animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   @keyframes slide-in-bck-center {
     0% {
@@ -38,7 +37,6 @@ export const SectionDiv = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding: 16px 20px 0px 20px;
-  overflow-y: scroll;
 
   @media (min-width: 768px) {
     width: 768px;
