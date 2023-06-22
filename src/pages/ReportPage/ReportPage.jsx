@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import PeriodSummary from './PeriodSummary/PeriodSummary';
 import FinancialSummary from './FinancialSummary/FinancialSummary';
 import './PeriodSummary/PerriodSummary.css'
+import TransactionPeriodData from 'components/TransactionPeriodData/TransactionPeriodData';
 
 function ReportPage() {
   const { accessToken } = useSelector(state => state.auth);
@@ -40,10 +41,13 @@ function ReportPage() {
               <PeriodSummary currentDate={currentDate} date={date} setDate={setDate} />
             </TestBoxMonth>
           </TestBox>
-
           <ReportBox>
             <FinancialSummary selectedMonth={date} />
             <ReportMiddleBox></ReportMiddleBox>
+            <ReportTopBox></ReportTopBox>
+            <ReportMiddleBox>
+              <TransactionPeriodData />
+            </ReportMiddleBox>
             <BarChart />
           </ReportBox>
         </SectionDiv>
