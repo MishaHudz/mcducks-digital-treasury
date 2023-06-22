@@ -20,6 +20,7 @@ export const Summary = () => {
     dispatch(getTransactionExpense());
     // dispatch();
   }, [dispatch]);
+ console.log(monthStats);
 
   return (
     <SummaryWrapper>
