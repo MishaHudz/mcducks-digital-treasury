@@ -53,7 +53,7 @@ export const Addtransaction = () => {
     '-' +
     ('0' + startDate.getDate()).slice(-2);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const formreset = () => {
     setStartDate(new Date());
     setSumm('');
