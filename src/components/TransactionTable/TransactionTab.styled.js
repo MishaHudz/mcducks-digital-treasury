@@ -152,6 +152,7 @@ export const BtnDelStyled = styled.button`
   border-radius: 4px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
   cursor: pointer;
+  outline: none;
 
   &:hover {
     background: rgba(86, 86, 107, 0.5);
