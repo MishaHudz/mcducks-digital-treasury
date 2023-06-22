@@ -4,12 +4,12 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import { useSearchParams } from 'react-router-dom';
 
 const ChangeIncomExpense = () => {
-  const [text, setText] = useState('EXPENCE');
+  const [text, setText] = useState('EXPENSES');
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleChange = () => {
     setText(prev =>
-      prev === 'EXPENCE' ? setText('INCOME') : setText('EXPENCE')
+      prev === 'EXPENSES' ? setText('INCOME') : setText('EXPENSES')
     );
   };
   useEffect(() => {
