@@ -1,12 +1,14 @@
 import { useSearchParams } from 'react-router-dom';
 import { ButtonBox, ButtonExIn } from './ExpenceIncomeBtn.styled';
-import { useEffect } from 'react';
-
-let activeStyleIncome = {};
-let activeStyleExpenses = { color: '#60c470', filter: 'brightness(1.2)' };
+import { useEffect, useState } from 'react';
 
 function ExpenseIncomeBtn() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [activeStyleIncome, setActiveStyleIncome] = useState({});
+  const [activeStyleExpenses, setActiveStyleExpenses] = useState({
+    color: '#60c470',
+    filter: 'brightness(1.2)',
+  });
 
   function onIncomeButtonClick() {
     setSearchParams({ operation: 'income' });
@@ -18,30 +20,20 @@ function ExpenseIncomeBtn() {
 
   useEffect(() => {
     const activeBtn = searchParams.get('operation');
-    // if (!activeBtn) return;
 
     if (activeBtn === 'expences') {
-      console.log(searchParams.get('operation'));
-      activeStyleIncome = {};
-      activeStyleExpenses = {
-        color: '#60c470',
-        background: '#383847',
-      };
+      setActiveStyleIncome({});
+      setActiveStyleExpenses({ color: '#60c470', background: '#383847' });
     }
     if (activeBtn === 'income') {
-      console.log(searchParams.get('operation'));
-      activeStyleExpenses = {};
-      activeStyleIncome = {
-        color: '#60c470',
-        background: '#383847',
-      };
+      setActiveStyleExpenses({});
+      setActiveStyleIncome({ color: '#60c470', background: '#383847' });
     }
-  });
+  }, [searchParams]);
 
   // function onLogButtonClick() {
   //     console.log(searchParams.get('operation'));
   //     const activeBtn = searchParams.get('operation');
-
   // }
 
   return (
