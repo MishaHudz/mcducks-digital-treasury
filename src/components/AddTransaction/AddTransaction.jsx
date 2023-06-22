@@ -17,13 +17,13 @@ import {
   ContainerBtn,
 } from './AddTransaction.styled';
 import './AddTransaction.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   addTransactionExpense,
-  getTransactionPeriod,
+  // getTransactionPeriod,
 } from 'store/transactionsOperations';
 import { categoryTranslationEnToRu } from './TranslateFunc';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 export const Addtransaction = () => {
   const [startDate, setStartDate] = useState(new Date());
