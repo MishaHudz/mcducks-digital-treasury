@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import TransactionTable from 'components/TransactionTable/TransactionTab';
 import { useEffect } from 'react';
+import BalanceCenter from 'components/BalanceCenter/BalanceCenter';
+import BalanceBtn from 'components/BalanceCenter/BalanceBtn';
 
 function HomePage() {
   const { accessToken } = useSelector(state => state.auth);
