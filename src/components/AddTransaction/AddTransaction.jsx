@@ -17,9 +17,13 @@ import {
   ContainerBtn,
 } from './AddTransaction.styled';
 import './AddTransaction.css';
-import { useDispatch } from 'react-redux';
-import { addTransactionExpense } from 'store/transactionsOperations';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addTransactionExpense,
+  getTransactionPeriod,
+} from 'store/transactionsOperations';
 import { categoryTranslationEnToRu } from './TranslateFunc';
+import { useEffect } from 'react';
 
 export const Addtransaction = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -27,6 +31,9 @@ export const Addtransaction = () => {
   const [descr, setDescription] = useState('');
   const [summ, setSumm] = useState('');
 
+  // const expens = useSelector(state => state.transaction);
+  // console.log(categoryTranslationEnToRu('Alcohol'));
+  // console.log(expens);
   const ExampleCustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
     <Input
       value={value}
@@ -53,18 +60,27 @@ export const Addtransaction = () => {
     setDescription('');
     setSelectedOption('');
   };
-
   const transactionForm = {
     description: descr,
     amount: Number(summ),
     date: time,
     category: categoryTranslationEnToRu(selectedOption.label),
   };
+
+  // useEffect(() => {
+  //   dispatch(
+  //     getTransactionPeriod(
+  //       startDate.getFullYear() +
+  //         '-' +
+  //         ('0' + (startDate.getMonth() + 1)).slice(-2)
+  //     )
+  //   );
+  // }, []);
+
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(addTransactionExpense(transactionForm));
-    // dispatch(getExpence());
-    // formreset()
+    formreset();
   };
 
   return (
