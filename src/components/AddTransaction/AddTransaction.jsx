@@ -22,7 +22,10 @@ import {
   addTransactionExpense,
   getTransactionPeriod,
 } from 'store/transactionsOperations';
-import { categoryTranslationEnToRu } from './TranslateFunc';
+import {
+  categoryTranslationEnToRu,
+  categoryTranslationRuToEn,
+} from './TranslateFunc';
 import { useEffect } from 'react';
 
 export const Addtransaction = () => {
@@ -31,9 +34,16 @@ export const Addtransaction = () => {
   const [descr, setDescription] = useState('');
   const [summ, setSumm] = useState('');
 
-  // const expens = useSelector(state => state.transaction);
+  const expens = useSelector(
+    state => state.transaction.transactionExpense.expensesData
+  );
   // console.log(categoryTranslationEnToRu('Alcohol'));
-  // console.log(expens);
+  // const expensArr = Object.entries(expens);
+  // const englArr = expensArr.map(el => {
+  //   return [(el[0] = categoryTranslationRuToEn(el[0])), el[1]];
+  // });
+  // console.log(englArr);
+
   const ExampleCustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
     <Input
       value={value}
@@ -84,54 +94,56 @@ export const Addtransaction = () => {
   };
 
   return (
-    <TransactionForm>
-      <ContainerDate>
-        <DatePicker
-          selected={startDate}
-          onChange={date => setStartDate(date)}
-          dateFormat="dd.MM.yyyy"
-          customInput={<ExampleCustomInput />}
-          locale={enGB}
-          maxDate={new Date()}
-        />
-      </ContainerDate>
-      <div>
-        <Form onSubmit={handleSubmit}>
-          <InputProduct
-            type="text"
-            onChange={e => setDescription(e.target.value)}
-            name="description"
-            placeholder="Product description"
-            value={descr}
-            required
-          />
-          <Select
-            className="select-container"
-            classNamePrefix="select"
-            menuShouldBlockScroll={true}
-            menuShouldScrollIntoView={false}
-            options={expenses}
-            name="category"
-            placeholder="Product category"
-            required
-            value={selectedOption}
-            onChange={option => setSelectedOption(option)}
-          />
-          <InputCalc
-            name="amount"
-            placeholder="0.00"
-            onChange={e => setSumm(e.target.value)}
-            value={summ}
-            required
-          />
-          <ContainerBtn>
-            <BtnInput type="submit">Input</BtnInput>
-            <BtnClear type="reset" onClick={formreset}>
-              Clear
-            </BtnClear>
-          </ContainerBtn>
-        </Form>
-      </div>
-    </TransactionForm>
+    <></>
+    // <ul>{expens.map(el => console.log(el.))}</ul>
+    // <TransactionForm>
+    //   <ContainerDate>
+    //     <DatePicker
+    //       selected={startDate}
+    //       onChange={date => setStartDate(date)}
+    //       dateFormat="dd.MM.yyyy"
+    //       customInput={<ExampleCustomInput />}
+    //       locale={enGB}
+    //       maxDate={new Date()}
+    //     />
+    //   </ContainerDate>
+    //   <div>
+    //     <Form onSubmit={handleSubmit}>
+    //       <InputProduct
+    //         type="text"
+    //         onChange={e => setDescription(e.target.value)}
+    //         name="description"
+    //         placeholder="Product description"
+    //         value={descr}
+    //         required
+    //       />
+    //       <Select
+    //         className="select-container"
+    //         classNamePrefix="select"
+    //         menuShouldBlockScroll={true}
+    //         menuShouldScrollIntoView={false}
+    //         options={expenses}
+    //         name="category"
+    //         placeholder="Product category"
+    //         required
+    //         value={selectedOption}
+    //         onChange={option => setSelectedOption(option)}
+    //       />
+    //       <InputCalc
+    //         name="amount"
+    //         placeholder="0.00"
+    //         onChange={e => setSumm(e.target.value)}
+    //         value={summ}
+    //         required
+    //       />
+    //       <ContainerBtn>
+    //         <BtnInput type="submit">Input</BtnInput>
+    //         <BtnClear type="reset" onClick={formreset}>
+    //           Clear
+    //         </BtnClear>
+    //       </ContainerBtn>
+    //     </Form>
+    //   </div>
+    // </TransactionForm>
   );
 };
