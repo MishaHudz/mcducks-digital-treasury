@@ -18,6 +18,8 @@ import {
 import ExpenseIncomeBtn from 'components/ExpenseIncomeBtn/ExpenseIncomeBtn';
 import BalanceBtn from 'components/BalanceBtn/BalanceBtn';
 import BalanceCenter from 'components/BalanceCenter/BalanceCenter';
+import BalanceModal from 'components/BalanceModal/BalanceModal';
+import GoHomeLink from 'components/GoHomeLink/GoHomeLink';
 
 function HomePage() {
   const { accessToken } = useSelector(state => state.auth);
@@ -41,8 +43,10 @@ function HomePage() {
       <Summary />
       <Addtransaction />
       <TransactionTable />
+      <BalanceModal/>
       <BalanceCenter/>
       <BalanceBtn/>
+      <GoHomeLink/>
     
     </>
   );

@@ -27,7 +27,7 @@ console.log(initialState);
             : `${(initialState.toFixed(2))} UAH`}
       />
       {initialState === 0 && <BalanceBtn balanceToUpdate={input} />}
-      {/* {!initialState && <BalanceModal />} */}
+      {!initialState && <BalanceModal />}
     </Forma>
   );
 };

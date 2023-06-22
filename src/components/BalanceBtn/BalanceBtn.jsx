@@ -4,12 +4,12 @@ import { Button } from './BalanceBnt.styled';
 const BalanceBtn = ({ balanceToUpdate }) => {
     // const dispatch = useDispatch();
     // const totalBalance = () => {
-    //   const newBalance = Number(balanceToUpdate);
-    //   console.log(newBalance);
-    //   if (newBalance > 0) {
-    //     dispatch(setNewBalance({ newBalance: newBalance }));
+    //   const initialState = Number(balanceToUpdate);
+    //   console.log(initialState);
+    //   if (initialState > 0) {
+    //     dispatch(...({ initialState: initialState }));
     //     setTimeout(() => {
-    //       dispatch(getAuthUser());
+    //       dispatch(...());
     //     }, 200);
     //   } else {
     //     alert('The balance must be positive');
