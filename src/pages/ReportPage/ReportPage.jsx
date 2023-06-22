@@ -18,6 +18,7 @@ import {
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import TransactionPeriodData from 'components/TransactionPeriodData/TransactionPeriodData';
 
 function ReportPage() {
   const { accessToken } = useSelector(state => state.auth);
@@ -44,10 +45,11 @@ function ReportPage() {
               </TestBoxCurrentMonth>
             </TestBoxMonth>
           </TestBox>
-
           <ReportBox>
             <ReportTopBox></ReportTopBox>
-            <ReportMiddleBox></ReportMiddleBox>
+            <ReportMiddleBox>
+              <TransactionPeriodData />
+            </ReportMiddleBox>
             <BarChart />
           </ReportBox>
         </SectionDiv>
