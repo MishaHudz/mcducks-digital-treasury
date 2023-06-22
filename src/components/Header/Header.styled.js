@@ -55,6 +55,10 @@ export const NLink = styled(NavLink)`
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
 `;
 
 export const Coin = styled.img`
@@ -62,6 +66,30 @@ export const Coin = styled.img`
   height: 16px;
   display: inline-block;
   margin-bottom: -2.5px;
+
+  &:hover {
+    animation: vibrate-1 0.5s linear infinite both;
+    @keyframes vibrate-1 {
+      0% {
+        transform: translate(0);
+      }
+      20% {
+        transform: translate(-2px, 2px);
+      }
+      40% {
+        transform: translate(-2px, -2px);
+      }
+      60% {
+        transform: translate(2px, 2px);
+      }
+      80% {
+        transform: translate(2px, -2px);
+      }
+      100% {
+        transform: translate(0);
+      }
+    }
+  }
 `;
 
 export const Login = styled.p`
