@@ -1,26 +1,24 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTransactionExpense } from '../../../store/transactionsOperations';
-import './FinancialSummary.css'
+import { getTransactionExpense, getTransactionIncome } from '../../../store/transactionsOperations';
+import './FinancialSummary.css';
 
 const FinancialSummary = ({ selectedMonth }) => {
   const monthStats = useSelector(state => state.transaction.monthStatsExpenses);
-
-  console.log(monthStats);
+  const monthStatsIncome = useSelector(state => state.transaction.monthStatsIncome);
+  console.log(monthStatsIncome);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTransactionExpense());
-  }, [dispatch]);
+  }, [dispatch, selectedMonth]);
 
   const renderMonthStats = () => {
     const selectedMonthIndex = selectedMonth.getMonth();
-  
-    if (monthStats === "N/A") {
-      return <p className='summary-text'>expenses: 0 UAH.</p>;
-    }
-  
+
+    
+
     switch (selectedMonthIndex) {
       case 0:
         return renderMonthValue(monthStats.Январь);
@@ -38,7 +36,7 @@ const FinancialSummary = ({ selectedMonth }) => {
         return renderMonthValue(monthStats.Июль);
       case 7:
         return renderMonthValue(monthStats.Август);
-      case 8: 
+      case 8:
         return renderMonthValue(monthStats.Сентябрь);
       case 9:
         return renderMonthValue(monthStats.Октябрь);
@@ -47,22 +45,34 @@ const FinancialSummary = ({ selectedMonth }) => {
       case 11:
         return renderMonthValue(monthStats.Декабрь);
       default:
-        return <p className='summary-text'>expenses: 0 UAH.</p>;
+        return (
+          <div className='summary-block'>
+            <div className='summary-text'>
+              expenses: <span className='summary-expenses summary-num'>0 UAH.</span>
+              <span className='summary-break'>|</span>
+              incomes: <span className='summary-income summary-num'>0 UAH.</span>
+            </div>
+          </div>
+        );
     }
   };
+  
 
   const renderMonthValue = (value) => {
-    return <div className='summary-block'><div className='summary-text'>expenses:<span className='summary-expenses summary-num'>{value} UAH.</span>
-    incomes:<span className='summary-income summary-num'>{value} UAH.</span>
-           </div></div>;
+    return (
+      <div className='summary-block'>
+        <div className='summary-text'>
+          expenses:
+          <span className='summary-expenses summary-num'>{value} UAH.</span>
+          <span className='summary-break'>|</span>
+          incomes:
+          <span className='summary-income summary-num'>{value} UAH.</span>
+        </div>
+      </div>
+    );
   };
 
-  return (
-    <div>
-      {renderMonthStats()}
-
-    </div>
-  );
+  return <div>{renderMonthStats()}</div>;
 };
 
 export default FinancialSummary;
