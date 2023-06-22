@@ -9,19 +9,49 @@ import {
   getMobileGradient,
   sortData,
 } from 'components/helpers/BarChartHelpers';
+import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const data = {
   total: 125500,
   Вазон: 1500,
-  Картина: 2000,
-  Чайник: 5000,
-  Штори: 7000,
-  Крісло: 6000,
-  Кран: 3500,
-  Диван: 10000,
+  //   Картина: 2000,
+  //   Чайник: 5000,
+  //   Штори: 7000,
+  //   Крісло: 6000,
+  //   Кран: 3500,
+  //   Диван: 10000,
 };
 
 function BarChart() {
+  const [searchParams] = useSearchParams();
+  const [operation, setOperation] = useState('expenses');
+  const [category, setCategory] = useState(searchParams.get('category'));
+
+  const transactionExpense = useSelector(
+    state => state.transaction.transactionExpense
+  );
+
+  const transactionIncome = useSelector(
+    state => state.transaction.transactionIncome
+  );
+
+  useEffect(() => {
+    setOperation(searchParams.get('operation'));
+    setCategory(searchParams.get('category'));
+  });
+
+  useEffect(() => {
+    if (operation === 'expence' && category) {
+      console.log(operation);
+      console.log(category);
+    }
+  });
+
+  //   console.log(transactionExpense);
+  //   console.log(transactionIncome);
+
   const options = {
     animation: false,
     layout: {
@@ -185,7 +215,7 @@ function BarChart() {
   };
   //////////////////////////////
   return (
-    data.total && (
+    data && (
       <>
         <MediaQuery maxWidth={767}>
           <BarChartContainer>
