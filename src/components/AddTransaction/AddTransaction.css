@@ -1,19 +1,24 @@
-.example-custom-input{
-    border:none;
-    background-color:transparent;
-    
-}
-.select-container {
-    height: auto;
+  .select-container {
+    height:47px;
+  @media screen and (min-width: 768px){
+    height:auto;
+  }
   }
   .select__control {
-    height: 100%;
+    height:100%;
     cursor: pointer !important;
+    
     border: 2px solid #474759 !important;
-    background-color: rgba(56, 56, 71, 1) !important;
-    width: 170px;
     border-radius: 0 !important;
+    border-bottom-right-radius: 16px !important;
+    background-color: rgba(56, 56, 71, 1) !important;
+    width: 280px;
+  
+    @media screen and (min-width: 768px) {
+      width:170px !important;
+      border-bottom-right-radius: 0 !important;
   }
+}
   .select__control--is-focused,
   .select__control:hover {
     outline: none;
