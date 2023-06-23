@@ -2,28 +2,29 @@ import BarChart from 'components/BarChart/BarChart';
 import {
   ReportBox,
   ReportMiddleBox,
-  ReportTopBox,
   Section,
   SectionDiv,
   SectionImage,
   TestBox,
-  TestBoxCurrentMonth,
   TestBoxMonth,
-  TestBoxSpanMonth,
   TestButton,
-  TestCurrentMonthName,
   TestTitle,
-  TestTitleMonth,
 } from './ReportPage.styled';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import PeriodSummary from './PeriodSummary/PeriodSummary';
+import FinancialSummary from './FinancialSummary/FinancialSummary';
+import './PeriodSummary/PerriodSummary.css'
 import TransactionPeriodData from 'components/TransactionPeriodData/TransactionPeriodData';
 
 function ReportPage() {
   const { accessToken } = useSelector(state => state.auth);
   const navigate = useNavigate();
+  const currentDate = new Date();
+  const [date, setDate] = useState(currentDate);
 
+ 
   useEffect(() => {
     !accessToken && navigate('/authorization');
   }, [accessToken, navigate]);
@@ -37,16 +38,11 @@ function ReportPage() {
             <TestButton>00.00 UAH</TestButton>
             <TestButton>Confirm</TestButton>
             <TestBoxMonth>
-              <TestTitleMonth>Current period:</TestTitleMonth>
-              <TestBoxCurrentMonth>
-                <TestBoxSpanMonth>&#60;</TestBoxSpanMonth>
-                <TestCurrentMonthName>November</TestCurrentMonthName>
-                <TestBoxSpanMonth>&#62;</TestBoxSpanMonth>
-              </TestBoxCurrentMonth>
+              <PeriodSummary currentDate={currentDate} date={date} setDate={setDate} />
             </TestBoxMonth>
           </TestBox>
           <ReportBox>
-            <ReportTopBox></ReportTopBox>
+            <FinancialSummary selectedMonth={date} />
             <ReportMiddleBox>
               <TransactionPeriodData />
             </ReportMiddleBox>
