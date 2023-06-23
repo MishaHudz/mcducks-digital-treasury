@@ -15,7 +15,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PeriodSummary from './PeriodSummary/PeriodSummary';
 import FinancialSummary from './FinancialSummary/FinancialSummary';
-import './PeriodSummary/PerriodSummary.css'
+import './PeriodSummary/PerriodSummary.css';
 import TransactionPeriodData from 'components/TransactionPeriodData/TransactionPeriodData';
 
 function ReportPage() {
@@ -24,7 +24,6 @@ function ReportPage() {
   const currentDate = new Date();
   const [date, setDate] = useState(currentDate);
 
- 
   useEffect(() => {
     !accessToken && navigate('/authorization');
   }, [accessToken, navigate]);
@@ -38,13 +37,17 @@ function ReportPage() {
             <TestButton>00.00 UAH</TestButton>
             <TestButton>Confirm</TestButton>
             <TestBoxMonth>
-              <PeriodSummary currentDate={currentDate} date={date} setDate={setDate} />
+              <PeriodSummary
+                currentDate={currentDate}
+                date={date}
+                setDate={setDate}
+              />
             </TestBoxMonth>
           </TestBox>
           <ReportBox>
             <FinancialSummary selectedMonth={date} />
             <ReportMiddleBox>
-              <TransactionPeriodData />
+              <TransactionPeriodData selectedMonth={date} />
             </ReportMiddleBox>
             <BarChart />
           </ReportBox>

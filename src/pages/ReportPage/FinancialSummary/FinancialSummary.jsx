@@ -1,25 +1,31 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTransactionExpense, getTransactionIncome} from '../../../store/transactionsOperations';
+import {
+  getTransactionExpense,
+  getTransactionIncome,
+} from '../../../store/transactionsOperations';
 import './FinancialSummary.css';
 
 const FinancialSummary = ({ selectedMonth }) => {
+  console.log(selectedMonth);
   const monthStats = useSelector(state => state.transaction.monthStatsExpenses);
-  const monthStatsIncome = useSelector(state => state.transaction.monthStatsIncome);
-  console.log(monthStatsIncome);
+  const monthStatsIncome = useSelector(
+    state => state.transaction.monthStatsIncome
+  );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTransactionExpense());
   }, [dispatch, selectedMonth]);
+
   useEffect(() => {
     dispatch(getTransactionIncome());
   }, [dispatch, selectedMonth]);
 
   const renderMonthStats = () => {
     const selectedMonthIndex = selectedMonth.getMonth();
-  
+
     switch (selectedMonthIndex) {
       case 0:
         return renderMonthValue(monthStats.Январь, monthStatsIncome.Январь);
@@ -47,40 +53,42 @@ const FinancialSummary = ({ selectedMonth }) => {
         return renderMonthValue(monthStats.Декабрь, monthStatsIncome.Декабрь);
       default:
         return (
-          <div className='summary-block'>
-            <div className='summary-text'>
-              expenses: <span className='summary-expenses summary-num'>0 UAH.</span>
-              <span className='summary-break'>|</span>
-              incomes: <span className='summary-income summary-num'>0 UAH.</span>
+          <div className="summary-block">
+            <div className="summary-text">
+              expenses:{' '}
+              <span className="summary-expenses summary-num">0 UAH.</span>
+              <span className="summary-break">|</span>
+              incomes:{' '}
+              <span className="summary-income summary-num">0 UAH.</span>
             </div>
           </div>
         );
     }
   };
-  
+
   const renderMonthValue = (expenseValue, incomeValue) => {
     if (expenseValue === 'N/A') {
       expenseValue = 0;
     }
-  
+
     if (incomeValue === 'N/A') {
       incomeValue = 0;
     }
-  
+
     return (
-      <div className='summary-block'>
-        <div className='summary-text'>
+      <div className="summary-block">
+        <div className="summary-text">
           expenses:
-          <span className='summary-expenses summary-num'>{expenseValue} UAH.</span>
-          <span className='summary-break'>|</span>
+          <span className="summary-expenses summary-num">
+            {expenseValue} UAH.
+          </span>
+          <span className="summary-break">|</span>
           incomes:
-          <span className='summary-income summary-num'>{incomeValue} UAH.</span>
+          <span className="summary-income summary-num">{incomeValue} UAH.</span>
         </div>
       </div>
     );
   };
-  
-  
 
   return <div>{renderMonthStats()}</div>;
 };
