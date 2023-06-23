@@ -5,12 +5,13 @@ export const ContainerStyled = styled.div`
   margin: 0 auto;
 
   @media screen and (min-width: 768px) {
-    max-width: 624px;
+    min-width: 624px;
     margin: 0 auto;
   }
+
   @media screen and (min-width: 1280px) {
-    max-width: 746 px;
-    margin: 0 auto;
+    min-width: 746px;
+   
   }
 `;
 
@@ -45,11 +46,11 @@ export const ScrollWrapStyled = styled.div`
   @media screen and (min-width: 768px) {
     min-width: 624px;
     max-width: 624px;
-    max-height: 400px;
+    max-height: 360px;
   }
   @media screen and (min-width: 1280px) {
-    // min-width: 746px;
     max-width: 746px;
+    max-height: 360px;
   }
 `;
 
@@ -105,16 +106,17 @@ export const TableRowStyled = styled.tr`
   font-size: 12px;
   line-height: 1.17;
   color: #c7ccdc;
-  background: #474759;
+  // background: #474759;
+  
 `;
 
 export const TableColumnStyled = styled.td`
   padding: 0 24px;
   margin: 0;
-  //   border-bottom: 2px solid #474759;
+    border-bottom: 2px solid #474759;
 
   &:first-child {
-    // border-left: 2px solid #474759;
+    border-left: 2px solid #474759;
     width: 20%;
   }
   &:nth-child(2) {
@@ -134,7 +136,7 @@ export const TableColumnStyled = styled.td`
   &:last-child {
     width: 10%;
     padding: 4px;
-    // border-right: 2px solid #474759;
+    border-right: 2px solid #474759;
   }
   &:nth-child(n + 3) {
     text-align: center;
@@ -153,17 +155,15 @@ export const BtnDelStyled = styled.button`
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   outline: none;
+  fill: rgba(199, 204, 220, 0.5);
 
   &:hover {
     background: rgba(86, 86, 107, 0.5);
+    fill: #f6f7fb;
   }
   & svg {
     width: 15px;
     height: 18px;
-    fill: rgba(199, 204, 220, 0.5);
-    &:hover {
-      fill: #f6f7fb;
-    }
   }
 `;
 
