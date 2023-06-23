@@ -9,14 +9,25 @@ import { SummaryTitle } from './Summary.styled';
 import { SummaryList } from './Summary.styled';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import {
   getTransactionExpense,
   getTransactionIncome,
 } from 'store/transactionsOperations';
+
 export const Summary = () => {
-  const monthStats = useSelector(state => state.transaction.monthStatsExpenses);
+  const monthStatsExpenses = useSelector(
+    state => state.transaction.monthStatsExpenses
+  );
+  const monthStatsIncomes = useSelector(
+    state => state.transaction.monthStatsIncome
+  );
   const { accessToken } = useSelector(state => state.auth);
   const dispatch = useDispatch();
+  const location = useLocation();
+  const urlSearchParams = new URLSearchParams(location.search);
+  const operation = urlSearchParams.get('operation');
+
   const monthTranslations = {
     январь: 'January',
     февраль: 'February',
@@ -31,6 +42,7 @@ export const Summary = () => {
     ноябрь: 'November',
     декабрь: 'December',
   };
+
   function funcSplit(num) {
     const res = String(num).split('.');
     if (res.length === 1) {
@@ -41,19 +53,24 @@ export const Summary = () => {
     }
     return num;
   }
+
   useEffect(() => {
     if (accessToken) {
-      dispatch(getTransactionExpense());
-      dispatch(getTransactionIncome());
+      if (operation === 'income') {
+        dispatch(getTransactionIncome());
+      } else {
+        dispatch(getTransactionExpense());
+      }
     }
-    // dispatch();
-  }, [dispatch, accessToken]);
+  }, [dispatch, accessToken, operation]);
 
   return (
     <SummaryWrapper>
       <SummaryTitle>Summary</SummaryTitle>
       <SummaryList>
-        {Object.entries(monthStats)
+        {Object.entries(
+          operation === 'income' ? monthStatsIncomes : monthStatsExpenses
+        )
           .filter(month => month[1] !== 'N/A')
           .map(month => (
             <SummaryListItem key={nanoid()}>
@@ -63,7 +80,9 @@ export const Summary = () => {
               <SummaryAmount>{funcSplit(month[1])}</SummaryAmount>
             </SummaryListItem>
           ))}
-        {Object.entries(monthStats)
+        {Object.entries(
+          operation === 'income' ? monthStatsIncomes : monthStatsExpenses
+        )
           .filter(month => month[1] === 'N/A')
           .map(month => (
             <SummaryListItem key={nanoid()}></SummaryListItem>
