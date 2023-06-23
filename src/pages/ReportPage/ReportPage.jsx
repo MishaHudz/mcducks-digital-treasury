@@ -17,6 +17,8 @@ import PeriodSummary from './PeriodSummary/PeriodSummary';
 import FinancialSummary from './FinancialSummary/FinancialSummary';
 import './PeriodSummary/PerriodSummary.css'
 import TransactionPeriodData from 'components/TransactionPeriodData/TransactionPeriodData';
+import GoHomeLink from 'components/GoHomeLink/GoHomeLink';
+import BalanceCenter from 'components/BalanceCenter/BalanceCenter';
 
 function ReportPage() {
   const { accessToken } = useSelector(state => state.auth);
@@ -34,9 +36,8 @@ function ReportPage() {
       <SectionImage>
         <SectionDiv>
           <TestBox>
-            <TestTitle>Balance:</TestTitle>
-            <TestButton>00.00 UAH</TestButton>
-            <TestButton>Confirm</TestButton>
+            <GoHomeLink/>
+            <BalanceCenter/>
             <TestBoxMonth>
               <PeriodSummary currentDate={currentDate} date={date} setDate={setDate} />
             </TestBoxMonth>
