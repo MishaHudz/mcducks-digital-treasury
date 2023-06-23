@@ -35,7 +35,10 @@ function BarChart() {
 
   useEffect(() => {
     if (operation === 'expenses' && category) {
-      if (!transactionExpense) {
+      if (
+        !transactionExpense ||
+        !Object.keys(transactionExpense.expensesData).length
+      ) {
         setData({});
         return;
       }
@@ -54,19 +57,22 @@ function BarChart() {
 
   useEffect(() => {
     if (operation === 'income' && category) {
-      if (!transactionIncome) {
+      if (
+        !transactionIncome ||
+        !Object.keys(transactionIncome.incomesData).length
+      ) {
         setData({});
         return;
       }
 
-      // const categoriesArr = Object.entries(transactionIncome.expensesData);
-      // categoriesArr.map(cat => {
-      //   if (categoryTranslationRuToEn(cat[0]) === category) {
-      //     setData(cat[1]);
-      //   }
+      const categoriesArr = Object.entries(transactionIncome.incomesData);
+      categoriesArr.map(cat => {
+        if (categoryTranslationRuToEn(cat[0]) === category) {
+          setData(cat[1]);
+        }
 
-      //   return cat;
-      // });
+        return cat;
+      });
     }
   }, [operation, category, transactionIncome]);
 
