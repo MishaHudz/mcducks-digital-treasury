@@ -20,6 +20,7 @@ import './AddTransaction.css';
 import { useDispatch } from 'react-redux';
 import {
   addTransactionExpense,
+  addTransactionIncome,
   getTransactionPeriod,
   // getTransactionPeriod,
 } from 'store/transactionsOperations';
@@ -78,6 +79,7 @@ export const Addtransaction = () => {
     date: time,
     category: categoryTranslationEnToRu(selectedOption.label),
   };
+
   useEffect(() => {
     dispatch(getTransactionPeriod('2023-06'));
   }, [dispatch]);
@@ -93,7 +95,16 @@ export const Addtransaction = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(addTransactionExpense(transactionForm));
+    dispatch(
+      operation === 'expences'
+        ? addTransactionExpense(transactionForm)
+        : addTransactionIncome({
+            description: descr,
+            amount: Number(summ),
+            date: time,
+            category: categoryTranslationEnToRu(selectedOption.label),
+          })
+    );
     formreset();
   };
 
@@ -133,6 +144,7 @@ export const Addtransaction = () => {
               onChange={option => setSelectedOption(option)}
             />
             <InputCalc
+              type="number"
               name="amount"
               placeholder="0.00"
               onChange={e => setSumm(e.target.value)}

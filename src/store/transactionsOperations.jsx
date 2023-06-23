@@ -24,10 +24,10 @@ export const addTransactionIncome = createAsyncThunk(
   'transaction/income/add',
   async (transactionForm, { rejectWithValue }) => {
     try {
-      const { data: newBalance } = await addTransactionIncomeApi(
-        transactionForm
-      );
-      const { data } = await getTransactionIncomeApi();
+      const { newBalance } = await addTransactionIncomeApi(transactionForm);
+      const data = await getTransactionIncomeApi();
+      console.log(newBalance);
+      console.log(data);
       return [newBalance, data];
     } catch (error) {
       return rejectWithValue(error.message);
