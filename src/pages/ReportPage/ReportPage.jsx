@@ -49,7 +49,7 @@ function ReportPage() {
           <ReportBox>
             <FinancialSummary selectedMonth={date} />
             <ReportMiddleBox>
-              <TransactionPeriodData />
+              <TransactionPeriodData selectedMonth={date} />
             </ReportMiddleBox>
             <BarChart />
           </ReportBox>

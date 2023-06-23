@@ -27,14 +27,19 @@ import { useSearchParams } from 'react-router-dom';
 import ChangeIncomExpense from 'components/ChangeIncomExpense/ChangeIncomExpense';
 import { useState } from 'react';
 
-function TransactionPeriodData() {
+function TransactionPeriodData({ selectedMonth }) {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const [operation, setOperation] = useState('expences');
 
+  const timeE =
+    selectedMonth.getFullYear() +
+    '-' +
+    ('0' + (selectedMonth.getMonth() + 1)).slice(-2);
+
   useEffect(() => {
-    dispatch(getTransactionPeriod('2023-06'));
-  }, [dispatch]);
+    dispatch(getTransactionPeriod(timeE));
+  }, [dispatch, timeE]);
 
   const expens = useSelector(
     state => state.transaction.transactionExpense.expensesData
@@ -131,6 +136,8 @@ function TransactionPeriodData() {
                         ? objExpenses[el[0].split(',').join('_')]
                         : objIncome[el[0].split(' ').join('_')]
                     }
+                    width="48"
+                    height="48"
                     alt=""
                   />
                 </BoxStyled>
