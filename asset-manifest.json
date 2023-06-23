@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/mcducks-digital-treasury/static/css/main.d933bdb8.css",
-    "main.js": "/mcducks-digital-treasury/static/js/main.be89b21d.js",
+    "main.css": "/mcducks-digital-treasury/static/css/main.547562bf.css",
+    "main.js": "/mcducks-digital-treasury/static/js/main.bd0cdb88.js",
     "static/media/Rectangle.png": "/mcducks-digital-treasury/static/media/Rectangle.bc274d04e3cece71fb64.png",
     "static/media/Ellipse-8.png": "/mcducks-digital-treasury/static/media/Ellipse-8.fa12646c464dff543456.png",
     "static/media/walletStart.png": "/mcducks-digital-treasury/static/media/walletStart.ce2f753ea0a8b58aa53c.png",
     "static/media/coinHeader.png": "/mcducks-digital-treasury/static/media/coinHeader.508b4b37b5ba09f27877.png",
     "static/media/icon.svg": "/mcducks-digital-treasury/static/media/icon.2649878e1556fff79d17a38b0892a692.svg",
     "index.html": "/mcducks-digital-treasury/index.html",
-    "main.d933bdb8.css.map": "/mcducks-digital-treasury/static/css/main.d933bdb8.css.map",
-    "main.be89b21d.js.map": "/mcducks-digital-treasury/static/js/main.be89b21d.js.map"
+    "main.547562bf.css.map": "/mcducks-digital-treasury/static/css/main.547562bf.css.map",
+    "main.bd0cdb88.js.map": "/mcducks-digital-treasury/static/js/main.bd0cdb88.js.map"
   },
   "entrypoints": [
-    "static/css/main.d933bdb8.css",
-    "static/js/main.be89b21d.js"
+    "static/css/main.547562bf.css",
+    "static/js/main.bd0cdb88.js"
   ]
 }
