@@ -14,7 +14,7 @@ const ChangeIncomExpense = () => {
     );
   };
   useEffect(() => {
-    console.log(text);
+    // console.log(text);
     setSearchParams({
       operation: text.toLocaleLowerCase(),
       category: searchParams.get('category'),

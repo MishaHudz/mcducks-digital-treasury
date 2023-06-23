@@ -50,8 +50,7 @@ const TransactionTable = () => {
     return incomes.filter(el => el.date.includes(dateFilter));
   }, [dateFilter, incomes]);
 
-  const isRender = status === 'income' ? transactionIncome : transactionExpense;
-  const transaction = isRender;
+  const transaction = status === 'income' ? transactionIncome : transactionExpense;
 
   const [showModal, setShowModal] = useState(false);
 
@@ -101,7 +100,7 @@ const TransactionTable = () => {
                         .map(el => el.label)
                         .join()}
                     </TableColumnStyled>
-                    <TableColumnStyled>
+                    <TableColumnStyled  data-color={status}>
                       {item.amount === ''
                         ? ''
                         : status === 'income'
@@ -111,7 +110,7 @@ const TransactionTable = () => {
                     <TableColumnStyled>
                       <BtnDelStyled
                         type="button"
-                        onClick={() => handleOpen([item._id])}
+                        onClick={() => handleOpen([item._id, status])}
                       >
                         <svg>
                           <use href={icon + '#icon-delete'}></use>
@@ -148,7 +147,7 @@ const TransactionTable = () => {
                     </BoxStyled>
                   </div>
                   <RightStyled>
-                    <AmountStyled>
+                    <AmountStyled data-color={status}>
                       {item.amount === ''
                         ? ''
                         : status === 'income'

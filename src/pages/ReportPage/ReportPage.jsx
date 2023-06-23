@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import PeriodSummary from './PeriodSummary/PeriodSummary';
 import FinancialSummary from './FinancialSummary/FinancialSummary';
 import TransactionPeriodData from 'components/TransactionPeriodData/TransactionPeriodData';
+import { GoToMain } from 'components/goBack/goToMain';
 
 function ReportPage() {
   const { accessToken } = useSelector(state => state.auth);
@@ -23,7 +24,6 @@ function ReportPage() {
   const currentDate = new Date();
   const [date, setDate] = useState(currentDate);
 
- 
   useEffect(() => {
     !accessToken && navigate('/authorization');
   }, [accessToken, navigate]);
@@ -33,17 +33,22 @@ function ReportPage() {
       <SectionImage>
         <SectionDiv>
           <TestBox>
+            <GoToMain />
             <TestTitle>Balance:</TestTitle>
             <TestButton>00.00 UAH</TestButton>
             <TestButton>Confirm</TestButton>
             <TestBoxMonth>
-              <PeriodSummary currentDate={currentDate} date={date} setDate={setDate} />
+              <PeriodSummary
+                currentDate={currentDate}
+                date={date}
+                setDate={setDate}
+              />
             </TestBoxMonth>
           </TestBox>
           <ReportBox>
             <FinancialSummary selectedMonth={date} />
             <ReportMiddleBox>
-              <TransactionPeriodData />
+              <TransactionPeriodData selectedMonth={date} />
             </ReportMiddleBox>
             <BarChart />
           </ReportBox>

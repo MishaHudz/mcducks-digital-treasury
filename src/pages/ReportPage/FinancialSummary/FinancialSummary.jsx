@@ -12,21 +12,23 @@ SummaryIncome
 
 const FinancialSummary = ({ selectedMonth }) => {
   const monthStats = useSelector(state => state.transaction.monthStatsExpenses);
-  const monthStatsIncome = useSelector(state => state.transaction.monthStatsIncome);
-  console.log(monthStatsIncome);
+  const monthStatsIncome = useSelector(
+    state => state.transaction.monthStatsIncome
+  );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTransactionExpense());
   }, [dispatch, selectedMonth]);
+
   useEffect(() => {
     dispatch(getTransactionIncome());
   }, [dispatch, selectedMonth]);
 
   const renderMonthStats = () => {
     const selectedMonthIndex = selectedMonth.getMonth();
-  
+
     switch (selectedMonthIndex) {
       case 0:
         return renderMonthValue(monthStats.Январь, monthStatsIncome.Январь);
@@ -64,16 +66,16 @@ const FinancialSummary = ({ selectedMonth }) => {
         );
     }
   };
-  
+
   const renderMonthValue = (expenseValue, incomeValue) => {
     if (expenseValue === 'N/A') {
       expenseValue = 0;
     }
-  
+
     if (incomeValue === 'N/A') {
       incomeValue = 0;
     }
-  
+
     return (
       <SummaryBlock>
       <SummaryText>
@@ -84,8 +86,6 @@ const FinancialSummary = ({ selectedMonth }) => {
     </SummaryBlock>
     );
   };
-  
-  
 
   return <div>{renderMonthStats()}</div>;
 };

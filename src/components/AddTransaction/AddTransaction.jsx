@@ -7,6 +7,8 @@ import { forwardRef } from 'react';
 import { enGB } from 'date-fns/locale';
 import { Input, ContainerDate } from './Calendar.styled';
 import './Calendar.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   TransactionForm,
   Form,
@@ -17,12 +19,11 @@ import {
   ContainerBtn,
 } from './AddTransaction.styled';
 import './AddTransaction.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addTransactionExpense,
   addTransactionIncome,
   getTransactionPeriod,
-  // getTransactionPeriod,
 } from 'store/transactionsOperations';
 import { categoryTranslationEnToRu } from './TranslateFunc';
 import { useEffect } from 'react';
@@ -35,17 +36,24 @@ export const Addtransaction = () => {
   const [summ, setSumm] = useState('');
   const [searchParams] = useSearchParams();
   const [operation, setOperation] = useState('expences');
-  // console.log(searchParams.get('operation'));
+
   useEffect(() => {
     setOperation(searchParams.get('operation'));
   }, [searchParams]);
 
-  // console.log(categoryTranslationEnToRu('Alcohol'));
-  // const expensArr = Object.entries(expens);
-  // const englArr = expensArr.map(el => {
-  //   return [(el[0] = categoryTranslationRuToEn(el[0])), el[1]];
-  // });
-  // console.log(englArr);
+  const { accessToken } = useSelector(state => state.auth);
+
+  const notify = () =>
+    toast.info('Please enter a positive number', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
 
   const ExampleCustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
     <Input
@@ -73,6 +81,7 @@ export const Addtransaction = () => {
     setDescription('');
     setSelectedOption('');
   };
+
   const transactionForm = {
     description: descr,
     amount: Number(summ),
@@ -81,26 +90,29 @@ export const Addtransaction = () => {
   };
 
   useEffect(() => {
-    dispatch(getTransactionPeriod('2023-06'));
-  }, [dispatch]);
-  // useEffect(() => {
-  //   dispatch(
-  //     getTransactionPeriod(
-  //       startDate.getFullYear() +
-  //         '-' +
-  //         ('0' + (startDate.getMonth() + 1)).slice(-2)
-  //     )
-  //   );
-  // }, []);
+    if (accessToken) {
+      dispatch(
+        getTransactionPeriod(
+          startDate.getFullYear() +
+            '-' +
+            ('0' + (startDate.getMonth() + 1)).slice(-2)
+        )
+      );
+    }
+  }, [accessToken, startDate, dispatch]);
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (summ < 0) {
+      notify();
+      return;
+    }
     dispatch(
       operation === 'expences'
         ? addTransactionExpense(transactionForm)
         : addTransactionIncome({
             description: descr,
-            amount: Number(summ),
+            amount: summ,
             date: time,
             category: categoryTranslationEnToRu(selectedOption.label),
           })
@@ -111,6 +123,7 @@ export const Addtransaction = () => {
   return (
     <>
       <TransactionForm>
+        <ToastContainer />
         <ContainerDate>
           <DatePicker
             selected={startDate}
@@ -129,6 +142,7 @@ export const Addtransaction = () => {
               name="description"
               placeholder="Product description"
               value={descr}
+              pattern="^[a-zA-Z\s]+$"
               required
             />
             <Select

@@ -5,21 +5,29 @@ import {СurrentAll,
   СurrentText,
   СurrentMonth} from './PeriodSummary.styled'
 
-
 const PeriodSummary = ({ currentDate, date, setDate }) => {
   const goToPreviousMonth = () => {
-    const previousMonth = new Date(date.getFullYear(), date.getMonth() - 1, date.getDate());
+    const previousMonth = new Date(
+      date.getFullYear(),
+      date.getMonth() - 1,
+      date.getDate()
+    );
     setDate(previousMonth);
   };
 
   const goToNextMonth = () => {
-    const nextMonth = new Date(date.getFullYear(), date.getMonth() + 1, date.getDate());
+    const nextMonth = new Date(
+      date.getFullYear(),
+      date.getMonth() + 1,
+      date.getDate()
+    );
     setDate(nextMonth);
   };
 
   const monthOptions = { month: 'long' };
   const isNextButtonDisabled =
-    date.getMonth() === currentDate.getMonth() && date.getFullYear() === currentDate.getFullYear();
+    date.getMonth() === currentDate.getMonth() &&
+    date.getFullYear() === currentDate.getFullYear();
 
   return (
     
