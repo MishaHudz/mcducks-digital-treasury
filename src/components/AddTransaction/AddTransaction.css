@@ -1,84 +1,82 @@
-  .select-container {
-    height:47px;
-  @media screen and (min-width: 768px){
-    height:auto;
-  }
-  }
-  .select__control {
-    height:100%;
-    cursor: pointer !important;
-    
-    border: 2px solid #474759 !important;
-    border-radius: 0 !important;
-    border-bottom-right-radius: 16px !important;
-    background-color: rgba(56, 56, 71, 1) !important;
-    width: 280px;
-  
-    @media screen and (min-width: 768px) {
-      width:170px !important;
-      border-bottom-right-radius: 0 !important;
+.select-container {
+  height: 47px;
+  @media screen and (min-width: 768px) {
+    height: auto;
   }
 }
-  .select__control--is-focused,
-  .select__control:hover {
-    outline: none;
-    border: 2px solid #474759;
-    box-shadow: 0px 6px 7px -2px #41a350;
+.select__control {
+  height: 100%;
+  cursor: pointer !important;
+  border: 2px solid #474759 !important;
+  border-radius: 0 !important;
+  border-bottom-right-radius: 16px !important;
+  background-color: rgba(56, 56, 71, 1) !important;
+  width: 280px;
+
+  @media screen and (min-width: 768px) {
+    width: 170px !important;
+    border-bottom-right-radius: 0 !important;
   }
-  .select__value-container {
-    padding-left: 13px;
+}
+.select__control--is-focused,
+.select__control:hover {
+  outline: none;
+  border: 2px solid #474759;
+  box-shadow: 0px 6px 7px -2px #41a350;
+}
+.select__value-container {
+  padding-left: 13px;
+}
+.select__placeholder {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  color: rgba(199, 204, 220, 0.3) !important;
+}
+.select__single-value {
+  appearance: none;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: rgba(199, 204, 220, 0.3) !important;
+}
+.select__indicator {
+  svg {
+    fill: rgba(199, 204, 220, 0.3) !important;
   }
-  .select__placeholder {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.16;
-    letter-spacing: 0.02em;
-    color: rgba(199, 204, 220, 0.3) !important;
-  }
-  .select__single-value {
-    appearance: none;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.16;
-    letter-spacing: 0.02em;
-    text-align: left;
-    color: rgba(199, 204, 220, 0.3) !important;
-  }
-  .select__indicator {
-    svg {
-      fill: rgba(199, 204, 220, 0.3) !important;
-    }
-  }
-  .select__indicator-separator {
-    display: none !important;
-  }
-  .select__menu {
-    background-color: rgba(56, 56, 71, 1) !important;
-  }
-  
-  .select__option {
-    cursor: pointer !important;
-    padding: 9px 18px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400 !important;
-    font-size: 12px !important;
-    line-height: 1.16 !important;
-    letter-spacing: 0.02em !important;
-    color: rgba(199, 204, 220, 0.3) !important;
-    background-color: rgba(56, 56, 71, 1) !important;
-    border: 0;
-    text-align: left;
-  }
-  .select__option:hover {
-    background-color: #474759 !important;
-    color: rgba(246, 247, 251, 1) !important;
-  }
-  .select__option--is-selected {
-    background-color: #474759 !important;
-    color: rgba(246, 247, 251, 1) !important;
-  }
+}
+.select__indicator-separator {
+  display: none !important;
+}
+.select__menu {
+  background-color: rgba(56, 56, 71, 1) !important;
+}
+.select__option {
+  cursor: pointer !important;
+  padding: 9px 18px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 1.16 !important;
+  letter-spacing: 0.02em !important;
+  color: rgba(199, 204, 220, 0.3) !important;
+  background-color: rgba(56, 56, 71, 1) !important;
+  border: 0;
+  text-align: left;
+}
+.select__option:hover {
+  background-color: #474759 !important;
+  color: rgba(246, 247, 251, 1) !important;
+}
+.select__option--is-selected {
+  background-color: #474759 !important;
+  color: rgba(246, 247, 251, 1) !important;
+}
