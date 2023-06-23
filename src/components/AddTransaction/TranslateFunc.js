@@ -14,9 +14,9 @@ export const categoryTranslationEnToRu = name => {
       return 'Всё для дома';
     case 'Technics':
       return 'Техника';
-    case 'Communal,Communication':
+    case 'Communal, Communication':
       return 'Коммуналка и связь';
-    case 'Sports,Hobbies':
+    case 'Sports, Hobbies':
       return 'Спорт и хобби';
     case 'Education':
       return 'Образование';
@@ -24,7 +24,7 @@ export const categoryTranslationEnToRu = name => {
       return 'Прочее';
     case 'Salary':
       return 'З/П';
-    case 'Additional income':
+    case 'Additional Income':
       return 'Доп. доход';
     default:
       break;
