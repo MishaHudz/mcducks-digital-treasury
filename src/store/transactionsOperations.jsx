@@ -65,7 +65,7 @@ export const deleteTransaction = createAsyncThunk(
   async ([transactionId, expenses], { rejectWithValue }) => {
     try {
       await deleteTransactionApi(transactionId);
-      const data  =
+      const data =
         expenses === 'income'
           ? await getTransactionIncomeApi()
           : await getTransactionExpenseApi();
