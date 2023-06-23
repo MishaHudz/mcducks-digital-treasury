@@ -17,12 +17,11 @@ import {
   ContainerBtn,
 } from './AddTransaction.styled';
 import './AddTransaction.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addTransactionExpense,
   addTransactionIncome,
   getTransactionPeriod,
-  // getTransactionPeriod,
 } from 'store/transactionsOperations';
 import { categoryTranslationEnToRu } from './TranslateFunc';
 import { useEffect } from 'react';
@@ -35,17 +34,12 @@ export const Addtransaction = () => {
   const [summ, setSumm] = useState('');
   const [searchParams] = useSearchParams();
   const [operation, setOperation] = useState('expences');
-  // console.log(searchParams.get('operation'));
+
   useEffect(() => {
     setOperation(searchParams.get('operation'));
   }, [searchParams]);
 
-  // console.log(categoryTranslationEnToRu('Alcohol'));
-  // const expensArr = Object.entries(expens);
-  // const englArr = expensArr.map(el => {
-  //   return [(el[0] = categoryTranslationRuToEn(el[0])), el[1]];
-  // });
-  // console.log(englArr);
+  const { accessToken } = useSelector(state => state.auth);
 
   const ExampleCustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
     <Input
@@ -73,6 +67,7 @@ export const Addtransaction = () => {
     setDescription('');
     setSelectedOption('');
   };
+
   const transactionForm = {
     description: descr,
     amount: Number(summ),
@@ -81,17 +76,16 @@ export const Addtransaction = () => {
   };
 
   useEffect(() => {
-    dispatch(getTransactionPeriod('2023-06'));
-  }, [dispatch]);
-  // useEffect(() => {
-  //   dispatch(
-  //     getTransactionPeriod(
-  //       startDate.getFullYear() +
-  //         '-' +
-  //         ('0' + (startDate.getMonth() + 1)).slice(-2)
-  //     )
-  //   );
-  // }, []);
+    if (accessToken) {
+      dispatch(
+        getTransactionPeriod(
+          startDate.getFullYear() +
+            '-' +
+            ('0' + (startDate.getMonth() + 1)).slice(-2)
+        )
+      );
+    }
+  }, [accessToken, startDate, dispatch]);
 
   const handleSubmit = e => {
     e.preventDefault();

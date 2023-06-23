@@ -105,7 +105,7 @@ const transactionsSlice = createSlice({
       .addCase(getTransactionPeriod.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.transactionIncome = payload.income;
+        state.transactionIncome = payload.incomes;
         state.transactionExpense = payload.expenses;
       })
       .addCase(getTransactionPeriod.rejected, (state, { payload }) => {
