@@ -7,7 +7,6 @@ import {
 import './FinancialSummary.css';
 
 const FinancialSummary = ({ selectedMonth }) => {
-  console.log(selectedMonth);
   const monthStats = useSelector(state => state.transaction.monthStatsExpenses);
   const monthStatsIncome = useSelector(
     state => state.transaction.monthStatsIncome

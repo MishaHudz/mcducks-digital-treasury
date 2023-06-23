@@ -17,7 +17,7 @@ import {
   ContainerBtn,
 } from './AddTransaction.styled';
 import './AddTransaction.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addTransactionExpense,
   addTransactionIncome,
@@ -38,6 +38,8 @@ export const Addtransaction = () => {
   useEffect(() => {
     setOperation(searchParams.get('operation'));
   }, [searchParams]);
+
+  const { accessToken } = useSelector(state => state.auth);
 
   const ExampleCustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
     <Input
@@ -74,8 +76,16 @@ export const Addtransaction = () => {
   };
 
   useEffect(() => {
-    dispatch(getTransactionPeriod('2023-06'));
-  }, [dispatch]);
+    if (accessToken) {
+      dispatch(
+        getTransactionPeriod(
+          startDate.getFullYear() +
+            '-' +
+            ('0' + (startDate.getMonth() + 1)).slice(-2)
+        )
+      );
+    }
+  }, [accessToken, startDate, dispatch]);
 
   const handleSubmit = e => {
     e.preventDefault();

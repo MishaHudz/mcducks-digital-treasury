@@ -25,8 +25,6 @@ const PeriodSummary = ({ currentDate, date, setDate }) => {
     date.getMonth() === currentDate.getMonth() &&
     date.getFullYear() === currentDate.getFullYear();
 
-  console.log(date.getFullYear());
-
   return (
     <div>
       <div className="current-text">

@@ -51,8 +51,8 @@ export const BoxStyled = styled.div`
   width: 64px;
 
   margin: 0;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     background: rgba(86, 86, 107, 0.2);
