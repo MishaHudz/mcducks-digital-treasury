@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getTransactionExpense,
-  // getTransactionIncome,
+  getTransactionIncome,
 } from 'store/transactionsOperations';
 export const Summary = () => {
   const monthStats = useSelector(state => state.transaction.monthStatsExpenses);
@@ -44,6 +44,7 @@ export const Summary = () => {
   useEffect(() => {
     if (accessToken) {
       dispatch(getTransactionExpense());
+      dispatch(getTransactionIncome());
     }
     // dispatch();
   }, [dispatch, accessToken]);
