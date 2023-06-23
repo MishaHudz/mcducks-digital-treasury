@@ -7,6 +7,8 @@ import { forwardRef } from 'react';
 import { enGB } from 'date-fns/locale';
 import { Input, ContainerDate } from './Calendar.styled';
 import './Calendar.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   TransactionForm,
   Form,
@@ -40,6 +42,18 @@ export const Addtransaction = () => {
   }, [searchParams]);
 
   const { accessToken } = useSelector(state => state.auth);
+
+  const notify = () =>
+    toast.info('Please enter a positive number', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
 
   const ExampleCustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
     <Input
@@ -89,12 +103,16 @@ export const Addtransaction = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (summ < 0) {
+      notify();
+      return;
+    }
     dispatch(
       operation === 'expences'
         ? addTransactionExpense(transactionForm)
         : addTransactionIncome({
             description: descr,
-            amount: Number(summ),
+            amount: summ,
             date: time,
             category: categoryTranslationEnToRu(selectedOption.label),
           })
@@ -105,6 +123,7 @@ export const Addtransaction = () => {
   return (
     <>
       <TransactionForm>
+        <ToastContainer />
         <ContainerDate>
           <DatePicker
             selected={startDate}

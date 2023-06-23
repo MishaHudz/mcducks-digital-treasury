@@ -121,7 +121,6 @@ function TransactionPeriodData({ selectedMonth }) {
               <ItemStyled
                 key={idx}
                 onClick={() => {
-                  console.log(el[0]);
                   setSearchParams({
                     operation: searchParams.get('operation'),
                     category: el[0],
