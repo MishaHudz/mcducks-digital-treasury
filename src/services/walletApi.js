@@ -70,4 +70,14 @@ export  async function getTransactionPeriodDataApi(date) {
       return data;
   }
     
-  
+export async function userBalance(newBalance) {
+    const {data} = await axios.patch(`/user/balance`,{"newBalance": newBalance});
+    console.log(data);
+        return data;
+      }
+
+export async function getUserInfo() {
+        const {data} = await axios(`/user`);
+        console.log(data);
+            return data;
+          }

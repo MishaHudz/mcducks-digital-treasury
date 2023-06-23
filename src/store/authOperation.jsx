@@ -1,7 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit/dist';
 import {
+  getUserInfo,
   setHeadersToken,
   unSetHeadersToken,
+  userBalance,
   userLoginApi,
   userLogoutApi,
   userRegisterApi,
@@ -44,6 +46,30 @@ export const userLogout = createAsyncThunk(
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const balancePatch = createAsyncThunk(
+  'user/patch',
+  async (userdata, { rejectWithValue}) => {
+    try {
+      const data = await userBalance(userdata);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getUserInfoOperation = createAsyncThunk(
+  'user/info',
+  async (_, { rejectWithValue}) => {
+    try {
+      const data = await getUserInfo();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );

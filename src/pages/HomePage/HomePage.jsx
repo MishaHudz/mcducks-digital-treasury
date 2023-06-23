@@ -9,8 +9,6 @@ import {
   OperationsBox,
   Section,
   TestBox,
-  TestButton,
-  TestTitle,
   SectionDiv,
   SectionImage,
   OperationsBoxTransaction,
