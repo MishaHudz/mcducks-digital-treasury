@@ -11,6 +11,7 @@ import {
 const initialState = {
   isLoading: false,
   newBlance: null,
+  filterDate: '',
   incomes: [],
   expenses: [],
   transactionIncome: [],
@@ -23,6 +24,11 @@ const initialState = {
 const transactionsSlice = createSlice({
   name: 'transaction',
   initialState,
+  reducers: {
+    getFilterDate(state, { payload }) {
+      state.filterDate = payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getTransactionIncome.pending, state => {
