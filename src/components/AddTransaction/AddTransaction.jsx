@@ -129,6 +129,7 @@ export const Addtransaction = () => {
               name="description"
               placeholder="Product description"
               value={descr}
+              pattern="^[a-zA-Z\s]+$"
               required
             />
             <Select

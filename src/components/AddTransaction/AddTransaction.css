@@ -59,6 +59,7 @@
   .select__menu {
     background-color: rgba(56, 56, 71, 1) !important;
   }
+  
   .select__option {
     cursor: pointer !important;
     padding: 9px 18px;
