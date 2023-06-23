@@ -32,14 +32,9 @@ function TransactionPeriodData({ selectedMonth }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [operation, setOperation] = useState('expences');
 
-  const timeE =
-    selectedMonth.getFullYear() +
-    '-' +
-    ('0' + (selectedMonth.getMonth() + 1)).slice(-2);
-
   useEffect(() => {
-    dispatch(getTransactionPeriod(timeE));
-  }, [dispatch, timeE]);
+    dispatch(getTransactionPeriod('2023-05'));
+  }, [dispatch]);
 
   const expens = useSelector(
     state => state.transaction.transactionExpense.expensesData
