@@ -1,7 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTransactionExpense, getTransactionIncome} from '../../../store/transactionsOperations';
-import './FinancialSummary.css';
+import {
+  SummaryBlock,
+SummaryText,
+SummaryNum,
+SummaryExpenses,
+SummaryBreak,
+SummaryIncome
+} from './Financial.styled'
 
 const FinancialSummary = ({ selectedMonth }) => {
   const monthStats = useSelector(state => state.transaction.monthStatsExpenses);
@@ -47,13 +54,13 @@ const FinancialSummary = ({ selectedMonth }) => {
         return renderMonthValue(monthStats.Декабрь, monthStatsIncome.Декабрь);
       default:
         return (
-          <div className='summary-block'>
-            <div className='summary-text'>
-              expenses: <span className='summary-expenses summary-num'>0 UAH.</span>
-              <span className='summary-break'>|</span>
-              incomes: <span className='summary-income summary-num'>0 UAH.</span>
-            </div>
-          </div>
+          <SummaryBlock>
+            <SummaryText>
+              expenses: <SummaryNum><SummaryExpenses>0 UAH.</SummaryExpenses></SummaryNum>
+              <SummaryBreak>|</SummaryBreak>
+              incomes: <SummaryNum>0 UAH.</SummaryNum>
+            </SummaryText>
+          </SummaryBlock>
         );
     }
   };
@@ -68,15 +75,13 @@ const FinancialSummary = ({ selectedMonth }) => {
     }
   
     return (
-      <div className='summary-block'>
-        <div className='summary-text'>
-          expenses:
-          <span className='summary-expenses summary-num'>{expenseValue} UAH.</span>
-          <span className='summary-break'>|</span>
-          incomes:
-          <span className='summary-income summary-num'>{incomeValue} UAH.</span>
-        </div>
-      </div>
+      <SummaryBlock>
+      <SummaryText>
+        expenses: <SummaryNum><SummaryExpenses>{expenseValue} UAH.</SummaryExpenses></SummaryNum>
+        <SummaryBreak>|</SummaryBreak>
+        incomes: <SummaryNum><SummaryIncome>{incomeValue} UAH.</SummaryIncome></SummaryNum>
+      </SummaryText>
+    </SummaryBlock>
     );
   };
   

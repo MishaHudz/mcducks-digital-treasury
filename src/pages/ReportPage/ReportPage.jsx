@@ -15,7 +15,6 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PeriodSummary from './PeriodSummary/PeriodSummary';
 import FinancialSummary from './FinancialSummary/FinancialSummary';
-import './PeriodSummary/PerriodSummary.css'
 import TransactionPeriodData from 'components/TransactionPeriodData/TransactionPeriodData';
 
 function ReportPage() {
