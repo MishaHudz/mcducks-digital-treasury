@@ -62,7 +62,7 @@ export const Summary = () => {
         dispatch(getTransactionExpense());
       }
     }
-  }, [dispatch, accessToken, operation, monthStatsExpenses, monthStatsIncomes]);
+  }, [accessToken, dispatch, operation]);
 
   return (
     <SummaryWrapper>
