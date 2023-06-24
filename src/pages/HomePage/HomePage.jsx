@@ -89,11 +89,6 @@ function HomePage() {
                 <BalanceModal />
                 <ReportsLink />
               </TestBox>
-            </MediaQuery>
-
-            <ExpenseIncomeBtn />
-
-            <MediaQuery minWidth={768}>
               <ExpenseIncomeBtn />
             </MediaQuery>
             <OperationsBox>
