@@ -1,12 +1,6 @@
 import { useState } from 'react';
 import Select from 'react-select';
 import { expenses, incomes } from './categories';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { forwardRef } from 'react';
-import { enGB } from 'date-fns/locale';
-import { Input, ContainerDate } from './Calendar.styled';
-import './Calendar.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -28,6 +22,7 @@ import {
 import { categoryTranslationEnToRu } from './TranslateFunc';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import ContainerDates from './ContainerDate';
 
 export const Addtransaction = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -54,18 +49,6 @@ export const Addtransaction = () => {
       progress: undefined,
       theme: 'light',
     });
-
-  const ExampleCustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
-    <Input
-      value={value}
-      onClick={onClick}
-      onChange={onChange}
-      ref={ref}
-      onKeyDown={e => {
-        e.preventDefault();
-      }}
-    ></Input>
-  ));
 
   const time =
     startDate.getFullYear() +
@@ -124,16 +107,7 @@ export const Addtransaction = () => {
     <>
       <TransactionForm>
         <ToastContainer />
-        <ContainerDate>
-          <DatePicker
-            selected={startDate}
-            onChange={date => setStartDate(date)}
-            dateFormat="dd.MM.yyyy"
-            customInput={<ExampleCustomInput />}
-            locale={enGB}
-            maxDate={new Date()}
-          />
-        </ContainerDate>
+        <ContainerDates startDate={startDate} setStartDate={setStartDate} />
         <div>
           <Form onSubmit={handleSubmit}>
             <InputProduct
@@ -142,6 +116,7 @@ export const Addtransaction = () => {
               name="description"
               placeholder="Product description"
               value={descr}
+              pattern="^[a-zA-Z\s]+$"
               required
             />
             <Select
