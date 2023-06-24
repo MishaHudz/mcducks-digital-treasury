@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 
 export const ExitModal = styled(Modal)`
-  top: 20%;
+  top: 15%;
   left: 0%;
   right: 0%;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   gap: 70px;
   position: absolute;
@@ -62,4 +62,26 @@ export const Button = styled.button`
   &:active {
     transform: translateY(-1px);
   }
+`;
+
+export const CloseModalAddTransaction = styled.button`
+  display: flex;
+  align-items: center;
+  position: absolute;
+  gap: 4px;
+  background-color: transparent;
+  border: none;
+  margin-left: 0;
+  margin-right: auto;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #f6f7fb;
+  top: 10%;
+  left: 10%;
+  z-index: 10;
 `;
