@@ -1,18 +1,29 @@
 {
   "files": {
     "main.css": "/mcducks-digital-treasury/static/css/main.89869eae.css",
-    "main.js": "/mcducks-digital-treasury/static/js/main.ec3267e8.js",
+    "main.js": "/mcducks-digital-treasury/static/js/main.c3f998a4.js",
     "static/media/Rectangle.png": "/mcducks-digital-treasury/static/media/Rectangle.bc274d04e3cece71fb64.png",
     "static/media/Ellipse-8.png": "/mcducks-digital-treasury/static/media/Ellipse-8.fa12646c464dff543456.png",
     "static/media/walletStart.png": "/mcducks-digital-treasury/static/media/walletStart.ce2f753ea0a8b58aa53c.png",
     "static/media/coinHeader.png": "/mcducks-digital-treasury/static/media/coinHeader.508b4b37b5ba09f27877.png",
+    "static/media/technique.png": "/mcducks-digital-treasury/static/media/technique.85628d3d6f66cfd4926b.png",
+    "static/media/sports_hobbies.png": "/mcducks-digital-treasury/static/media/sports_hobbies.5cc5370409bf58a07962.png",
+    "static/media/transport.png": "/mcducks-digital-treasury/static/media/transport.1cd7d74b1de27bb26b25.png",
+    "static/media/other.png": "/mcducks-digital-treasury/static/media/other.ff491f29065c5aca4b59.png",
+    "static/media/health.png": "/mcducks-digital-treasury/static/media/health.e51930920e837da3d7b8.png",
+    "static/media/education.png": "/mcducks-digital-treasury/static/media/education.01d4189b317929321f31.png",
+    "static/media/alcohol.png": "/mcducks-digital-treasury/static/media/alcohol.0e2319362edb6cb74d0d.png",
+    "static/media/entertaiment.png": "/mcducks-digital-treasury/static/media/entertaiment.3ccb6b5bb332b142c2d0.png",
+    "static/media/products.png": "/mcducks-digital-treasury/static/media/products.184c5ccfc49529b5b244.png",
+    "static/media/communal_communication.png": "/mcducks-digital-treasury/static/media/communal_communication.149afd24949e432ef7bb.png",
+    "static/media/housing.png": "/mcducks-digital-treasury/static/media/housing.8c1d819ce1e0f53318a0.png",
     "static/media/icon.svg": "/mcducks-digital-treasury/static/media/icon.2649878e1556fff79d17a38b0892a692.svg",
     "index.html": "/mcducks-digital-treasury/index.html",
     "main.89869eae.css.map": "/mcducks-digital-treasury/static/css/main.89869eae.css.map",
-    "main.ec3267e8.js.map": "/mcducks-digital-treasury/static/js/main.ec3267e8.js.map"
+    "main.c3f998a4.js.map": "/mcducks-digital-treasury/static/js/main.c3f998a4.js.map"
   },
   "entrypoints": [
     "static/css/main.89869eae.css",
-    "static/js/main.ec3267e8.js"
+    "static/js/main.c3f998a4.js"
   ]
 }
