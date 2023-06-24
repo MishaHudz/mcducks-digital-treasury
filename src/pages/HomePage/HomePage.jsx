@@ -25,7 +25,6 @@ import {
   getTransactionIncome,
 } from 'store/transactionsOperations';
 import BalanceCenter from 'components/BalanceCenter/BalanceCenter';
-import BalanceModal from 'components/BalanceModal/BalanceModal';
 
 function HomePage() {
   const { accessToken } = useSelector(state => state.auth);
@@ -86,7 +85,6 @@ function HomePage() {
             <MediaQuery minWidth={768}>
               <TestBox>
                 <BalanceCenter />
-                <BalanceModal />
                 <ReportsLink />
               </TestBox>
               <ExpenseIncomeBtn />
