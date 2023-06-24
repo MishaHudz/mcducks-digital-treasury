@@ -4,7 +4,7 @@ import { Text } from './goToMain.styled';
 export const GoToMain = () => {
   const isMobile = useMediaQuery({ query: '(max-width:767px)' });
   return (
-    <GoToMainPage to="/">
+    <GoToMainPage to={{ pathname: '/', search: 'operation=expences' }}>
       <svg
         style={(isMobile && { marginRight: '0px' }) || { marginRight: '15px' }}
         xmlns="http://www.w3.org/2000/svg"
