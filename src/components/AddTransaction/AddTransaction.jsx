@@ -89,6 +89,7 @@ export const Addtransaction = () => {
       return;
     }
     operation === 'expences' &&
+      dispatch(addTransactionExpense(transactionForm));
 
     operation === 'income' && dispatch(addTransactionIncome(transactionForm));
 
