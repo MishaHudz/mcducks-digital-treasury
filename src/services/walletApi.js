@@ -38,6 +38,7 @@ export async function addTransactionIncomeApi(transactionForm) {
   const { data } = await axios.post('/transaction/income', {
     ...transactionForm,
   });
+
   return data;
 }
 export async function getTransactionIncomeApi() {
