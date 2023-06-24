@@ -45,6 +45,7 @@ function TransactionPeriodData({ selectedMonth }) {
   const expens = useSelector(
     state => state.transaction.transactionExpense.expensesData
   );
+  console.log(expens);
   const income = useSelector(
     state => state.transaction.transactionIncome.incomesData
   );
