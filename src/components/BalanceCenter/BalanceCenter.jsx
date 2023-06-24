@@ -15,14 +15,15 @@ const BalanceCenter = () => {
   const initialState = useSelector(store => store.auth.user.balance);
   const transaction = useSelector(store => store.auth.user.transactions);
   const { accessToken } = useSelector(state => state.auth);
+  const balance = useSelector(state => state.auth.user.balance);
 
   const render = transaction.length > 0 || initialState > 0;
 
   useEffect(() => {
-    if (accessToken) {
+    if (accessToken && balance === 0) {
       dispatch(getUserInfoOperation());
     }
-  }, [accessToken, dispatch]);
+  }, [accessToken, dispatch, balance]);
   return (
     <Forma>
       <Title>Balance:</Title>
