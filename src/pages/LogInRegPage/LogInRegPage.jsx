@@ -37,7 +37,7 @@ function LogInRegPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    accessToken && navigate('/');
+    accessToken && navigate({ pathname: '/', search: 'operation=expences' });
   }, [accessToken, navigate]);
 
   const handleEmail = e => {
