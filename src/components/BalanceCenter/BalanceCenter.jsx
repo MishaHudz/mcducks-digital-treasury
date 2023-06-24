@@ -32,7 +32,7 @@ const BalanceCenter = () => {
           name="balanceCenter"
           title="Field must contain only numbers"
           type="number"
-          value={!render ? input : initialState}
+          value={!render ? input : initialState.toFixed(2)}
           onChange={e => setInput(e.target.value)}
           disabled={isInputDisabled}
           isInputDisabled={render}
