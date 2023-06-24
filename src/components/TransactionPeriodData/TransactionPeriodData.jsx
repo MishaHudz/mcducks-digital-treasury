@@ -140,7 +140,7 @@ function TransactionPeriodData({ selectedMonth }) {
                     alt=""
                   />
                 </BoxStyled>
-                <TextStyled>{el[0]}</TextStyled>
+                <TextStyled>{el[0].split(',').join(', ')}</TextStyled>
               </ItemStyled>
             );
           }
