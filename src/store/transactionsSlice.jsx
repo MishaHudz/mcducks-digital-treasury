@@ -7,6 +7,7 @@ import {
   deleteTransaction,
   getTransactionPeriod,
 } from './transactionsOperations';
+import { deleteHelper } from 'components/helpers/deleteHelper';
 
 const initialState = {
   isLoading: false,
@@ -88,19 +89,13 @@ const transactionsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
-        let monthsExpenses;
-        let monthsIncomes;
-        if (Object.keys(payload)[0] === 'expenses') {
-          monthsExpenses = payload.monthsStats;
-        } else if (Object.keys(payload)[0] === 'incomes') {
-          monthsIncomes = payload.monthsStats;
-        }
+        const helper = deleteHelper(payload);
         return {
           ...state,
           isLoading: false,
           error: null,
-          monthStatsExpenses: monthsExpenses || [],
-          monthStatsIncome: monthsIncomes || [],
+          monthStatsExpenses: helper[0] || [],
+          monthStatsIncome: helper[1] || [],
           ...payload,
         };
       })
