@@ -39,7 +39,7 @@ export const Data = styled.input`
     outline: none;
     color: #f6f7fb;
   }
-  
+
   border: 2px solid #80848f;
   background-color: inherit;
   text-align: center;
