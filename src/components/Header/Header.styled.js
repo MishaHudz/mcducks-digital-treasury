@@ -22,14 +22,9 @@ export const BodyHeader = styled.header`
 
 export const Nav = styled.nav`
   padding: 12px 20px;
-  /* padding-top: 10px;
-  padding-bottom: 10px; */
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  /* width: 100%; */
 
   @media (min-width: 320px) {
     width: 320px;

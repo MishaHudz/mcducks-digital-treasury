@@ -6,7 +6,7 @@ import {
   SectionDiv,
   SectionImage,
   TestBox,
-  TestBoxMonth,
+
 } from './ReportPage.styled';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -16,6 +16,9 @@ import FinancialSummary from './FinancialSummary/FinancialSummary';
 import TransactionPeriodData from 'components/TransactionPeriodData/TransactionPeriodData';
 import { GoToMain } from 'components/goBack/goToMain';
 import BalanceCenter from 'components/BalanceCenter/BalanceCenter';
+
+import MediaQuery from 'react-responsive';
+
 
 function ReportPage() {
   const { accessToken } = useSelector(state => state.auth);
@@ -33,14 +36,24 @@ function ReportPage() {
         <SectionDiv>
           <TestBox>
             <GoToMain />
-            <BalanceCenter/>
-            <TestBoxMonth>
+
+            <MediaQuery maxWidth={767}>
+
               <PeriodSummary
                 currentDate={currentDate}
                 date={date}
                 setDate={setDate}
               />
-            </TestBoxMonth>
+            </MediaQuery>
+
+            <BalanceCenter />
+            <MediaQuery minWidth={768}>
+              <PeriodSummary
+                currentDate={currentDate}
+                date={date}
+                setDate={setDate}
+              />
+            </MediaQuery>
           </TestBox>
           <ReportBox>
             <FinancialSummary selectedMonth={date} />

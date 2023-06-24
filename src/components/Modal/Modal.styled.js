@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 export const ExitModal = styled(Modal)`
   top: 40%;
-  left: 40%;
+  left: 0%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,19 +16,26 @@ export const ExitModal = styled(Modal)`
   box-shadow: inset 0px 2px 14px rgba(132, 132, 132, 0.2);
   border-radius: 16px;
   filter: drop-shadow(0px 4px 100px rgba(0, 0, 0, 0.5));
-  animation: slide-in-elliptic-top-fwd 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    both;
-  @keyframes slide-in-elliptic-top-fwd {
+  animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  @keyframes slide-in-bck-center {
     0% {
-      transform: translateY(-600px) rotateX(-30deg) scale(0);
-      transform-origin: 50% 100%;
+      transform: translateZ(600px);
       opacity: 0;
     }
     100% {
-      transform: translateY(0) rotateX(0) scale(1);
-      transform-origin: 50% 1400px;
+      transform: translateZ(0);
       opacity: 1;
     }
+  }
+
+  @media (min-width: 768px) {
+    top: 40%;
+    left: 25%;
+  }
+
+  @media (min-width: 1280px) {
+    top: 40%;
+    left: 40%;
   }
 `;
 

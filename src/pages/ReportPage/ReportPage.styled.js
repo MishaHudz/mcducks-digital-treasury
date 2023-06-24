@@ -162,8 +162,6 @@ export const ButtonExIn = styled.button`
   }
 `;
 
-//===============test==============
-
 export const TestBox = styled.div`
   display: flex;
   gap: 16px;
@@ -171,12 +169,12 @@ export const TestBox = styled.div`
   justify-content: center;
   max-width: 280px;
   margin-bottom: 32px;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
 
   @media (min-width: 768px) {
     max-width: 704px;
-    justify-content: flex-end;
+    justify-content: space-between;
     flex-direction: row;
   }
 
@@ -211,23 +209,6 @@ export const TestTitle = styled.p`
   text-transform: uppercase;
   color: #80848f;
   margin: auto 0;
-`;
-
-export const TestBoxMonth = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  @media (min-width: 768px) {
-    max-width: 704px;
-    margin-left: 50px;
-  }
-
-  @media (min-width: 1280px) {
-    max-width: 1034px;
-    margin-left: 262px;
-  }
 `;
 
 export const TestBoxReportTitle = styled.p`

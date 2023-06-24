@@ -46,10 +46,13 @@ export const Data = styled.input`
 
   @media screen and (max-width: 767px) {
     border-radius: 22px 0px 0px 22px;
-    border-right: none;
     padding-top: 15px;
     padding-bottom: 14.5px;
     width: 140px;
+
+    ${({ isInputDisabled }) => {
+      return isInputDisabled ? 'border-radius: 22px 22px 22px 22px;' : '';
+    }}
   }
 
   @media screen and (min-width: 768px) {
@@ -67,4 +70,6 @@ export const Data = styled.input`
   }
 `;
 
-
+export const BoxBalance = styled.div`
+  display: flex;
+`;

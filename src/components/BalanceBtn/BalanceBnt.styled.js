@@ -26,6 +26,7 @@ export const Button = styled.button`
     padding-bottom: 14px;
     padding-right: auto;
     width: 140px;
+    border-left: none;
   }
   @media screen and (min-width: 768px) {
     text-align: center;

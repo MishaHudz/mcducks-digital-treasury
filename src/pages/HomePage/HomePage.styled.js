@@ -131,10 +131,14 @@ export const TestBox = styled.div`
 
   @media (min-width: 768px) {
     width: 704px;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 60px;
   }
 
   @media (min-width: 1280px) {
     width: 1098px;
+    margin-bottom: 8px;
   }
 `;
 

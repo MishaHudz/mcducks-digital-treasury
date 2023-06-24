@@ -3,23 +3,19 @@ import Modal from 'react-modal';
 
 export const ExitModal = styled(Modal)`
   top: 20%;
+  left: 0%;
+  right: 0%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  gap: 32px;
+  gap: 70px;
   position: absolute;
   width: 100%;
   height: 500px;
   background: #383847;
-
-  @media (min-width: 768px) {
-    width: 704px;
-  }
-
-  @media (min-width: 1280px) {
-    width: 1098px;
-  }
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 
 export const Title = styled.h2`
