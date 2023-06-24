@@ -1,11 +1,6 @@
 import React from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-import {
-  СurrentAll,
-  СurrentArrow,
-  СurrentText,
-  СurrentMonth,
-} from './PeriodSummary.styled';
+import { СurrentAll, СurrentText, СurrentMonth } from './PeriodSummary.styled';
 import { ButtonChange } from 'components/ChangeIncomExpense/ChangeIncomExpense.styled';
 
 const PeriodSummary = ({ currentDate, date, setDate }) => {
