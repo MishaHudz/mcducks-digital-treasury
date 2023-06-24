@@ -12,7 +12,7 @@ export const categoryTranslationEnToRu = name => {
       return 'Транспорт';
     case 'Housing':
       return 'Всё для дома';
-    case 'Technics':
+    case 'Technique':
       return 'Техника';
     case 'Communal, Communication':
       return 'Коммуналка и связь';
@@ -46,7 +46,7 @@ export const categoryTranslationRuToEn = name => {
     case 'Всё для дома':
       return 'Housing';
     case 'Техника':
-      return 'Technics';
+      return 'Technique';
     case 'Коммуналка и связь':
       return 'Communal,Communication';
     case 'Спорт и хобби':
