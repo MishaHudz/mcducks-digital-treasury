@@ -16,10 +16,11 @@ import coin from '../../images/coinHeader.png';
 import logout from '../../images/logoutHeader.png';
 import MediaQuery from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
-import { userLogout } from 'store/authOperation';
+// import { userLogout } from 'store/authOperation';
 
 import CustomModal from 'components/Modal/Modal';
 import { useState } from 'react';
+import { logOutAction } from 'store/authSlice';
 
 function Header() {
   const accessToken = useSelector(state => state.auth.accessToken);
@@ -34,7 +35,7 @@ function Header() {
   }
 
   function handleModalConfirm() {
-    dispatch(userLogout());
+    dispatch(logOutAction());
     setModalIsOpen(false);
   }
 
