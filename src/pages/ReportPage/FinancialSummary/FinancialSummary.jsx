@@ -19,6 +19,16 @@ const FinancialSummary = ({ selectedMonth }) => {
     state => state.transaction.monthStatsIncome
   );
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTransactionExpense());
+  }, [dispatch, selectedMonth]);
+
+  useEffect(() => {
+    dispatch(getTransactionIncome());
+  }, [dispatch, selectedMonth]);
+
   const renderMonthStats = () => {
     const selectedMonthIndex = selectedMonth.getMonth();
 

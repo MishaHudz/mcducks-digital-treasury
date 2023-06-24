@@ -133,7 +133,7 @@ function TransactionPeriodData({ selectedMonth }) {
                   });
                 }}
               >
-                <CommentTitle>{el[1].total}</CommentTitle>
+                <CommentTitle>{el[1].total.toFixed(2)}</CommentTitle>
                 <BoxStyled>
                   <img
                     src={
