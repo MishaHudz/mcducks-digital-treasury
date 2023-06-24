@@ -11,6 +11,7 @@ export const Button = styled.button`
   margin-left: 0px;
   border-radius: 0px 22px 22px 0px;
   border: 2px solid #80848f;
+  border-left: none;
   background-color: inherit;
   letter-spacing: 0.02em;
   cursor: pointer;

@@ -104,12 +104,16 @@ function HomePage() {
                     Add Transaction
                   </AddTransactionBtnTitle>
                 </AddTransactionBtn>
+
                 <ReportsLink />
+                <BalanceCenter />
+
                 <ContainerDates
                   startDate={startDate}
                   setStartDate={setStartDate}
                 />
               </MediaQuery>
+
               <MediaQuery minWidth={768}>
                 <Addtransaction />
               </MediaQuery>

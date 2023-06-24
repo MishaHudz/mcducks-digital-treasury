@@ -1,6 +1,7 @@
 import Modal from 'react-modal';
 import { BoxButton, ExitModal } from './AddTransactionModal.styled';
 import { Addtransaction } from 'components/AddTransaction/AddTransaction';
+import { GoToMain } from 'components/goBack/goToMain';
 
 Modal.setAppElement('#root');
 
@@ -23,6 +24,7 @@ function AddTransactionModal({
         },
       }}
     >
+      <GoToMain />
       <BoxButton>
         <Addtransaction isOpen={isOpen} mobStartDate={startDate} />
       </BoxButton>

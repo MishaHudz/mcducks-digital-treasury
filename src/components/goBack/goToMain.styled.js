@@ -5,18 +5,20 @@ export const GoToMainPage = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
+  /* width: 100px; */
   margin-right: 85px;
   @media (min-width: 1280px) {
     margin-right: auto;
   }
   @media (max-width: 767px) {
-    width: 109px;
+    /* width: 130px; */
+    margin-right: auto;
+    margin-left: -10px;
   }
 `;
 
 export const Text = styled.p`
- color: #c7ccdc;
+  color: #c7ccdc;
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.04em;
@@ -27,4 +29,4 @@ export const Text = styled.p`
     text-transform: uppercase;
     height: 12px;
   }
-`
+`;
