@@ -6,6 +6,18 @@ export const BodyHeader = styled.header`
   box-shadow: 0px 7px 24px rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: center;
+
+  animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  @keyframes slide-in-bck-center {
+    0% {
+      transform: translateZ(600px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateZ(0);
+      opacity: 1;
+    }
+  }
 `;
 
 export const Nav = styled.nav`
@@ -59,6 +71,18 @@ export const NLink = styled(NavLink)`
   &:hover {
     filter: brightness(1.2);
   }
+
+  animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  @keyframes slide-in-bck-center {
+    0% {
+      transform: translateZ(600px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateZ(0);
+      opacity: 1;
+    }
+  }
 `;
 
 export const Coin = styled.img`
@@ -99,6 +123,7 @@ export const Login = styled.p`
   font-size: 12px;
   line-height: 14px;
   color: #c7ccdc;
+  cursor: default;
 `;
 
 export const UserInfo = styled.div`
@@ -113,15 +138,14 @@ export const FirstLetter = styled.p`
   line-height: 14px;
   color: #c7ccdc;
   margin: 0px 0px 0px -8px;
-
   width: 32px;
   height: 32px;
   background: #56566b;
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: default;
 `;
 
 export const Line = styled.span`
