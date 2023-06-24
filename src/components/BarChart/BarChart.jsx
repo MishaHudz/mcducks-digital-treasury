@@ -156,19 +156,39 @@ function BarChart() {
         display: false,
       },
       datalabels: {
-        anchor: 'end',
-        align: 'top',
-        offset: 5,
-        color: '#C7CCDC',
-        formatter: (value, context) => {
-          const label1 = `${context.chart.data.labels[context.dataIndex]}`;
-          const label2 = `${value} UAH`;
-          //   console.log(context);
-          return `${label1} ${label2}`;
-        },
-        font: {
-          family: 'Roboto',
-          size: 10,
+        labels: {
+          label1: {
+            anchor: 'start',
+            align: 'top',
+            offset: 5,
+
+            color: '#C7CCDC',
+            formatter: (value, context) => {
+              const label1 = `                      ${
+                context.chart.data.labels[context.dataIndex]
+              }`;
+
+              return `${label1} `;
+            },
+            font: {
+              family: 'Roboto',
+              size: 10,
+            },
+          },
+          label2: {
+            anchor: 'end',
+            align: 'top',
+            offset: 5,
+            color: '#C7CCDC',
+            formatter: (value, context) => {
+              const label2 = `${value} UAH`;
+              return ` ${label2}            `;
+            },
+            font: {
+              family: 'Roboto',
+              size: 12,
+            },
+          },
         },
       },
     },
