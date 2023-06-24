@@ -9,8 +9,6 @@ import {
   OperationsBox,
   Section,
   TestBox,
-  TestButton,
-  TestTitle,
   SectionDiv,
   SectionImage,
   OperationsBoxTransaction,
@@ -26,6 +24,8 @@ import {
   getTransactionExpense,
   getTransactionIncome,
 } from 'store/transactionsOperations';
+import BalanceCenter from 'components/BalanceCenter/BalanceCenter';
+import BalanceModal from 'components/BalanceModal/BalanceModal';
 
 function HomePage() {
   const { accessToken } = useSelector(state => state.auth);
@@ -85,12 +85,13 @@ function HomePage() {
           <SectionDiv>
             <MediaQuery minWidth={768}>
               <TestBox>
-                <TestTitle>Balance:</TestTitle>
-                <TestButton>00.00 UAH</TestButton>
-                <TestButton>Confirm</TestButton>
+                <BalanceCenter />
+                <BalanceModal />
                 <ReportsLink />
               </TestBox>
             </MediaQuery>
+
+            <ExpenseIncomeBtn />
 
             <MediaQuery minWidth={768}>
               <ExpenseIncomeBtn />

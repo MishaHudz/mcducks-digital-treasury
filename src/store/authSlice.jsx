@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, userLogin, userLogout } from './authOperation';
+import { balancePatch, getUserInfoOperation, register, userLogin, userLogout } from './authOperation';
 
 const initialState = {
   user: {
     email: null,
     balance: 0,
     id: null,
+    transactions: [],
   },
   sid: null,
   accessToken: null,
@@ -39,11 +40,23 @@ const authSlice = createSlice({
         state.user.email = null;
         state.user.balance = null;
         state.user.id = null;
+        state.user.transactions = [];
         state.sid = null;
         state.accessToken = null;
         state.refreshToken = null;
         state.error = null;
         state.isLoading = false;
+      })
+      .addCase(balancePatch.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.user.balance = payload.newBalance;
+      })
+      .addCase(getUserInfoOperation.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.user.balance = payload.balance;
+        state.user.transactions = payload.transactions;
       })
       .addMatcher(
         action => {
