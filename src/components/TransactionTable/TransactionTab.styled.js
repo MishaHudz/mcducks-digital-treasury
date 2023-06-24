@@ -15,7 +15,7 @@ export const ContainerStyled = styled.div`
   }
 `;
 
-export const ScrollWrapStyled = styled.div`
+export const TableList = styled.div`
   overflow-x: hidden;
   overflow-y: scroll;
 
@@ -41,16 +41,41 @@ export const ScrollWrapStyled = styled.div`
     margin-top: 2px;
   }
 
-  @media screen and (min-width: 320px) {
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    height: 360px;
+    // overflow: auto;
+    &::-webkit-scrollbar {
+      display: block;
+      height: 82px;
+      width: 1px;
+      -webkit-appearance: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-track-piece:end {
+      background-color: transparent;
+      margin-bottom: 2px;
+    }
+    &::-webkit-scrollbar-track-piece:start {
+      background-color: transparent;
+      margin-top: 2px;
+    }
   }
+
   @media screen and (min-width: 768px) {
     min-width: 624px;
     max-width: 624px;
-    max-height: 360px;
+   height: 360px;
   }
   @media screen and (min-width: 1280px) {
     max-width: 746px;
-    max-height: 360px;
+    height: 360px;
   }
 `;
 
@@ -107,7 +132,6 @@ export const TableRowStyled = styled.tr`
   line-height: 1.17;
   color: #c7ccdc;
   // background: #474759;
-  
 `;
 
 export const TableColumnStyled = styled.td`
