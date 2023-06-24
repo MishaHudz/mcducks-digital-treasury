@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { ButtonBox, ButtonExIn } from './ExpenceIncomeBtn.styled';
+import { ButtonBox, ButtonEx, ButtonIn } from './ExpenceIncomeBtn.styled';
 import { useEffect, useState } from 'react';
 
 function ExpenseIncomeBtn() {
@@ -9,6 +9,8 @@ function ExpenseIncomeBtn() {
     color: '#60c470',
     filter: 'brightness(1.2)',
   });
+
+  const operation = searchParams.get('operation');
 
   function onIncomeButtonClick() {
     setSearchParams({ operation: 'income' });
@@ -31,20 +33,23 @@ function ExpenseIncomeBtn() {
     }
   }, [searchParams]);
 
-  // function onLogButtonClick() {
-  //     console.log(searchParams.get('operation'));
-  //     const activeBtn = searchParams.get('operation');
-  // }
-
   return (
     <>
       <ButtonBox>
-        <ButtonExIn onClick={onExpencesButtonClick} style={activeStyleExpenses}>
+        <ButtonEx
+          isActive={operation === 'expences'}
+          onClick={onExpencesButtonClick}
+          style={activeStyleExpenses}
+        >
           Expenses
-        </ButtonExIn>
-        <ButtonExIn onClick={onIncomeButtonClick} style={activeStyleIncome}>
+        </ButtonEx>
+        <ButtonIn
+          isActive={operation === 'income'}
+          onClick={onIncomeButtonClick}
+          style={activeStyleIncome}
+        >
           Income
-        </ButtonExIn>
+        </ButtonIn>
       </ButtonBox>
     </>
   );

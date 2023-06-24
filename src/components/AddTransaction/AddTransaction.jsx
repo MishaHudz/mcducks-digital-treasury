@@ -22,8 +22,9 @@ import { categoryTranslationEnToRu } from './TranslateFunc';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ContainerDates from './ContainerDate';
+import MediaQuery, { useMediaQuery } from 'react-responsive';
 
-export const Addtransaction = () => {
+export const Addtransaction = ({ isOpen, mobStartDate }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [selectedOption, setSelectedOption] = useState('');
   const [descr, setDescription] = useState('');
@@ -35,7 +36,7 @@ export const Addtransaction = () => {
     setOperation(searchParams.get('operation'));
   }, [searchParams]);
 
-  // const { accessToken } = useSelector(state => state.auth);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const notify = () =>
     toast.info('Please enter a positive number', {
@@ -70,18 +71,6 @@ export const Addtransaction = () => {
     category: categoryTranslationEnToRu(selectedOption.label),
   };
 
-  // useEffect(() => {
-  //   if (accessToken) {
-  //     dispatch(
-  //       getTransactionPeriod(
-  //         startDate.getFullYear() +
-  //           '-' +
-  //           ('0' + (startDate.getMonth() + 1)).slice(-2)
-  //       )
-  //     );
-  //   }
-  // }, [accessToken, startDate, dispatch]);
-
   const handleSubmit = e => {
     e.preventDefault();
     if (summ < 0) {
@@ -96,49 +85,107 @@ export const Addtransaction = () => {
     formreset();
   };
 
+  useEffect(() => {
+    if (isMobile === true) {
+      setStartDate(mobStartDate);
+    }
+  }, [isMobile, mobStartDate]);
+
   return (
     <>
       <TransactionForm>
         <ToastContainer />
-        <ContainerDates startDate={startDate} setStartDate={setStartDate} />
+        <MediaQuery minWidth={768}>
+          <ContainerDates startDate={startDate} setStartDate={setStartDate} />
+        </MediaQuery>
         <div>
-          <Form onSubmit={handleSubmit}>
-            <InputProduct
-              type="text"
-              onChange={e => setDescription(e.target.value)}
-              name="description"
-              placeholder="Product description"
-              value={descr}
-              pattern="^[a-zA-Z\s]+$"
-              required
-            />
-            <Select
-              className="select-container"
-              classNamePrefix="select"
-              menuShouldBlockScroll={true}
-              menuShouldScrollIntoView={false}
-              options={operation === 'expences' ? expenses : incomes}
-              name="category"
-              placeholder="Product category"
-              required
-              value={selectedOption}
-              onChange={option => setSelectedOption(option)}
-            />
-            <InputCalc
-              type="number"
-              name="amount"
-              placeholder="0.00"
-              onChange={e => setSumm(e.target.value)}
-              value={summ}
-              required
-            />
-            <ContainerBtn>
-              <BtnInput type="submit">Input</BtnInput>
-              <BtnClear type="reset" onClick={formreset}>
-                Clear
-              </BtnClear>
-            </ContainerBtn>
-          </Form>
+          <MediaQuery maxWidth={767}>
+            <>
+              {!isOpen && (
+                <ContainerDates
+                  startDate={startDate}
+                  setStartDate={setStartDate}
+                />
+              )}
+
+              <Form onSubmit={handleSubmit}>
+                <InputProduct
+                  type="text"
+                  onChange={e => setDescription(e.target.value)}
+                  name="description"
+                  placeholder="Product description"
+                  value={descr}
+                  pattern="^[a-zA-Z\s]+$"
+                  required
+                />
+                <Select
+                  className="select-container"
+                  classNamePrefix="select"
+                  menuShouldBlockScroll={true}
+                  menuShouldScrollIntoView={false}
+                  options={operation === 'expences' ? expenses : incomes}
+                  name="category"
+                  placeholder="Product category"
+                  required
+                  value={selectedOption}
+                  onChange={option => setSelectedOption(option)}
+                />
+                <InputCalc
+                  type="number"
+                  name="amount"
+                  placeholder="0.00"
+                  onChange={e => setSumm(e.target.value)}
+                  value={summ}
+                  required
+                />
+                <ContainerBtn>
+                  <BtnInput type="submit">Input</BtnInput>
+                  <BtnClear type="reset" onClick={formreset}>
+                    Clear
+                  </BtnClear>
+                </ContainerBtn>
+              </Form>
+            </>
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <Form onSubmit={handleSubmit}>
+              <InputProduct
+                type="text"
+                onChange={e => setDescription(e.target.value)}
+                name="description"
+                placeholder="Product description"
+                value={descr}
+                pattern="^[a-zA-Z\s]+$"
+                required
+              />
+              <Select
+                className="select-container"
+                classNamePrefix="select"
+                menuShouldBlockScroll={true}
+                menuShouldScrollIntoView={false}
+                options={operation === 'expences' ? expenses : incomes}
+                name="category"
+                placeholder="Product category"
+                required
+                value={selectedOption}
+                onChange={option => setSelectedOption(option)}
+              />
+              <InputCalc
+                type="number"
+                name="amount"
+                placeholder="0.00"
+                onChange={e => setSumm(e.target.value)}
+                value={summ}
+                required
+              />
+              <ContainerBtn>
+                <BtnInput type="submit">Input</BtnInput>
+                <BtnClear type="reset" onClick={formreset}>
+                  Clear
+                </BtnClear>
+              </ContainerBtn>
+            </Form>
+          </MediaQuery>
         </div>
       </TransactionForm>
     </>

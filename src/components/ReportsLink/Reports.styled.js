@@ -17,5 +17,5 @@ export const BoxReportTitle = styled.p`
   text-align: right;
   letter-spacing: 0.04em;
   color: rgba(199, 204, 220, 0.5);
-  margin-left: 300px;
+  /* margin-left: 300px; */
 `;
