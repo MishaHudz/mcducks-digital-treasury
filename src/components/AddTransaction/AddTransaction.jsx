@@ -13,11 +13,10 @@ import {
   ContainerBtn,
 } from './AddTransaction.styled';
 import './AddTransaction.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   addTransactionExpense,
   addTransactionIncome,
-  getTransactionPeriod,
 } from 'store/transactionsOperations';
 import { categoryTranslationEnToRu } from './TranslateFunc';
 import { useEffect } from 'react';
@@ -36,7 +35,7 @@ export const Addtransaction = () => {
     setOperation(searchParams.get('operation'));
   }, [searchParams]);
 
-  const { accessToken } = useSelector(state => state.auth);
+  // const { accessToken } = useSelector(state => state.auth);
 
   const notify = () =>
     toast.info('Please enter a positive number', {
@@ -64,7 +63,6 @@ export const Addtransaction = () => {
     setDescription('');
     setSelectedOption('');
   };
-
   const transactionForm = {
     description: descr,
     amount: Number(summ),
@@ -72,17 +70,17 @@ export const Addtransaction = () => {
     category: categoryTranslationEnToRu(selectedOption.label),
   };
 
-  useEffect(() => {
-    if (accessToken) {
-      dispatch(
-        getTransactionPeriod(
-          startDate.getFullYear() +
-            '-' +
-            ('0' + (startDate.getMonth() + 1)).slice(-2)
-        )
-      );
-    }
-  }, [accessToken, startDate, dispatch]);
+  // useEffect(() => {
+  //   if (accessToken) {
+  //     dispatch(
+  //       getTransactionPeriod(
+  //         startDate.getFullYear() +
+  //           '-' +
+  //           ('0' + (startDate.getMonth() + 1)).slice(-2)
+  //       )
+  //     );
+  //   }
+  // }, [accessToken, startDate, dispatch]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -90,16 +88,10 @@ export const Addtransaction = () => {
       notify();
       return;
     }
-    dispatch(
-      operation === 'expences'
-        ? addTransactionExpense(transactionForm)
-        : addTransactionIncome({
-            description: descr,
-            amount: summ,
-            date: time,
-            category: categoryTranslationEnToRu(selectedOption.label),
-          })
-    );
+    operation === 'expences' &&
+
+    operation === 'income' && dispatch(addTransactionIncome(transactionForm));
+
     formreset();
   };
 

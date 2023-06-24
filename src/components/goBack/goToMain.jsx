@@ -2,7 +2,7 @@ import { GoToMainPage } from './goToMain.styled';
 
 export const GoToMain = () => {
   return (
-    <GoToMainPage to="/">
+    <GoToMainPage to={{ pathname: '/', search: 'operation=expences' }}>
       <svg
         style={{ marginRight: '15px' }}
         xmlns="http://www.w3.org/2000/svg"

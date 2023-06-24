@@ -48,9 +48,13 @@ function TransactionPeriodData({ selectedMonth }) {
     state => state.transaction.transactionIncome.incomesData
   );
 
-  const incomeArr = Object.keys(income).length && Object.entries(income);
+  const incomeArr = income
+    ? Object.keys(income).length && Object.entries(income)
+    : {};
 
-  const expensArr = Object.keys(expens).length && Object.entries(expens);
+  const expensArr = expens
+    ? Object.keys(expens).length && Object.entries(expens)
+    : {};
 
   const englIncomeArr = Object.keys(incomeArr).length
     ? incomeArr.map(el => {
