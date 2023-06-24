@@ -1,5 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { balancePatch, getUserInfoOperation, register, userLogin, userLogout } from './authOperation';
+import {
+  balancePatch,
+  getUserInfoOperation,
+  register,
+  userLogin,
+  userLogout,
+} from './authOperation';
+import {
+  addTransactionExpense,
+  addTransactionIncome,
+  deleteTransaction,
+} from './transactionsOperations';
 
 const initialState = {
   user: {
@@ -58,6 +69,21 @@ const authSlice = createSlice({
         state.user.balance = payload.balance;
         state.user.transactions = payload.transactions;
       })
+      .addCase(addTransactionIncome.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.user.balance = payload[0];
+      })
+      .addCase(addTransactionExpense.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.user.balance = payload[0];
+      })
+      .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.user.balance = payload.newBalance;
+      })
       .addMatcher(
         action => {
           return action.type.endsWith('/pending');
@@ -79,6 +105,3 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-
-// popov@mail.com'
-//123123123
