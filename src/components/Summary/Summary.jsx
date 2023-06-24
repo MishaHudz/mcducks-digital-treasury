@@ -14,14 +14,13 @@ import {
   getTransactionExpense,
   getTransactionIncome,
 } from 'store/transactionsOperations';
-
+import {
+  selectMonthExpenses,
+  selectMonthIncome,
+} from 'store/transactionsSelectors';
 export const Summary = () => {
-  const monthStatsExpenses = useSelector(
-    state => state.transaction.monthStatsExpenses
-  );
-  const monthStatsIncomes = useSelector(
-    state => state.transaction.monthStatsIncome
-  );
+  const monthStatsExpenses = useSelector(selectMonthExpenses);
+  const monthStatsIncomes = useSelector(selectMonthIncome);
   const { accessToken } = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const location = useLocation();
@@ -62,7 +61,7 @@ export const Summary = () => {
         dispatch(getTransactionExpense());
       }
     }
-  }, [dispatch, accessToken, operation, monthStatsExpenses, monthStatsIncomes]);
+  }, [accessToken, dispatch, operation]);
 
   return (
     <SummaryWrapper>

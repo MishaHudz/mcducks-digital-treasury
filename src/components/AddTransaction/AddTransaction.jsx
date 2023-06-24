@@ -13,11 +13,10 @@ import {
   ContainerBtn,
 } from './AddTransaction.styled';
 import './AddTransaction.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   addTransactionExpense,
   addTransactionIncome,
-  getTransactionPeriod,
 } from 'store/transactionsOperations';
 import { categoryTranslationEnToRu } from './TranslateFunc';
 import { useEffect } from 'react';
@@ -37,7 +36,6 @@ export const Addtransaction = ({ isOpen, mobStartDate }) => {
     setOperation(searchParams.get('operation'));
   }, [searchParams]);
 
-  const { accessToken } = useSelector(state => state.auth);
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const notify = () =>
@@ -66,7 +64,6 @@ export const Addtransaction = ({ isOpen, mobStartDate }) => {
     setDescription('');
     setSelectedOption('');
   };
-
   const transactionForm = {
     description: descr,
     amount: Number(summ),
@@ -74,34 +71,17 @@ export const Addtransaction = ({ isOpen, mobStartDate }) => {
     category: categoryTranslationEnToRu(selectedOption.label),
   };
 
-  useEffect(() => {
-    if (accessToken) {
-      dispatch(
-        getTransactionPeriod(
-          startDate.getFullYear() +
-            '-' +
-            ('0' + (startDate.getMonth() + 1)).slice(-2)
-        )
-      );
-    }
-  }, [accessToken, startDate, dispatch]);
-
   const handleSubmit = e => {
     e.preventDefault();
     if (summ < 0) {
       notify();
       return;
     }
-    dispatch(
-      operation === 'expences'
-        ? addTransactionExpense(transactionForm)
-        : addTransactionIncome({
-            description: descr,
-            amount: summ,
-            date: time,
-            category: categoryTranslationEnToRu(selectedOption.label),
-          })
-    );
+    operation === 'expences' &&
+      dispatch(addTransactionExpense(transactionForm));
+
+    operation === 'income' && dispatch(addTransactionIncome(transactionForm));
+
     formreset();
   };
 

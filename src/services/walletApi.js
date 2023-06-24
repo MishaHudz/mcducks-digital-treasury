@@ -35,49 +35,55 @@ export async function userLogoutApi(userdata) {
 /* ================== TRANSACTIONS =========================== */
 
 export async function addTransactionIncomeApi(transactionForm) {
-  const {data} = await axios.post('/transaction/income', { ...transactionForm });
-    return data; 
-  }
+  const { data } = await axios.post('/transaction/income', {
+    ...transactionForm,
+  });
+
+  return data;
+}
 export async function getTransactionIncomeApi() {
-const {data} = await axios.get('/transaction/income');
-  return data;  
-  }
+  const { data } = await axios.get('/transaction/income');
+  return data;
+}
 export async function addTransactionExpenseApi(transactionForm) {
-  const {data} = await axios.post('/transaction/expense', { ...transactionForm });
-  return data; 
-  }
+  const { data } = await axios.post('/transaction/expense', {
+    ...transactionForm,
+  });
+  return data;
+}
 export async function getTransactionExpenseApi() {
   const { data } = await axios.get('/transaction/expense');
-      return data;
-  }
+  return data;
+}
 export async function deleteTransactionApi(transactionId) {
-  const {data} = await axios.delete(`/transaction/${transactionId}`);
-      return data;
-    }
-  
+  const { data } = await axios.delete(`/transaction/${transactionId}`);
+  return data;
+}
+
 export async function getTransactionIncomeCategoriesApi() {
-  const {data} = await axios.get('/transaction/income-categories');
-      return data;
-    }
-  
-export  async function getTransactionExpenseCategoriesApi() {
-    const {data} = await axios.get('/transaction/expense-categories');
-      return data;
-    }
-  
-export  async function getTransactionPeriodDataApi(date) {
-    const {data} = await axios.get(`/transaction/period-data?date=${date}`);
-      return data;
-  }
-    
+  const { data } = await axios.get('/transaction/income-categories');
+  return data;
+}
+
+export async function getTransactionExpenseCategoriesApi() {
+  const { data } = await axios.get('/transaction/expense-categories');
+  return data;
+}
+
+export async function getTransactionPeriodDataApi(date) {
+  const { data } = await axios.get(`/transaction/period-data?date=${date}`);
+  return data;
+}
+
 export async function userBalance(newBalance) {
-    const {data} = await axios.patch(`/user/balance`,{"newBalance": newBalance});
-    console.log(data);
-        return data;
-      }
+  const { data } = await axios.patch(`/user/balance`, {
+    newBalance: newBalance,
+  });
+  console.log(data);
+  return data;
+}
 
 export async function getUserInfo() {
-        const {data} = await axios(`/user`);
-        console.log(data);
-            return data;
-          }
+  const { data } = await axios(`/user`);
+  return data;
+}
