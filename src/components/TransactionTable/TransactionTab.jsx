@@ -3,7 +3,7 @@ import {
   TableHeadRowStyled,
   TableHeadColumnStyled,
   TableColumnStyled,
-  ScrollWrapStyled,
+  TableList,
   TableRowStyled,
   WrapStyled,
   ListStyled,
@@ -69,6 +69,23 @@ const TransactionTable = () => {
     setShowModal(false);
   };
 
+  const initialRowsCount = 9;
+  const initialRows = Array(Math.max(initialRowsCount - transaction.length, 0))
+    .fill(null)
+    .map((_, index) => ({
+      _id: `empty-${transaction.length + index}`,
+      date: '',
+      description: '',
+      category: '',
+      amount: '',
+      hasTransaction: false,
+    }));
+
+  const transactions = [
+    ...transaction.map(item => ({ ...item, hasTransaction: true })),
+    ...initialRows,
+  ];
+
   const mobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   return (
@@ -86,10 +103,10 @@ const TransactionTable = () => {
               </TableHeadRowStyled>
             </thead>
           </TableStyled>
-          <ScrollWrapStyled>
+          <TableList>
             <TableStyled>
               <tbody>
-                {transaction.map(item => (
+                {transactions.map(item => (
                   <TableRowStyled key={item._id}>
                     <TableColumnStyled> {item.date}</TableColumnStyled>
                     <TableColumnStyled>{item.description}</TableColumnStyled>
@@ -105,13 +122,16 @@ const TransactionTable = () => {
                       {item.amount === ''
                         ? ''
                         : status === 'income'
-                        ? item.amount.toFixed(2)
+                        ? `${item.amount.toFixed(2)} UAH.`
                         : `-${item.amount.toFixed(2)} UAH.`}
                     </TableColumnStyled>
                     <TableColumnStyled>
                       <BtnDelStyled
                         type="button"
                         onClick={() => handleOpen([item._id, status])}
+                        style={{
+                          display: item.hasTransaction ? 'block' : 'none',
+                        }}
                       >
                         <svg>
                           <use href={icon + '#icon-delete'}></use>
@@ -122,13 +142,13 @@ const TransactionTable = () => {
                 ))}
               </tbody>
             </TableStyled>
-          </ScrollWrapStyled>
+          </TableList>
           {showModal && (
             <ModalTransaction onClose={handleClose} onConfirm={handleDelete} />
           )}
         </>
       ) : (
-        <ScrollWrapStyled>
+        <TableList>
           <WrapStyled>
             <ListStyled>
               {transaction.map(item => (
@@ -152,7 +172,7 @@ const TransactionTable = () => {
                       {item.amount === ''
                         ? ''
                         : status === 'income'
-                        ? item.amount.toFixed(2)
+                        ? `${item.amount.toFixed(2)} UAH.`
                         : `-${item.amount.toFixed(2)} UAH.`}
                     </AmountStyled>
                     <BtnDelStyled
@@ -168,7 +188,7 @@ const TransactionTable = () => {
               ))}
             </ListStyled>
           </WrapStyled>
-        </ScrollWrapStyled>
+        </TableList>
       )}
       {showModal && (
         <ModalTransaction onClose={handleClose} onConfirm={handleDelete} />
