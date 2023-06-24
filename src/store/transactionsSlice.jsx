@@ -7,6 +7,7 @@ import {
   deleteTransaction,
   getTransactionPeriod,
 } from './transactionsOperations';
+import { deleteHelper } from 'components/helpers/deleteHelper';
 
 const initialState = {
   isLoading: false,
@@ -88,10 +89,13 @@ const transactionsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
+        const helper = deleteHelper(payload);
         return {
           ...state,
           isLoading: false,
           error: null,
+          monthStatsExpenses: helper[0] || [],
+          monthStatsIncome: helper[1] || [],
           ...payload,
         };
       })
