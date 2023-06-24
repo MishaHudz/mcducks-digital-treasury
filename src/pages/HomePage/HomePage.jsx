@@ -9,13 +9,14 @@ import {
   OperationsBox,
   Section,
   TestBox,
-  TestButton,
-  TestTitle,
   SectionDiv,
   SectionImage,
   OperationsBoxTransaction,
 } from './HomePage.styled';
 import ExpenseIncomeBtn from 'components/ExpenseIncomeBtn/ExpenseIncomeBtn';
+import BalanceCenter from 'components/BalanceCenter/BalanceCenter';
+import BalanceModal from 'components/BalanceModal/BalanceModal';
+
 
 function HomePage() {
   const { accessToken } = useSelector(state => state.auth);
@@ -38,9 +39,8 @@ function HomePage() {
         <SectionImage>
           <SectionDiv>
             <TestBox>
-              <TestTitle>Balance:</TestTitle>
-              <TestButton>00.00 UAH</TestButton>
-              <TestButton>Confirm</TestButton>
+             <BalanceCenter/>
+             <BalanceModal/>
               <ReportsLink />
             </TestBox>
 
