@@ -20,7 +20,7 @@ const BalanceCenter = () => {
   const render = transaction.length > 0 || initialState > 0;
 
   useEffect(() => {
-    if (accessToken && balance === 0) {
+    if (accessToken && !balance) {
       dispatch(getUserInfoOperation());
     }
   }, [accessToken, dispatch, balance]);
