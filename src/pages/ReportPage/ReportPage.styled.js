@@ -3,12 +3,6 @@ import rectangle from '../../images/Rectangle.png';
 import ellipse from '../../images/Ellipse-8.png';
 
 export const Section = styled.section`
-  background-image: url(${rectangle});
-
-  background-repeat: no-repeat;
-  background-size: 110%;
-  background-position-x: -40%;
-  background-position-y: -20%;
   height: 100%;
   animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   @keyframes slide-in-bck-center {
@@ -21,15 +15,33 @@ export const Section = styled.section`
       opacity: 1;
     }
   }
+
+  @media (min-width: 768px) {
+    background-image: url(${rectangle});
+    background-repeat: no-repeat;
+    background-size: 110%;
+    background-position-x: -40%;
+    background-position-y: -20%;
+  }
 `;
 
 export const SectionImage = styled.section`
   background-image: url(${ellipse});
   background-size: 600px;
   background-repeat: no-repeat;
-  background-position-y: -20%;
-  background-position-x: 2%;
+  background-position-y: -50%;
+  background-position-x: 110%;
   background-clip: content-box;
+
+  @media (min-width: 768px) {
+    background-position-y: -30%;
+    background-position-x: -70%;
+  }
+
+  @media (min-width: 1280px) {
+    background-position-y: -30%;
+    background-position-x: -20%;
+  }
 `;
 
 export const SectionDiv = styled.div`
@@ -40,7 +52,7 @@ export const SectionDiv = styled.div`
 
   @media (min-width: 768px) {
     width: 768px;
-    padding: 0px 32px 40px 32px;
+    padding: 50px 32px 40px 32px;
   }
 
   @media (min-width: 1280px) {
@@ -61,6 +73,15 @@ export const ReportTopBox = styled.div`
     rgba(56, 56, 71, 0.29) 107.94%
   );
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+  max-width: 280px;
+
+  @media (min-width: 768px) {
+    max-width: 704px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 1034px;
+  }
 `;
 
 export const ReportMiddleBox = styled.div`
@@ -68,25 +89,47 @@ export const ReportMiddleBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  min-height: 346px;
-  background: linear-gradient(
-    115.74deg,
-    #383847 23.54%,
-    rgba(56, 56, 71, 0.29) 107.94%
-  );
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+  /* min-height: 346px; */
 
+  max-width: 280px;
   padding-top: 20px;
   padding-bottom: 20px;
   align-items: center;
   flex-wrap: wrap;
+
+  @media (min-width: 768px) {
+    max-width: 704px;
+    background: linear-gradient(
+      115.74deg,
+      #383847 23.54%,
+      rgba(56, 56, 71, 0.29) 107.94%
+    );
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 1034px;
+    padding-bottom: 20px;
+  }
 `;
 
 export const ReportBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 60px;
-  width: 1034px;
+  max-width: 280px;
+
+  @media (min-width: 768px) {
+    max-width: 704px;
+    /* flex-direction: row; */
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 1034px;
+    /* flex-direction: column; */
+  }
 `;
 
 export const ButtonBox = styled.div`
@@ -125,9 +168,21 @@ export const TestBox = styled.div`
   display: flex;
   gap: 16px;
   margin-bottom: 8px;
-  justify-content: flex-end;
-  width: 1034px;
+  justify-content: center;
+  max-width: 280px;
   margin-bottom: 32px;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    max-width: 704px;
+    justify-content: flex-end;
+    flex-direction: row;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 1034px;
+  }
 `;
 
 export const TestButton = styled.button`
@@ -163,7 +218,16 @@ export const TestBoxMonth = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 262px;
+
+  @media (min-width: 768px) {
+    max-width: 704px;
+    margin-left: 50px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 1034px;
+    margin-left: 262px;
+  }
 `;
 
 export const TestBoxReportTitle = styled.p`

@@ -25,6 +25,16 @@ export const Form = styled.form`
     flex-wrap: wrap;
     align-items: center;
   }
+
+  @media (min-width: 768px) {
+    flex-wrap: wrap;
+    row-gap: 32px;
+    justify-content: center;
+  }
+
+  @media (min-width: 1280px) {
+    flex-wrap: nowrap;
+  }
 `;
 export const InputProduct = styled.input`
   width: 280px;
@@ -133,6 +143,7 @@ export const BtnInput = styled.button`
   &:hover {
     box-shadow: 1px 3px 5px rgba(96, 196, 112, 0.35);
     background: #3d944c;
+    transition: all 0.3s ease 0s;
   }
   &:focus {
     box-shadow: 1px 3px 5px rgba(96, 196, 112, 0.35);
@@ -153,6 +164,7 @@ export const BtnClear = styled.button`
   text-transform: uppercase;
   color: #f6f7fb;
   cursor: pointer;
+  transition: all 0.3s ease 0s;
   @media (min-width: 768px) {
     padding: 12px 37px;
     text-align: center;
@@ -164,6 +176,7 @@ export const BtnClear = styled.button`
   &:hover {
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.15);
     background-color: rgb(70, 70, 88);
+
     &:focus {
       box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.15);
       background-color: rgb(70, 70, 88);
@@ -183,3 +196,5 @@ export const ContainerBtn = styled.div`
     padding-left: 32px;
   }
 `;
+
+export const AddTransactionBtn = styled.button``;

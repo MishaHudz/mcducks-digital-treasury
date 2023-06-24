@@ -10,22 +10,23 @@ import {
   ListStyled,
   TextStyled,
 } from './TransactionPeriodData.styled';
-import Alcohol from '../../images/transactionImages/alcohol.png';
-import Communal_Communication from '../../images/transactionImages/communal.png';
-import Education from '../../images/transactionImages/education.png';
-import Entertainment from '../../images/transactionImages/entertainment.png';
-import Health from '../../images/transactionImages/health.png';
-import Housing from '../../images/transactionImages/housing.png';
-import Products from '../../images/transactionImages/products.png';
-import Other from '../../images/transactionImages/other.png';
-import Sports_Hobbies from '../../images/transactionImages/sports.png';
-import Technique from '../../images/transactionImages/technique.png';
-import Transport from '../../images/transactionImages/transport.png';
-import Additional_income from '../../images/transactionImages/walletcar.png';
-import Salary from '../../images/transactionImages/sallary.png';
 import { useSearchParams } from 'react-router-dom';
 import ChangeIncomExpense from 'components/ChangeIncomExpense/ChangeIncomExpense';
 import { useState } from 'react';
+
+import Alcohol from '../../images/icons/alcohol.png';
+import Communal_Communication from '../../images/icons/communal_communication.png';
+import Education from '../../images/icons/education.png';
+import Entertainment from '../../images/icons/entertaiment.png';
+import Health from '../../images/icons/health.png';
+import Housing from '../../images/icons/housing.png';
+import Products from '../../images/icons/products.png';
+import Other from '../../images/icons/other.png';
+import Sports_Hobbies from '../../images/icons/sports_hobbies.png';
+import Technique from '../../images/icons/technique.png';
+import Transport from '../../images/icons/transport.png';
+import Additional_income from '../../images/icons/add_income.png';
+import Salary from '../../images/icons/salary.png';
 
 function TransactionPeriodData({ selectedMonth }) {
   const dispatch = useDispatch();

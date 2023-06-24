@@ -50,7 +50,8 @@ const TransactionTable = () => {
     return incomes.filter(el => el.date.includes(dateFilter));
   }, [dateFilter, incomes]);
 
-  const transaction = status === 'income' ? transactionIncome : transactionExpense;
+  const transaction =
+    status === 'income' ? transactionIncome : transactionExpense;
 
   const [showModal, setShowModal] = useState(false);
 
@@ -100,7 +101,7 @@ const TransactionTable = () => {
                         .map(el => el.label)
                         .join()}
                     </TableColumnStyled>
-                    <TableColumnStyled  data-color={status}>
+                    <TableColumnStyled data-color={status}>
                       {item.amount === ''
                         ? ''
                         : status === 'income'

@@ -110,6 +110,7 @@ export const StyledLoginBtn = styled.button`
     letter-spacing: 0.02em;
     text-transform: uppercase;
     box-shadow: 1px 3px 5px 0px #60c47059;
+    transition: all 0.3s ease 0s;
     &:hover {
       background-color: #42a111;
       cursor: pointer;
@@ -135,6 +136,7 @@ export const StyledRegisterBtn = styled.button`
     text-transform: uppercase;
     box-shadow: 1px 3px 5px 0px rgba(82, 85, 95, 0.15);
     background: rgba(245, 246, 251, 1);
+    transition: all 0.3s ease 0s;
 
     &:hover {
       background-color: rgba(245, 246, 255, 0.9);
@@ -165,6 +167,18 @@ export const StyledSectionRegister = styled.section`
   background-image: url(${rectangle});
   background-repeat: no-repeat;
   background-size: 115%;
+
+  animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  @keyframes slide-in-bck-center {
+    0% {
+      transform: translateZ(600px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateZ(0);
+      opacity: 1;
+    }
+  }
 `;
 
 export const StyledImgBox = styled.div`

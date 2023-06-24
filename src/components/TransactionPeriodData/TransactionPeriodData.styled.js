@@ -3,20 +3,21 @@ import styled from 'styled-components';
 export const ListStyled = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  width: 600px;
+  max-width: 280px;
   color: rgba(199, 204, 220, 1);
   column-gap: 43px;
-  align-items: center;
+  /* align-items: center; */
+  align-content: flex-start;
   justify-content: center;
   gap: 40px;
-  /* @media screen and (min-width: 768px) {
-    max-width: 624px;
-    margin: 0 auto;
+
+  @media (min-width: 768px) {
+    max-width: 704px;
   }
-  @media screen and (min-width: 1280px) {
-    max-width: 746 px;
-    margin: 0 auto; */
-  /* } */
+
+  @media (min-width: 1280px) {
+    max-width: 1034px;
+  }
 `;
 
 export const ItemStyled = styled.li`
@@ -26,16 +27,6 @@ export const ItemStyled = styled.li`
   gap: 6px;
   max-width: 112px;
   font-size: 12px;
-  /* height: 104px; */
-
-  /* @media screen and (min-width: 768px) {
-    max-width: 624px;
-    margin: 0 auto;
-  }
-  @media screen and (min-width: 1280px) {
-    max-width: 746 px;
-    margin: 0 auto; */
-  /* } */
 `;
 
 export const BoxStyled = styled.div`
@@ -47,9 +38,8 @@ export const BoxStyled = styled.div`
   float: none;
   height: 64px;
   justify-content: center;
-  margin: 6px 0;
+  /* margin: 6px 0; */
   width: 64px;
-
   margin: 0;
   justify-content: center;
   align-items: center;
@@ -62,16 +52,9 @@ export const BoxStyled = styled.div`
     width: 64px;
     transform: scale(1.1);
     transition: all 100ms ease-in-out;
+    filter: brightness(1.2);
+    cursor: pointer;
   }
-
-  /* @media screen and (min-width: 768px) {
-    max-width: 624px;
-    margin: 0 auto;
-  }
-  @media screen and (min-width: 1280px) {
-    max-width: 746 px;
-    margin: 0 auto; */
-  /* } */
 `;
 
 export const TextStyled = styled.p`
@@ -79,18 +62,15 @@ export const TextStyled = styled.p`
   margin: 0;
   display: flex;
   justify-content: center;
-  /* @media screen and (min-width: 768px) {
-    max-width: 624px;
-    margin: 0 auto;
-  }
-  @media screen and (min-width: 1280px) {
-    max-width: 746 px;
-    margin: 0 auto; */
-  /* } */
 `;
 
 //=== === SD === ===
 
 export const CommentTitle = styled.p`
   margin: 0;
+`;
+
+export const IconImg = styled.img`
+  margin-left: 3px;
+  margin-top: 5px;
 `;
