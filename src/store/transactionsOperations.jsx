@@ -6,12 +6,14 @@ import {
   getTransactionIncomeApi,
   getTransactionPeriodDataApi,
   addTransactionExpenseApi,
+  setHeadersToken,
 } from 'services/walletApi';
 
 export const getTransactionIncome = createAsyncThunk(
   'transaction/income/get',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
+      setHeadersToken(getState().auth.accessToken);
       const data = await getTransactionIncomeApi();
       return data;
     } catch (error) {
@@ -35,8 +37,9 @@ export const addTransactionIncome = createAsyncThunk(
 
 export const getTransactionExpense = createAsyncThunk(
   'transaction/expenses/get',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
+      setHeadersToken(getState().auth.accessToken);
       const data = await getTransactionExpenseApi();
       return data;
     } catch (error) {
@@ -76,10 +79,10 @@ export const deleteTransaction = createAsyncThunk(
 
 export const getTransactionPeriod = createAsyncThunk(
   'transaction/period-data',
-  async (date, { rejectWithValue }) => {
+  async (date, { rejectWithValue, getState }) => {
     try {
+      setHeadersToken(getState().auth.accessToken);
       const data = await getTransactionPeriodDataApi(date);
-      // console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

@@ -13,10 +13,11 @@ import {
   ContainerBtn,
 } from './AddTransaction.styled';
 import './AddTransaction.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addTransactionExpense,
   addTransactionIncome,
+  getTransactionPeriod,
 } from 'store/transactionsOperations';
 import { categoryTranslationEnToRu } from './TranslateFunc';
 import { useEffect } from 'react';
@@ -31,6 +32,7 @@ export const Addtransaction = ({ isOpen, mobStartDate }) => {
   const [summ, setSumm] = useState('');
   const [searchParams] = useSearchParams();
   const [operation, setOperation] = useState('expences');
+  const { accessToken } = useSelector(state => state.auth);
 
   useEffect(() => {
     setOperation(searchParams.get('operation'));
@@ -64,6 +66,18 @@ export const Addtransaction = ({ isOpen, mobStartDate }) => {
     setDescription('');
     setSelectedOption('');
   };
+
+  useEffect(() => {
+    accessToken &&
+      dispatch(
+        getTransactionPeriod(
+          startDate.getFullYear() +
+            '-' +
+            ('0' + (startDate.getMonth() + 1)).slice(-2)
+        )
+      );
+  }, [dispatch, startDate, accessToken]);
+
   const transactionForm = {
     description: descr,
     amount: Number(summ),

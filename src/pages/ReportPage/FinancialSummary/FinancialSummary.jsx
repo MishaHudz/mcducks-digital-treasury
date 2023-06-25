@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTransactionExpense, getTransactionIncome} from '../../../store/transactionsOperations';
+import {
+  getTransactionExpense,
+  getTransactionIncome,
+} from '../../../store/transactionsOperations';
 import {
   SummaryBlock,
-SummaryText,
-SummaryNum,
-SummaryExpenses,
-SummaryBreak,
-SummaryIncome
-} from './Financial.styled'
+  SummaryText,
+  SummaryNum,
+  SummaryExpenses,
+  SummaryBreak,
+  SummaryIncome,
+} from './Financial.styled';
 
 const FinancialSummary = ({ selectedMonth }) => {
   const monthStats = useSelector(state => state.transaction.monthStatsExpenses);
@@ -58,7 +61,10 @@ const FinancialSummary = ({ selectedMonth }) => {
         return (
           <SummaryBlock>
             <SummaryText>
-              expenses: <SummaryNum><SummaryExpenses>0 UAH.</SummaryExpenses></SummaryNum>
+              expenses:{' '}
+              <SummaryNum>
+                <SummaryExpenses>0 UAH.</SummaryExpenses>
+              </SummaryNum>
               <SummaryBreak>|</SummaryBreak>
               incomes: <SummaryNum>0 UAH.</SummaryNum>
             </SummaryText>
@@ -78,12 +84,18 @@ const FinancialSummary = ({ selectedMonth }) => {
 
     return (
       <SummaryBlock>
-      <SummaryText>
-        expenses: <SummaryNum><SummaryExpenses>{expenseValue} UAH.</SummaryExpenses></SummaryNum>
-        <SummaryBreak>|</SummaryBreak>
-        incomes: <SummaryNum><SummaryIncome>{incomeValue} UAH.</SummaryIncome></SummaryNum>
-      </SummaryText>
-    </SummaryBlock>
+        <SummaryText>
+          expenses:{' '}
+          <SummaryNum>
+            <SummaryExpenses>{expenseValue} UAH.</SummaryExpenses>
+          </SummaryNum>
+          <SummaryBreak>|</SummaryBreak>
+          incomes:{' '}
+          <SummaryNum>
+            <SummaryIncome>{incomeValue} UAH.</SummaryIncome>
+          </SummaryNum>
+        </SummaryText>
+      </SummaryBlock>
     );
   };
 

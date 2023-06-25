@@ -32,6 +32,7 @@ function TransactionPeriodData({ selectedMonth }) {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const [operation, setOperation] = useState('expences');
+  const { accessToken } = useSelector(state => state.auth);
 
   const timeE =
     selectedMonth.getFullYear() +
@@ -39,12 +40,13 @@ function TransactionPeriodData({ selectedMonth }) {
     ('0' + (selectedMonth.getMonth() + 1)).slice(-2);
 
   useEffect(() => {
-    dispatch(getTransactionPeriod(timeE));
-  }, [dispatch, timeE]);
+    accessToken && dispatch(getTransactionPeriod(timeE));
+  }, [dispatch, timeE, accessToken]);
 
   const expens = useSelector(
     state => state.transaction.transactionExpense.expensesData
   );
+
   const income = useSelector(
     state => state.transaction.transactionIncome.incomesData
   );
@@ -132,7 +134,7 @@ function TransactionPeriodData({ selectedMonth }) {
                   });
                 }}
               >
-                <CommentTitle>{el[1].total}</CommentTitle>
+                <CommentTitle>{el[1].total.toFixed(2)}</CommentTitle>
                 <BoxStyled>
                   <img
                     src={
