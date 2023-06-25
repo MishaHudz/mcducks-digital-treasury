@@ -45,7 +45,7 @@ const BalanceCenter = () => {
           />
         )}
       </BoxBalance>
-      {!initialState && <BalanceModal />}
+      {!initialState && transaction.length === 0 && <BalanceModal />}
     </Forma>
   );
 };
