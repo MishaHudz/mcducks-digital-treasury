@@ -17,7 +17,7 @@ const BalanceCenter = () => {
   const { accessToken } = useSelector(state => state.auth);
   const balance = useSelector(state => state.auth.user.balance);
 
-  const render = transaction.length > 0 || initialState > 0;
+  const render = transaction.length > 0 || initialState !== 0;
 
   useEffect(() => {
     if (accessToken && !balance) {
