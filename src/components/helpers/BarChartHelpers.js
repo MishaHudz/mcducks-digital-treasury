@@ -1,9 +1,8 @@
 export function sortData(data) {
   const values = Object.values(data);
+  const keys = Object.keys(data);
 
   const oldValues = [...values];
-
-  const keys = Object.keys(data);
 
   if (keys.length === 2) {
     return data;
@@ -14,7 +13,9 @@ export function sortData(data) {
   values.sort((a, b) => b - a);
   for (let i = 0; i < values.length; i++) {
     const value = values[i];
-    const key = keys[oldValues.indexOf(value)];
+    const valueIndex = oldValues.indexOf(value);
+    oldValues[valueIndex] = null;
+    const key = keys[valueIndex];
     sortedObj[key] = value;
   }
 
