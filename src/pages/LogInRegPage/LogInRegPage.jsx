@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, userLogin } from 'store/authOperation';
 import wallet from '../../images/walletStart.png';
-// import tabletMoney from '../../images/TabletMoney.png';
+import tabletMoney from '../../images/TabletMoney.png';
 
 import {
   StyledErrorText,
@@ -19,6 +19,7 @@ import {
   StyledRegistrationBox,
   StyledSectionRegister,
   StyledStarRequared,
+  StyledImg,
 } from './LogInRegPage.styled';
 import { useNavigate } from 'react-router';
 import { useMediaQuery } from 'react-responsive';
@@ -61,6 +62,8 @@ function LogInRegPage() {
     const isDesktop = useMediaQuery({ minWidth: 1280 });
     return isDesktop ? children : null;
   };
+  const isTablet = useMediaQuery({ maxWidth: 1279 });
+  const isMob = useMediaQuery({ maxWidth: 767 });
   // const Tablet = ({ children }) => {
   //   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
   //   return isTablet ? children : null;
@@ -77,6 +80,11 @@ function LogInRegPage() {
           <img src={wallet} alt="wallet" />
         </StyledImgBox>
       </Desktop>
+      {isTablet && !isMob && (
+        <StyledImg>
+          <img src={tabletMoney} alt="" />
+        </StyledImg>
+      )}
       <StyledRegistrationBox>
         <StyledGoogleTitle>
           You can log in with your Google Account
