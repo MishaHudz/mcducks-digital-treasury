@@ -16,7 +16,6 @@ export async function userRegisterApi(userdata) {
     password: userdata.userPass,
   });
   return data;
-  // token.set(data.token);
 }
 
 export async function userLoginApi(userdata) {
@@ -25,7 +24,6 @@ export async function userLoginApi(userdata) {
     password: userdata.userPass,
   });
   return data;
-  // token.set(data.token);
 }
 
 export async function userLogoutApi(userdata) {
@@ -79,7 +77,6 @@ export async function userBalance(newBalance) {
   const { data } = await axios.patch(`/user/balance`, {
     newBalance: newBalance,
   });
-  console.log(data);
   return data;
 }
 
