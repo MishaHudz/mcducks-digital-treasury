@@ -52,7 +52,7 @@ export const userLogout = createAsyncThunk(
 
 export const balancePatch = createAsyncThunk(
   'user/patch',
-  async (userdata, { rejectWithValue}) => {
+  async (userdata, { rejectWithValue }) => {
     try {
       const data = await userBalance(userdata);
       return data;
@@ -64,8 +64,9 @@ export const balancePatch = createAsyncThunk(
 
 export const getUserInfoOperation = createAsyncThunk(
   'user/info',
-  async (_, { rejectWithValue}) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
+      setHeadersToken(getState().auth.accessToken);
       const data = await getUserInfo();
       return data;
     } catch (error) {

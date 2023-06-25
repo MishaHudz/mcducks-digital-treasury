@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import rectangle from '../../images/Rectangle.png';
 import ellipse from '../../images/Ellipse-8.png';
+import blur from '../../images/blur.png';
 
 export const Section = styled.section`
   height: 100%;
+  background-image: url(${blur});
+  background-repeat: repeat;
   animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   @keyframes slide-in-bck-center {
     0% {

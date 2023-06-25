@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import rectangle from '../../images/Rectangle.png';
 import ellipse from '../../images/Ellipse-8.png';
+import blur from '../../images/blur.png'
 
 export const Section = styled.section`
-  height: 100%;
+  height: 100vh;
+  background-image: url(${blur});
+  background-repeat: repeat;
   animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   @keyframes slide-in-bck-center {
     0% {
@@ -17,11 +20,16 @@ export const Section = styled.section`
   }
 
   @media (min-width: 768px) {
+    height: 100%;
     background-image: url(${rectangle});
     background-repeat: no-repeat;
     background-size: 110%;
     background-position-x: -40%;
     background-position-y: -20%;
+  }
+
+  @media (min-width: 1280px) {
+    height: 100vh;
   }
 `;
 
@@ -132,7 +140,7 @@ export const TestBox = styled.div`
   @media (min-width: 768px) {
     width: 704px;
     justify-content: space-between;
-    margin-top: 40px;
+    padding-top: 40px;
     margin-bottom: 60px;
   }
 
