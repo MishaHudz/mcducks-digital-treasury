@@ -29,6 +29,17 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    logOutAction: state => {
+      state.error = null;
+      state.isLoading = false;
+      state.accessToken = null;
+      state.user.email = null;
+      state.user.balance = 0;
+      state.user.id = null;
+      state.user.transactions = [];
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(register.fulfilled, (state, { payload }) => {
@@ -105,3 +116,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+export const { logOutAction } = authSlice.actions;
