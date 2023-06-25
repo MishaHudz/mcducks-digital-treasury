@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import BalanceBtn from '../BalanceBtn/BalanceBtn';
 import BalanceModal from '../BalanceModal/BalanceModal';
 import { Forma, Title, Data, BoxBalance } from './BalanceCenter.styled';
-import { getUserInfoOperation } from 'store/authOperation';
+// import { getUserInfoOperation } from 'store/authOperation';
 
 const BalanceCenter = () => {
   const [isInputDisabled, setIsInputDisabled] = useState(false);
@@ -14,16 +14,16 @@ const BalanceCenter = () => {
 
   const initialState = useSelector(store => store.auth.user.balance);
   const transaction = useSelector(store => store.auth.user.transactions);
-  const { accessToken } = useSelector(state => state.auth);
-  const balance = useSelector(state => state.auth.user.balance);
+  // const { accessToken } = useSelector(state => state.auth);
+  // const balance = useSelector(state => state.auth.user.balance);
 
   const render = transaction.length > 0 || initialState !== 0;
 
-  useEffect(() => {
-    if (accessToken && !balance) {
-      dispatch(getUserInfoOperation());
-    }
-  }, [accessToken, dispatch, balance]);
+  // useEffect(() => {
+  //   if (accessToken && !balance) {
+  //     dispatch(getUserInfoOperation());
+  //   }
+  // }, [accessToken, dispatch, balance]);
   return (
     <Forma>
       <Title>Balance:</Title>
