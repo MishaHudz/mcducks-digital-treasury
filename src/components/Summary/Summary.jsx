@@ -74,7 +74,7 @@ export const Summary = () => {
           .map(month => (
             <SummaryListItem key={nanoid()}>
               <SummaryText>
-                {monthTranslations[month[0].toLowerCase()]}
+                {monthTranslations[month[0].toLowerCase()].toUpperCase()}
               </SummaryText>
               <SummaryAmount>{funcSplit(month[1])}</SummaryAmount>
             </SummaryListItem>
