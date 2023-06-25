@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import ellipse from '../../images/Ellipse-8.png';
 import rectangle from '../../images/Rectangle.png';
+import blur from '../../images/blur.png'
 export const StyledRegistrationBox = styled.div`
   @media (min-width: 320px) {
     display: flex;
@@ -173,11 +174,13 @@ export const StyledSectionRegister = styled.section`
   display: flex;
   background-color: #474759;
   align-items: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
+  background-image: url(${blur});
   background-size: 115%;
   animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   @media (min-width: 768px) {
     background-image: url(${rectangle});
+    background-repeat: no-repeat;
   }
   @keyframes slide-in-bck-center {
     0% {
@@ -210,3 +213,10 @@ top: 30%;
 left: 48%;
 transform: translate(-50%,-50%);
 `;
+export const StyledEllipse = styled.div`
+position: absolute;
+top: 40%;
+left: 48%;
+transform: translate(-50%,-50%);
+z-index: -1;
+`

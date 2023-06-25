@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { register, userLogin } from 'store/authOperation';
 import wallet from '../../images/walletStart.png';
 import tabletMoney from '../../images/TabletMoney.png';
-
+import ellipse from '../../images/Ellipse-8.png';
 import {
   StyledErrorText,
   StyledForm,
@@ -20,6 +20,7 @@ import {
   StyledSectionRegister,
   StyledStarRequared,
   StyledImg,
+  StyledEllipse,
 } from './LogInRegPage.styled';
 import { useNavigate } from 'react-router';
 import { useMediaQuery } from 'react-responsive';
@@ -82,9 +83,13 @@ function LogInRegPage() {
       </Desktop>
       {isTablet && !isMob && (
         <StyledImg>
-          <img src={tabletMoney} alt="" />
+          <img src={tabletMoney} alt="Money" />
+          <StyledEllipse>
+            <img src={ellipse} alt="ellipse" width="700px" height="700px" />
+          </StyledEllipse>
         </StyledImg>
       )}
+
       <StyledRegistrationBox>
         <StyledGoogleTitle>
           You can log in with your Google Account
