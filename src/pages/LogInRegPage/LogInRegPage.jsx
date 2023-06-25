@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, userLogin } from 'store/authOperation';
 import wallet from '../../images/walletStart.png';
-// import tabletMoney from '../../images/TabletMoney.png';
-
+import tabletMoney from '../../images/TabletMoney.png';
+import ellipse from '../../images/Ellipse-8.png';
 import {
   StyledErrorText,
   StyledForm,
@@ -19,6 +19,8 @@ import {
   StyledRegistrationBox,
   StyledSectionRegister,
   StyledStarRequared,
+  StyledImg,
+  StyledEllipse,
 } from './LogInRegPage.styled';
 import { useNavigate } from 'react-router';
 import { useMediaQuery } from 'react-responsive';
@@ -61,6 +63,8 @@ function LogInRegPage() {
     const isDesktop = useMediaQuery({ minWidth: 1280 });
     return isDesktop ? children : null;
   };
+  const isTablet = useMediaQuery({ maxWidth: 1279 });
+  const isMob = useMediaQuery({ maxWidth: 767 });
   // const Tablet = ({ children }) => {
   //   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
   //   return isTablet ? children : null;
@@ -77,6 +81,15 @@ function LogInRegPage() {
           <img src={wallet} alt="wallet" />
         </StyledImgBox>
       </Desktop>
+      {isTablet && !isMob && (
+        <StyledImg>
+          <img src={tabletMoney} alt="Money" />
+          <StyledEllipse>
+            <img src={ellipse} alt="ellipse" width="700px" height="700px" />
+          </StyledEllipse>
+        </StyledImg>
+      )}
+
       <StyledRegistrationBox>
         <StyledGoogleTitle>
           You can log in with your Google Account

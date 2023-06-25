@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import ellipse from '../../images/Ellipse-8.png';
 import rectangle from '../../images/Rectangle.png';
+import blur from '../../images/blur.png'
 export const StyledRegistrationBox = styled.div`
   @media (min-width: 320px) {
     display: flex;
@@ -18,11 +19,20 @@ export const StyledRegistrationBox = styled.div`
   }
 
   @media (min-width: 768px) {
-    max-width: 392px;
+    min-width: 392px;
     padding: 52px;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%,-50%);
   }
 
   @media (min-width: 1280px) {
+    position: absolute;
+    top: 60%;
+    left: 75%;
+    transform: translate(-50%,-50%);
+    z-index: 1000;
   }
 `;
 
@@ -164,11 +174,14 @@ export const StyledSectionRegister = styled.section`
   display: flex;
   background-color: #474759;
   align-items: center;
-  background-image: url(${rectangle});
-  background-repeat: no-repeat;
+  background-repeat: repeat;
+  background-image: url(${blur});
   background-size: 115%;
-
   animation: slide-in-bck-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  @media (min-width: 768px) {
+    background-image: url(${rectangle});
+    background-repeat: no-repeat;
+  }
   @keyframes slide-in-bck-center {
     0% {
       transform: translateZ(600px);
@@ -192,3 +205,18 @@ export const StyledImgBox = styled.div`
   background-clip: content-box;
   z-index: 1;
 `;
+export const StyledImg = styled.div`
+width: 647px;
+height: 544px;
+position: absolute;
+top: 30%;
+left: 48%;
+transform: translate(-50%,-50%);
+`;
+export const StyledEllipse = styled.div`
+position: absolute;
+top: 40%;
+left: 48%;
+transform: translate(-50%,-50%);
+z-index: -1;
+`
